@@ -1,0 +1,19 @@
+# Example only. Validate Chaos Mesh/runtime compatibility and this exact selector first.
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: cct-productcatalog-delay
+  namespace: cct-app
+spec:
+  action: delay
+  mode: one
+  selector:
+    namespaces:
+      - cct-app
+    labelSelectors:
+      app: productcatalogservice
+  delay:
+    latency: 100ms
+    jitter: 10ms
+    correlation: '0'
+  duration: 30s

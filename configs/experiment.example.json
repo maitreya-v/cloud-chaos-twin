@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "pilot-delay-001",
+  "status": "planned",
+  "run_id": null,
+  "code_commit": null,
+  "testbed_commit": null,
+  "target_service": "productcatalogservice",
+  "fault_type": "network_delay",
+  "fault_duration_seconds": 30,
+  "warmup_seconds": 180,
+  "baseline_seconds": 300,
+  "recovery_minimum_seconds": 300,
+  "workload_profile": "low-to-calibrate",
+  "random_seed": 42,
+  "requested_start_utc": null,
+  "actual_start_utc": null,
+  "actual_end_utc": null,
+  "recovery_passed": null,
+  "validity_reason": "Planned template; no live experiment has run."
+}

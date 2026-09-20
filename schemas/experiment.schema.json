@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment manifest v1 (planned or observed)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "status",
+    "run_id",
+    "code_commit",
+    "testbed_commit",
+    "target_service",
+    "fault_type",
+    "fault_duration_seconds",
+    "warmup_seconds",
+    "baseline_seconds",
+    "recovery_minimum_seconds",
+    "workload_profile",
+    "random_seed",
+    "requested_start_utc",
+    "actual_start_utc",
+    "actual_end_utc",
+    "recovery_passed",
+    "validity_reason"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "running",
+        "complete",
+        "invalid"
+      ]
+    },
+    "run_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "code_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "testbed_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fault_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fault_duration_seconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "warmup_seconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "baseline_seconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "recovery_minimum_seconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "workload_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "random_seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "requested_start_utc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actual_start_utc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actual_end_utc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "recovery_passed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "validity_reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "code_commit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "testbed_commit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actual_start_utc": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actual_end_utc": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

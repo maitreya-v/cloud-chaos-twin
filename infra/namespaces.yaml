@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cct-app
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cct-observability
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cct-chaos

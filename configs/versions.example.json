@@ -1,0 +1,16 @@
+{
+  "status": "pending-live-validation",
+  "offline_python_minimum": "3.9",
+  "kind_version": null,
+  "kind_node_image_digest": null,
+  "online_boutique_commit": null,
+  "online_boutique_manifest_sha256": null,
+  "collector_image_digest": null,
+  "jaeger_image_digest": null,
+  "prometheus_image_digest": null,
+  "chaos_mesh_chart_version": null,
+  "kafka_image_digest": null,
+  "spark_image_digest": null,
+  "spark_kafka_connector": null,
+  "notes": "Fill with exact tested versions before collecting shared live experiments. Null means not selected."
+}
