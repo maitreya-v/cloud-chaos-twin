@@ -1,6 +1,6 @@
 # Live infrastructure · Maitreya
 
-Status: templates only; no cluster or application has been deployed by the starter.
+Status: Maitreya's local Docker and kind cluster are installed and verified; see the [CCT-01 host setup](../docs/CCT-01_HOST_SETUP.md) and its evidence. Online Boutique deployment remains CCT-02. The steps below prepare a new host; do not recreate the existing cluster.
 
 1. Complete the hardware checklist and install Docker, kind, kubectl, and Helm.
 2. Select a supported kind release and a node image digest from that release's official notes. Set `CCT_KIND_IMAGE` to that full image reference and record it in the version file.
