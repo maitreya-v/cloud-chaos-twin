@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "upstream_release": "v0.10.7",
+  "upstream_commit": "5b608cb1dfe317d05e4f1bb8c99b7618452fde87",
+  "upstream_manifest_sha256": "ae3c20181c051048e6a5cae51fa530681affa4043ba60ae95d4f39e1262f2744",
+  "platform": "linux/arm64",
+  "build_args": {
+    "BUILDPLATFORM": "linux/arm64",
+    "TARGETARCH": "arm64",
+    "TARGETOS": "linux"
+  },
+  "images": {
+    "adservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/adservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/adservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:17c4c2f100a42d3d01e3c24eeab06cf0c71ba3e63f19ab72c2c0f68b864c6ff6",
+      "image": "docker.io/cct-local/adservice@sha256:5caaa0525a0675f9ae98e087b73489d1a50632f74ad262e34a492eff42291eb6",
+      "architecture": "arm64",
+      "dockerfile_sha256": "298774ff7d60cc6d1d6f1e86602211ae7804e796ad430180e841a6c9e71c714d"
+    },
+    "shippingservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/shippingservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/shippingservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:3508f250207be567da90b379401addeb774a99b86e4692cda8c39e12c8b72860",
+      "image": "docker.io/cct-local/shippingservice@sha256:d4ee1ff46c402be8fc565dd2eb42cafc04e51016229bad668771eb619b89f5bf",
+      "architecture": "arm64",
+      "dockerfile_sha256": "b195ba9288fb3caee1b6872e53e64c3b0f8bdce24f70355eaf3dced664e6e7b0"
+    },
+    "checkoutservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/checkoutservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/checkoutservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:e4b4920e852ca89c0951e4950da6c3fa1436eb5bfa390ee73a9986aa197eb0d0",
+      "image": "docker.io/cct-local/checkoutservice@sha256:c5bc6eb2a455b0174993f892771e42ba2189ca7f09f2235928771b03a64783c1",
+      "architecture": "arm64",
+      "dockerfile_sha256": "df601e8a5615439ba42c9e4edfea13bc12cf4b9ddd62da83a191ed02a8f00910"
+    },
+    "currencyservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/currencyservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/currencyservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:8b61f4b7e24d717f8d86769049341733064ce442052d62304b57918410c51f80",
+      "image": "docker.io/cct-local/currencyservice@sha256:79cf10ff4a66b4949d2824265884d7b8fd5d0fd9a5dbc5d10ff89b083985a92e",
+      "architecture": "arm64",
+      "dockerfile_sha256": "a726f1bc990cbef1539cc8869a0076249733e6f0644e0053e9af58bdcd9b14a1"
+    },
+    "emailservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/emailservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/emailservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:b4def68397e5be13cefbd44d35427c39be55a652f48a593c999b2ee8d094f010",
+      "image": "docker.io/cct-local/emailservice@sha256:cd906c0ac4b1acd3a1257cc68926fc9e0af40a125e62ed50080213c30654a762",
+      "architecture": "arm64",
+      "dockerfile_sha256": "210978a1c6e3bb24468a78a4274fa914d112dd6eda0d7af259277fc481344c98"
+    },
+    "productcatalogservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/productcatalogservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/productcatalogservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:259327e7bfa49c44a17db78684ca9cdba4c525592f62618dab3529141fead01a",
+      "image": "docker.io/cct-local/productcatalogservice@sha256:d1a1afa917326c06da067130982bfa23450c4f6a78dba266f04a785b67afc825",
+      "architecture": "arm64",
+      "dockerfile_sha256": "19083534842d4f66adb887d73e8b6b130d34fe85f1f9d4ac3634f317e9f8733d"
+    },
+    "frontend": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/frontend:v0.10.7",
+      "build_tag": "docker.io/cct-local/frontend:5b608cb1dfe3-arm64",
+      "image_id": "sha256:bc3252f06800094b886e7d00b46e3586f05acc6f0deae1d2fc416a171baa24ed",
+      "image": "docker.io/cct-local/frontend@sha256:32067efbc36ab7ac22c29a29368ff186f0c4e088bbade611507ec019ba744f0e",
+      "architecture": "arm64",
+      "dockerfile_sha256": "ec6af961d0de6cf1dde488cda836172e768a585ef5bed18b2c5130ba0c8de476"
+    },
+    "recommendationservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/recommendationservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/recommendationservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:126337fb05ff35a0d30fe14a344873c56ced18b595ec0726ff23f614e1f73146",
+      "image": "docker.io/cct-local/recommendationservice@sha256:1bc48f8b1a066f126554a1191d5f1646368994ef1828bba32f33622867578d3d",
+      "architecture": "arm64",
+      "dockerfile_sha256": "792d11800044f9f9121719a80353b434f464e6165aecf06f2032d47f33af94ec"
+    },
+    "loadgenerator": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/loadgenerator:v0.10.7",
+      "build_tag": "docker.io/cct-local/loadgenerator:5b608cb1dfe3-arm64",
+      "image_id": "sha256:9bc529ea3c6ece724e6509918a8b73213528c3f1e1ea0e0cfc3d4891617451cc",
+      "image": "docker.io/cct-local/loadgenerator@sha256:2eae102b0288bdad67ad2b4ca233ef28a9c0cb5718fea563356f5a39c1dfbb2d",
+      "architecture": "arm64",
+      "dockerfile_sha256": "6dc8d039394a6f9e48c9ffe6c06e4531de085e48f1b29673f1ae4b084efd8e9c"
+    },
+    "cartservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/cartservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/cartservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:63963a61e0b8986a90886c22a3869034a9d84f085e000ec1f0d612f3d51a3207",
+      "image": "docker.io/cct-local/cartservice@sha256:813758b7597171ea4cbb265c1bead69e7bcaff80f8243585550f13ecba14dc8c",
+      "architecture": "arm64",
+      "dockerfile_sha256": "2b79faa2ddc46ef1c4f1e480385991f1b1d10a7073119c9757b8dccfab6b9ceb"
+    },
+    "paymentservice": {
+      "upstream_image": "us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/paymentservice:v0.10.7",
+      "build_tag": "docker.io/cct-local/paymentservice:5b608cb1dfe3-arm64",
+      "image_id": "sha256:3dd06a5a8ad3e105784980d5782aa4169e8fddddd6b9458272f14538105f3d1d",
+      "image": "docker.io/cct-local/paymentservice@sha256:850fe1671ed49f8c023290afc382c2a1caf70c43c44eacd17191f48eb728155e",
+      "architecture": "arm64",
+      "dockerfile_sha256": "d44569cf2ba19a7bd98873e0999b60f7b848e8c21bc700895385682493699a44"
+    }
+  },
+  "external_images": {
+    "busybox:1.38.0@sha256:dc2d74b28e4cf8984fa52af1f39bc7c3d9c73760b41a74d629f5d11b1ab28616": "busybox:1.38.0@sha256:8f2ffdcb46f1b83e46665954ec130e497b979db766854f79ca9eee43242b7e4c",
+    "redis:alpine": "redis:alpine@sha256:0ba1ade8d2139544540fb6aa1338bb6a95ca4e44f4ae8a49627abee1db345da7"
+  },
+  "base_overrides": {
+    "gcr.io/distroless/static": "gcr.io/distroless/static@sha256:63c8322db7adc53a501d276c2c3285e41fb9a9628d01809dfa60e1c925b3cf38"
+  },
+  "rendered_manifest_sha256": "26c04aabd1cb7094ff1cea77b89ba63d41b48c2f1781a430cb719ca1ac80d83e",
+  "local_changes": [
+    "native arm64 builds",
+    "digest-pinned images",
+    "namespace cct-app",
+    "frontend-external ClusterIP",
+    "loadgenerator replicas 0, users 5"
+  ]
+}

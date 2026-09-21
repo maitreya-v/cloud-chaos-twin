@@ -28,14 +28,15 @@ Open `outputs/demo/report.html` in a browser after running the demo. It also wri
 
 | Available now | Still to implement and validate |
 | --- | --- |
-| Shared plan, ownership, onboarding, and task templates | Live Online Boutique deployment |
+| Shared plan, ownership, onboarding, and task templates | Each teammate completing repository onboarding |
+| Native ARM64 Online Boutique, shopping checks, and low-load baseline | Calibrated workload levels with the full collection stack |
 | Python environment checker | OpenTelemetry, Jaeger, Prometheus, and log collection |
 | Synthetic span fixture and normalized-span schema | Kafka ingestion and Spark/Parquet processing |
 | Offline dependency graph and phase summary | Real fault injection and experiment automation |
 | Automated checks and HTML demo report | Root-cause ranking and prospective cascade prediction |
 | Kubernetes, collector, and scoped fault templates | Hardware calibration and reproducible live benchmarks |
 
-**The demo uses invented data. It demonstrates file formats and graph plumbing; it is not a real fault experiment, performance result, or prediction model.** Infrastructure templates have not been deployed by this starter setup. Team hardware must be checked before choosing the live configuration.
+**The offline demo uses invented data. It demonstrates file formats and graph plumbing; it is not a real fault experiment, performance result, or prediction model.** Separately, Online Boutique is deployed on Maitreya's selected Mac and completed a nominal 15-minute, five-user baseline with 1,000 successful requests; see the [local deployment record](docs/CCT-02_LOCAL_DEPLOYMENT.md) for measurements and timer precision. Observability, faults, and the combined processing stack still need deployment and validation.
 
 ## Intended architecture
 
@@ -70,7 +71,8 @@ Maitreya supports dashboard integration; Merul reviews health labels; Param prep
 
 | Location | Contents |
 | --- | --- |
-| `cct/`, `tests/` | Runnable offline starter and checks |
+| `cct/`, `tests/` | Runnable offline starter and acceptance checks |
+| `scripts/`, `workload/baseline_locust.py` | Native Boutique preparation, shopping checks, and measured baseline |
 | `data/samples/`, `schemas/` | Small synthetic fixture and data contracts |
 | `infra/`, `observability/`, `chaos/` | Initial configuration templates |
 | `configs/` | Example experiment and version record |

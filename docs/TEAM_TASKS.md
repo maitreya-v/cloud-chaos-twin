@@ -32,6 +32,10 @@ Update these checkboxes through pull requests. Owners are from the proposal; Git
 
 Maitreya's host inventory, host selection, and prerequisite setup are complete. The Apple M5 Mac (16 GiB RAM, 10 cores, approximately 335 GiB free after setup) is selected for initial staged development and experiments. Docker's container test passed; the pinned Kubernetes 1.36.4 node and all nine system pods are Ready; a disposable pod passed the cluster DNS check. The [host record](CCT-01_HOST_SETUP.md) links the measured evidence and activation instructions. Team-wide hardware collection is still pending; no other member's capacity has been assumed.
 
+### CCT-02 progress — 2026-09-20
+
+Completed locally: pinned Online Boutique v0.10.7 is deployed with native ARM64 images on the selected Mac. Browsing, cart quantity changes, and simulated checkout passed. The nominal 15-minute baseline completed with five users, 1,000 successful requests, 46 checkouts, no new restarts, and 79.5% minimum VM memory headroom. The [deployment record](CCT-02_LOCAL_DEPLOYMENT.md) documents the 1.062 ms timer discrepancy, accepted precision tolerance, cleanup correction, and [measured evidence](evidence/CCT-02-maitreya.json). The full-stack acceptance gate remains open.
+
 Param can start with fixtures while live collection is being built. Mithil can use the existing synthetic graph interface before real traces arrive. Maitreya supports dashboard wiring; Param supports evaluation tables; Merul reviews telemetry and health labels.
 
 ## Weekly gates
