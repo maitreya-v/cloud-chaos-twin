@@ -35,9 +35,9 @@ Per-request events reconcile to all 1,000 measured requests. Raw CSVs, logs, rea
 
 ## Open the application
 
-Open **http://127.0.0.1:8080** in your browser. The address is local to this Mac. Do not start another connection on the same port while an existing port-forward is running.
+Open **http://127.0.0.1:8080** in your browser. The address is local to this Mac. The subsequent [private-access setup](PRIVATE_ACCESS.md) now maintains this connection with a per-user Mac startup job; do not start another connection on the same port while it is running.
 
-For manual access on a prepared host, go to this repository and run:
+For manual use on another prepared host, or after stopping that startup job, go to this repository and run:
 
 ```sh
 source .local/env
@@ -47,7 +47,7 @@ kubectl --context kind-cloud-chaos-twin -n cct-app port-forward \
 
 Keep that Terminal running. Ctrl+C stops the browser connection while leaving the application deployed. If port 8080 is already occupied by the existing connection, use that connection instead of starting another. Start Docker Desktop before opening the application after a shutdown.
 
-The Mac must stay awake with Docker running. Restarting Docker or the Mac interrupts the connection. Restart the manual connection after Docker and the pods recover. The sample Redis cart uses ephemeral storage, so treat cart contents as disposable; experiment results are retained separately on the Mac under `outputs/`.
+The Mac must stay awake with Docker running. Restarting Docker or the Mac interrupts the connection; the startup job retries after login while Docker and the pods recover. Manual connections must be restarted manually. The sample Redis cart uses ephemeral storage, so treat cart contents as disposable; experiment results are retained separately on the Mac under `outputs/`.
 
 ## Version and architecture record
 
