@@ -1,0 +1,81 @@
+{
+  "recorded_at": "2026-09-20T19:37:41.983684+00:00",
+  "owner": "Maitreya",
+  "host_role": "initial local development and staged experiments",
+  "hardware": {
+    "os": "macOS 27.0",
+    "os_build": "26A428",
+    "cpu": "Apple M5",
+    "architecture": "arm64",
+    "physical_cores": 10,
+    "logical_cores": 10,
+    "ram_bytes": 17179869184,
+    "hardware_virtualization": true,
+    "free_disk_gib_after_setup": 335.2
+  },
+  "docker": {
+    "desktop_version": "4.91.0",
+    "desktop_build": "239619",
+    "engine_version": "29.8.0",
+    "vm_cpus": 10,
+    "vm_memory_bytes": 8319504384,
+    "architecture": "aarch64",
+    "container_smoke_passed": true,
+    "smoke_image_digests": [
+      "hello-world@sha256:5e23090353324d887c48ad5e5c56d294eab81588df9605b07d1afe895f9cc8f8"
+    ]
+  },
+  "kubernetes": {
+    "kind_version": "kind v0.33.0 go1.26.7 darwin/arm64",
+    "kubectl_version": "v1.36.4",
+    "node_image": "kindest/node:v1.36.4@sha256:099e049362a1526b2db71494e1947aae99bd16290d7c895f2b7ea312e3cbfaed",
+    "cluster_name": "cloud-chaos-twin",
+    "context": "kind-cloud-chaos-twin",
+    "node_version": "v1.36.4",
+    "node_ready": true,
+    "node_capacity": {
+      "cpu": "10",
+      "ephemeral-storage": "474044488Ki",
+      "hugepages-1Gi": "0",
+      "hugepages-2Mi": "0",
+      "hugepages-32Mi": "0",
+      "hugepages-64Ki": "0",
+      "memory": "8124516Ki",
+      "pods": "110"
+    },
+    "system_pods_total": 9,
+    "system_pods_ready": 9,
+    "system_container_restarts": 0,
+    "dns_smoke_phase": "Succeeded",
+    "dns_smoke_image_id": "docker.io/library/busybox@sha256:9db7b59979c38555a39def84a31fb98b5296952f9e3afd4f6f11f05b07adfab0",
+    "smoke_pod_removed": true
+  },
+  "helm_version": "v4.3.0+gbec5b06",
+  "tool_downloads": [
+    {
+      "name": "kind",
+      "url": "https://github.com/kubernetes-sigs/kind/releases/download/v0.33.0/kind-darwin-arm64",
+      "sha256": "0c8c7dbe5e23594a198b786c4bc13dacc101fa6196b0cb0b23a1ca44e61f4b4f"
+    },
+    {
+      "name": "kubectl",
+      "url": "https://dl.k8s.io/release/v1.36.4/bin/darwin/arm64/kubectl",
+      "sha256": "c9e4f713d6fee0043a3d835cca13077cda2bc0973840eb9779360df0b5bdfc69"
+    },
+    {
+      "name": "helm-v4.3.0-darwin-arm64.tar.gz",
+      "url": "https://get.helm.sh/helm-v4.3.0-darwin-arm64.tar.gz",
+      "sha256": "d3870437e1e95b67f8edbde964156c84a26503f560821d40c542441658934fba"
+    }
+  ],
+  "offline_checks": {
+    "normalized_fixture": "passed: 9 synthetic spans",
+    "unit_tests": "5 passed",
+    "offline_report": "generated"
+  },
+  "limitations": [
+    "Other teammates hardware has not been collected.",
+    "Online Boutique is not deployed; its baseline belongs to CCT-02.",
+    "Full-stack capacity, telemetry and Chaos Mesh compatibility remain unvalidated."
+  ]
+}

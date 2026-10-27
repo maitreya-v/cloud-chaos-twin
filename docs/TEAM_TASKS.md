@@ -9,7 +9,7 @@ Update these checkboxes through pull requests. Owners are from the proposal; Git
 - [x] Add runnable offline graph/summary report and validation checks.
 - [x] Add initial infrastructure/observability/fault templates.
 - [ ] All teammates can access the repository and run the offline demo.
-- [ ] Record hardware and select the live experiment host.
+- [x] Record Maitreya's hardware and select the initial staged experiment host; see [CCT-01 host record](CCT-01_HOST_SETUP.md). Other teammates' hardware remains uncollected.
 - [ ] Validate a pinned live stack; record exact versions.
 
 ## First deliverables
@@ -27,6 +27,10 @@ Update these checkboxes through pull requests. Owners are from the proposal; Git
 | CCT-09 | Mithil | Real trace graph and baseline metrics | CCT-03 | Service edges verified against request traces |
 | CCT-10 | Mithil + Merul | Health labels and forecast timing | CCT-04, CCT-08 | Cutoffs, labels, missing-data rules, and horizons documented |
 | CCT-11 | Maitreya + all | First integrated demo | CCT-06, CCT-08, CCT-09 | One saved real run reproduces a graph and timeline |
+
+### CCT-01 progress — 2026-09-20
+
+Maitreya's host inventory, host selection, and prerequisite setup are complete. The Apple M5 Mac (16 GiB RAM, 10 cores, approximately 335 GiB free after setup) is selected for initial staged development and experiments. Docker's container test passed; the pinned Kubernetes 1.36.4 node and all nine system pods are Ready; a disposable pod passed the cluster DNS check. The [host record](CCT-01_HOST_SETUP.md) links the measured evidence and activation instructions. Team-wide hardware collection is still pending; no other member's capacity has been assumed.
 
 Param can start with fixtures while live collection is being built. Mithil can use the existing synthetic graph interface before real traces arrive. Maitreya supports dashboard wiring; Param supports evaluation tables; Merul reviews telemetry and health labels.
 

@@ -10,6 +10,8 @@ Open the generated HTML report directly in your browser. Compare it with the fix
 
 ## B. Record team hardware
 
+Maitreya's measured inventory, host selection, and local installation instructions are recorded in [CCT-01 host setup](CCT-01_HOST_SETUP.md).
+
 Each teammate should add their specifications to a task or shared team note: OS, CPU architecture, RAM, available SSD space, container support, and administrative access. Avoid publishing device serial numbers or other personal machine identifiers.
 
 Planning estimates: around 8 GB RAM supports coding/small samples; around 16 GB may support staged application collection and separate processing; a 32 GB host with roughly 8 cores and 100 GB free storage is preferred for an initial combined stack. Measure actual usage. No GPU is needed for the initial methods.
