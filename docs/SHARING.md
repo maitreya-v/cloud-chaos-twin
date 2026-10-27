@@ -8,4 +8,6 @@ Teammates should start with README.md, docs/SETUP.md, and docs/TEAM_TASKS.md. Us
 
 The repository stores source/configuration/documentation and small synthetic examples. It does not host a live dashboard or running cluster. The generated demo report runs locally; real telemetry should use separate controlled storage with an index in the repository.
 
+The shared Boutique runs separately on Maitreya's Mac. See [private access](PRIVATE_ACCESS.md) for the private website, Kubernetes access design, activation status, and teammate checks. GitHub access and private-network membership are separate.
+
 If changing repository visibility later, check the team's access and course requirements first. Do not upload the source proposal with student IDs to the public repository.

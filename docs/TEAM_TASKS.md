@@ -36,6 +36,10 @@ Maitreya's host inventory, host selection, and prerequisite setup are complete. 
 
 Completed locally: pinned Online Boutique v0.10.7 is deployed with native ARM64 images on the selected Mac. Browsing, cart quantity changes, and simulated checkout passed. The nominal 15-minute baseline completed with five users, 1,000 successful requests, 46 checkouts, no new restarts, and 79.5% minimum VM memory headroom. The [deployment record](CCT-02_LOCAL_DEPLOYMENT.md) documents the 1.062 ms timer discrepancy, accepted precision tolerance, cleanup correction, and [measured evidence](evidence/CCT-02-maitreya.json). The full-stack acceptance gate remains open.
 
+### Private-access progress — 2026-09-21
+
+Private Boutique HTTPS, the official authenticated Kubernetes proxy, and the approved individual permissions are installed. The owner's sign-in works through Tailscale; all 11 application pods are healthy. Forty authorization checks and twenty integration/admission checks passed. The owner sent the four approved Member invitations, and the reloaded console confirms all four are Invited as Members. Acceptance, any required owner approval, and a teammate test from another Internet connection remain pending. See the [connection guide](PRIVATE_ACCESS.md) and [sanitized evidence](evidence/PRIVATE_ACCESS-maitreya.json).
+
 Param can start with fixtures while live collection is being built. Mithil can use the existing synthetic graph interface before real traces arrive. Maitreya supports dashboard wiring; Param supports evaluation tables; Merul reviews telemetry and health labels.
 
 ## Weekly gates

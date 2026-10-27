@@ -1,0 +1,486 @@
+{
+  "recorded_at": "2026-09-21T14:58:35.994912+00:00",
+  "scope": "Shared local Online Boutique private access",
+  "operator_version": "1.102.4",
+  "operator_image": "tailscale/k8s-operator@sha256:25615d0bf5797bf8257d33d1753adf47243f368fce1b5119beb239b2c710083a",
+  "website_https_status": 200,
+  "public_funnel_enabled": false,
+  "app_pods_ready": 11,
+  "app_container_restarts": 0,
+  "authorization_checks": [
+    {
+      "person": "Merul",
+      "verb": "list",
+      "resource": "pods",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "get",
+      "resource": "pods/log",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "list",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "tailscale",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "create",
+      "resource": "pods/exec",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "create",
+      "resource": "rolebindings.rbac.authorization.k8s.io",
+      "namespace": "cct-observability",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "default",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Merul",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "list",
+      "resource": "pods",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "get",
+      "resource": "pods/log",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "list",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "tailscale",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "create",
+      "resource": "pods/exec",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "create",
+      "resource": "rolebindings.rbac.authorization.k8s.io",
+      "namespace": "cct-observability",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "default",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Param",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "list",
+      "resource": "pods",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "get",
+      "resource": "pods/log",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "list",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "tailscale",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "create",
+      "resource": "pods/exec",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "create",
+      "resource": "rolebindings.rbac.authorization.k8s.io",
+      "namespace": "cct-observability",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "default",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Mithil",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "list",
+      "resource": "pods",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "get",
+      "resource": "pods/log",
+      "namespace": "cct-app",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "list",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "tailscale",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "create",
+      "resource": "pods/exec",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-app",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "create",
+      "resource": "rolebindings.rbac.authorization.k8s.io",
+      "namespace": "cct-observability",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "default",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "person": "Komalika",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    }
+  ],
+  "integration_checks": [
+    {
+      "check": "Owner private proxy authenticates exact owner identity",
+      "passed": true
+    },
+    {
+      "check": "Private proxy reads all 11 healthy app pods",
+      "passed": true
+    },
+    {
+      "check": "Merul: actual secrets read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Merul: actual rolebindings.rbac.authorization.k8s.io read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Merul: actual cluster-wide node read denied",
+      "passed": true
+    },
+    {
+      "check": "Param: actual secrets read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Param: actual rolebindings.rbac.authorization.k8s.io read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Param: actual cluster-wide node read denied",
+      "passed": true
+    },
+    {
+      "check": "Mithil: actual secrets read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Mithil: actual rolebindings.rbac.authorization.k8s.io read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Mithil: actual cluster-wide node read denied",
+      "passed": true
+    },
+    {
+      "check": "Komalika: actual secrets read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Komalika: actual rolebindings.rbac.authorization.k8s.io read denied in monitoring namespace",
+      "passed": true
+    },
+    {
+      "check": "Komalika: actual cluster-wide node read denied",
+      "passed": true
+    },
+    {
+      "check": "Merul: monitoring configuration write allowed in server dry-run",
+      "passed": true
+    },
+    {
+      "check": "Param: monitoring configuration write denied in server dry-run",
+      "passed": true
+    },
+    {
+      "check": "Merul: privileged host-network pod rejected by restricted admission",
+      "passed": true
+    },
+    {
+      "check": "Operator authenticated proxy mode is true",
+      "passed": true
+    },
+    {
+      "check": "Operator uses verified pinned ARM64 image",
+      "passed": true
+    },
+    {
+      "check": "Team configuration contains only Tailscale unused placeholder auth, no administrator certificate, and no TLS bypass",
+      "passed": true
+    }
+  ],
+  "verification_note": "Initial check rejected any token field. Verified locally that the generated value is the non-secret literal unused; authentication is the Tailscale user identity. Original result retained locally.",
+  "passed_host_checks": true,
+  "invitation_status": "Owner sent email invitations; reloaded Tailscale console confirms all four Invited as Members",
+  "remote_teammate_device_verified": false,
+  "limits": [
+    "Role checks use host administrator impersonation; private proxy was exercised as owner.",
+    "No remote teammate or different-network test has been completed.",
+    "Mac must be awake, online, logged in, and running Docker and Tailscale."
+  ],
+  "invitations_verified_at": "2026-09-21T15:01:18.950737+00:00",
+  "invitations": [
+    {
+      "person": "Merul",
+      "role": "Member",
+      "status": "Invited"
+    },
+    {
+      "person": "Param",
+      "role": "Member",
+      "status": "Invited"
+    },
+    {
+      "person": "Mithil",
+      "role": "Member",
+      "status": "Invited"
+    },
+    {
+      "person": "Komalika",
+      "role": "Member",
+      "status": "Invited"
+    }
+  ]
+}

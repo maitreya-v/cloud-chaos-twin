@@ -29,6 +29,7 @@ Open `outputs/demo/report.html` in a browser after running the demo. It also wri
 | Available now | Still to implement and validate |
 | --- | --- |
 | Shared plan, ownership, onboarding, and task templates | Each teammate completing repository onboarding |
+| Private Boutique HTTPS and individual Kubernetes permissions | Invitation acceptance and a teammate test from another Internet connection |
 | Native ARM64 Online Boutique, shopping checks, and low-load baseline | Calibrated workload levels with the full collection stack |
 | Python environment checker | OpenTelemetry, Jaeger, Prometheus, and log collection |
 | Synthetic span fixture and normalized-span schema | Kafka ingestion and Spark/Parquet processing |
@@ -37,6 +38,8 @@ Open `outputs/demo/report.html` in a browser after running the demo. It also wri
 | Kubernetes, collector, and scoped fault templates | Hardware calibration and reproducible live benchmarks |
 
 **The offline demo uses invented data. It demonstrates file formats and graph plumbing; it is not a real fault experiment, performance result, or prediction model.** Separately, Online Boutique is deployed on Maitreya's selected Mac and completed a nominal 15-minute, five-user baseline with 1,000 successful requests; see the [local deployment record](docs/CCT-02_LOCAL_DEPLOYMENT.md) for measurements and timer precision. Observability, faults, and the combined processing stack still need deployment and validation.
+
+The [private-access guide](docs/PRIVATE_ACCESS.md) records the working website, authenticated Kubernetes endpoint, applied teammate permissions, and connection steps. All four Member invitations are sent; acceptance and testing from a teammate's device remain open.
 
 ## Intended architecture
 
