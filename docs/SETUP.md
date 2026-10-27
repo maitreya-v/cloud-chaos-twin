@@ -27,7 +27,7 @@ Maitreya owns the first validated deployment. Install a supported container runt
 - [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo)
 - [Chaos Mesh installation](https://chaos-mesh.org/docs/production-installation-using-helm/)
 
-Follow `infra/README.md` for cluster preparation. Pin and review the upstream application manifest, deploy the testbed, and verify browsing/cart/checkout before adding monitoring. Collector configuration alone does not instrument applications; each required service must emit spans and propagate context.
+Follow `infra/README.md` for cluster preparation. Maitreya's existing host already runs the pinned application; use the [CCT-02 deployment and baseline instructions](CCT-02_LOCAL_DEPLOYMENT.md) to inspect it or reproduce that stage. Verify browsing/cart/checkout before adding monitoring. Collector configuration alone does not instrument applications; each required service must emit spans and propagate context.
 
 **Live acceptance gate:** stable healthy workload, complete traces for core user journeys, resource headroom, one verified scoped fault, cleanup, and recovery. Templates in this repository are starting points and have not yet passed this gate.
 
