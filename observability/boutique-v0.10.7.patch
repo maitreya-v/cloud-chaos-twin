@@ -1,0 +1,149 @@
+diff --git a/src/adservice/Dockerfile b/src/adservice/Dockerfile
+index 159c1ea..08365e3 100644
+--- a/src/adservice/Dockerfile
++++ b/src/adservice/Dockerfile
+@@ -40,5 +40,7 @@ FROM eclipse-temurin:25.0.4_7-jre-alpine@sha256:3137541deb3cac6626b5d9a4a2187bc0
+ WORKDIR /app
+ COPY --from=builder /app .
+ 
++ADD --chmod=0444 --checksum=sha256:48570b90ab967db579e535c5edda52bea077c2e0b9d92874acd73bf9b69de50b https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v2.17.0/opentelemetry-javaagent.jar /opt/otel/javaagent.jar
++
+ EXPOSE 9555
+ ENTRYPOINT ["/app/build/install/hipstershop/bin/AdService"]
+diff --git a/src/cartservice/src/Dockerfile b/src/cartservice/src/Dockerfile
+index 5f669eb..acc4832 100644
+--- a/src/cartservice/src/Dockerfile
++++ b/src/cartservice/src/Dockerfile
+@@ -27,8 +27,7 @@ RUN dotnet publish cartservice.csproj \
+     -p:PublishSingleFile=true \
+     -a $TARGETARCH \
+     --self-contained true \
+-    -p:PublishTrimmed=true \
+-    -p:TrimMode=full \
++    -p:PublishTrimmed=false \
+     -c release \
+     -o /cartservice
+ 
+diff --git a/src/cartservice/src/Startup.cs b/src/cartservice/src/Startup.cs
+index 136d303..48e2db7 100644
+--- a/src/cartservice/src/Startup.cs
++++ b/src/cartservice/src/Startup.cs
+@@ -1,4 +1,6 @@
+ using System;
++using OpenTelemetry.Resources;
++using OpenTelemetry.Trace;
+ using Microsoft.AspNetCore.Builder;
+ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+ using Microsoft.AspNetCore.Hosting;
+@@ -56,6 +58,14 @@ namespace cartservice
+             }
+ 
+ 
++            if (Configuration["ENABLE_TRACING"] == "1")
++            {
++                services.AddOpenTelemetry()
++                    .ConfigureResource(resource => resource.AddService("cartservice"))
++                    .WithTracing(tracing => tracing
++                        .AddAspNetCoreInstrumentation()
++                        .AddOtlpExporter());
++            }
+             services.AddGrpc();
+         }
+ 
+diff --git a/src/cartservice/src/cartservice.csproj b/src/cartservice/src/cartservice.csproj
+index f50d792..db5a936 100644
+--- a/src/cartservice/src/cartservice.csproj
++++ b/src/cartservice/src/cartservice.csproj
+@@ -5,6 +5,9 @@
+   </PropertyGroup>
+ 
+   <ItemGroup>
++    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
++    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
++    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
+     <PackageReference Include="Grpc.AspNetCore" Version="2.83.0" />
+     <PackageReference Include="Grpc.HealthCheck" Version="2.83.0" />
+     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.11" />
+diff --git a/src/shippingservice/Dockerfile b/src/shippingservice/Dockerfile
+index d6ec3df..ed2b881 100644
+--- a/src/shippingservice/Dockerfile
++++ b/src/shippingservice/Dockerfile
+@@ -24,6 +24,9 @@ WORKDIR /src
+ COPY go.mod go.sum ./
+ RUN go mod download
+ COPY . .
++RUN go get go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.71.0 \
++    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.46.0 \
++    go.opentelemetry.io/otel/sdk@v1.46.0 && go mod tidy
+ 
+ # Skaffold passes in debug-oriented compiler flags
+ ARG SKAFFOLD_GO_GCFLAGS
+diff --git a/src/shippingservice/main.go b/src/shippingservice/main.go
+index d80cc22..34bceaf 100644
+--- a/src/shippingservice/main.go
++++ b/src/shippingservice/main.go
+@@ -22,6 +22,11 @@ import (
+ 
+ 	"cloud.google.com/go/profiler"
+ 	"github.com/sirupsen/logrus"
++	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
++	"go.opentelemetry.io/otel"
++	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
++	"go.opentelemetry.io/otel/propagation"
++	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+ 	"golang.org/x/net/context"
+ 	"google.golang.org/grpc"
+ 	"google.golang.org/grpc/codes"
+@@ -54,12 +59,19 @@ func init() {
+ }
+ 
+ func main() {
+-	if os.Getenv("DISABLE_TRACING") == "" {
+-		log.Info("Tracing enabled, but temporarily unavailable")
+-		log.Info("See https://github.com/GoogleCloudPlatform/microservices-demo/issues/422 for more info.")
+-		go initTracing()
+-	} else {
+-		log.Info("Tracing disabled.")
++	var options []grpc.ServerOption
++	if os.Getenv("ENABLE_TRACING") == "1" {
++		exporter, err := otlptracegrpc.New(context.Background(),
++			otlptracegrpc.WithEndpoint(os.Getenv("COLLECTOR_SERVICE_ADDR")),
++			otlptracegrpc.WithInsecure())
++		if err != nil {
++			log.Fatalf("create OTLP exporter: %v", err)
++		}
++		provider := sdktrace.NewTracerProvider(sdktrace.WithBatcher(exporter))
++		defer provider.Shutdown(context.Background())
++		otel.SetTracerProvider(provider)
++		otel.SetTextMapPropagator(propagation.TraceContext{})
++		options = append(options, grpc.StatsHandler(otelgrpc.NewServerHandler()))
+ 	}
+ 
+ 	if os.Getenv("DISABLE_PROFILER") == "" {
+@@ -80,14 +92,7 @@ func main() {
+ 		log.Fatalf("failed to listen: %v", err)
+ 	}
+ 
+-	var srv *grpc.Server
+-	if os.Getenv("DISABLE_STATS") == "" {
+-		log.Info("Stats enabled, but temporarily unavailable")
+-		srv = grpc.NewServer()
+-	} else {
+-		log.Info("Stats disabled.")
+-		srv = grpc.NewServer()
+-	}
++	srv := grpc.NewServer(options...)
+ 	svc := &server{}
+ 	pb.RegisterShippingServiceServer(srv, svc)
+ 	healthcheck := health.NewServer()
+@@ -156,10 +161,6 @@ func initStats() {
+ 	//TODO(arbrown) Implement OpenTelemetry stats
+ }
+ 
+-func initTracing() {
+-	// TODO(arbrown) Implement OpenTelemetry tracing
+-}
+-
+ func initProfiling(service, version string) {
+ 	// TODO(ahmetb) this method is duplicated in other microservices using Go
+ 	// since they are not sharing packages.

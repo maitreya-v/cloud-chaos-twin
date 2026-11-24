@@ -15,6 +15,16 @@ BASE = "http://127.0.0.1:8080"
 PRODUCT = "0PUK6V6EV0"
 
 
+def checkout_fields():
+    """Synthetic order values shared by the smoke and telemetry probes."""
+    return {
+        "email": "cct-test@example.com", "street_address": "123 Test Street", "zip_code": "11790",
+        "city": "Stony Brook", "state": "NY", "country": "United States",
+        "credit_card_number": "4111111111111111", "credit_card_expiration_month": "12",
+        "credit_card_expiration_year": str(datetime.datetime.now().year + 1), "credit_card_cvv": "123",
+    }
+
+
 def main():
     directory = ROOT / "outputs/boutique-smoke" / datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     directory.mkdir(parents=True)
@@ -42,12 +52,7 @@ def main():
     second = request("cart-three", "/cart", {"product_id": PRODUCT, "quantity": 2})
     assert re.search(r"Quantity:\s*(?:<[^>]+>\s*)*1\b", first, re.I), "Cart quantity 1 not confirmed"
     assert re.search(r"Quantity:\s*(?:<[^>]+>\s*)*3\b", second, re.I), "Cart quantity 3 not confirmed"
-    request("checkout", "/cart/checkout", {
-        "email": "cct-test@example.com", "street_address": "123 Test Street", "zip_code": "11790",
-        "city": "Stony Brook", "state": "NY", "country": "United States",
-        "credit_card_number": "4111111111111111", "credit_card_expiration_month": "12",
-        "credit_card_expiration_year": str(datetime.datetime.now().year + 1), "credit_card_cvv": "123",
-    }, contains="Your order is complete!")
+    request("checkout", "/cart/checkout", checkout_fields(), contains="Your order is complete!")
     request("cart-after-checkout", "/cart", contains="Your shopping cart is empty!")
     (directory / "summary.json").write_text(json.dumps({"passed": True, "synthetic_customer": True,
                                                        "steps": evidence}, indent=2) + "\n")
