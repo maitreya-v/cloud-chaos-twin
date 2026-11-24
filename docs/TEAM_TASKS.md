@@ -58,3 +58,7 @@ Param can start with fixtures while live collection is being built. Mithil can u
 | 10 | Reproduction, buffer, final packaging |
 
 Do not mark tasks complete solely because a manifest exists. Link the observed run, output, or reproducible check that passed its gate.
+
+### Merul's telemetry implementation, 2026-11-24
+
+CCT-03 and CCT-04 have a namespace-scoped Collector/Jaeger/Prometheus pilot, tracing patches for three missing emitters, a three-journey verification Job, selected-log capture, pod-state gauges and a proposed Kafka encoding. CCT-10 has an executable candidate health rule and cutoff contract for Mithil's review. The [runbook](../observability/README.md) includes the local fixture ablation, owner review, live acceptance checks and recovery. Merul reported opening Boutique from his Mac. Kubernetes identity, native builds, live coverage, overhead, broker receipts and integration evidence remain open.
