@@ -6,9 +6,9 @@ An experimental platform for studying how faults spread through microservice sys
 
 ## Frozen telemetry version and reproduction
 
-The public project is [maitreya-v/cloud-chaos-twin](https://github.com/maitreya-v/cloud-chaos-twin). Merul's review branch is `feature/merul-telemetry`, frozen as `merul-telemetry-2026-11-24` in the supplied Git bundle. Its parent is `df96c8c821fbc10dcbaad0ef518eb2b74334f664` on `feature/cct-02-local-boutique`, the branch that contains both the CCT-02 and private-access merges. GitHub's current `main` does not include those merges. The telemetry branch/tag must be published before an instructor can reproduce this version from the public URL alone.
+The public project hosts [Merul’s frozen telemetry implementation](https://github.com/maitreya-v/cloud-chaos-twin/tree/cfab3d0ce1af576aaa3bbba72276322c8c361c66). The tag `merul-telemetry-2026-11-24` identifies the tested implementation on the `feature/merul-telemetry` branch. Its parent, `df96c8c821fbc10dcbaad0ef518eb2b74334f664`, contains the CCT-02 and private-access merges on the deployment branch. The [three presentation slides](docs/submission/Cloud-Chaos-Twin-Slides.pdf) and [seven-page project report](docs/submission/Cloud-Chaos-Twin-Report.pdf) record the November 24 evidence.
 
-From the supplied bundle, use `git clone -b feature/merul-telemetry Cloud-Chaos-Twin.bundle Cloud-Chaos-Twin`. If using a published checkout, fetch its tags. In either case:
+Clone with `git clone https://github.com/maitreya-v/cloud-chaos-twin.git Cloud-Chaos-Twin`, or use `git clone -b feature/merul-telemetry Cloud-Chaos-Twin.bundle Cloud-Chaos-Twin` for an offline checkout. Then run the following commands.
 
 ```sh
 cd Cloud-Chaos-Twin
