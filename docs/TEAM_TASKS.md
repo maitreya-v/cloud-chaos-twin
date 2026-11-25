@@ -62,3 +62,9 @@ Do not mark tasks complete solely because a manifest exists. Link the observed r
 ### Merul's telemetry implementation, 2026-11-24
 
 CCT-03 and CCT-04 have a namespace-scoped Collector/Jaeger/Prometheus pilot, tracing patches for three missing emitters, a three-journey verification Job, selected-log capture, pod-state gauges and a proposed Kafka encoding. CCT-10 has an executable candidate health rule and cutoff contract for Mithil's review. The [runbook](../observability/README.md) includes the local fixture ablation, owner review, live acceptance checks and recovery. Merul reported opening Boutique from his Mac. Kubernetes identity, native builds, live coverage, overhead, broker receipts and integration evidence remain open.
+
+### Telemetry verification on November 25, 2026
+
+CCT-03 passed the three live journey checks. Maitreya's [host rollout record](CCT-03_TRACING_ROLLOUT.md) reports 15 expected service relationships across browse, cart and checkout. Merul independently repeated the shopping journeys. For CCT-04 he verified service-counter activity, pod gauges, and selected timestamped frontend and checkout logs. The measured receipt records OTLP acceptance and the change in the Collector's exported-log count. The [runbook](../observability/README.md#record-an-independent-shopping-verification) explains how to reproduce the check and retain the receipt locally.
+
+Maitreya and Merul still need paired off/on workload measurements for collection overhead. Kafka/Spark reconciliation and CCT-10 health-label calibration have separate acceptance criteria.
