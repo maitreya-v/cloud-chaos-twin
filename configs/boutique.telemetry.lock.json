@@ -1,0 +1,8 @@
+{
+  "adservice": "docker.io/cct-local/adservice-otel@sha256:0e9f1e5ecacc0d3f7908ec47e054d5b2f0ee728abc60eda2ec95c15941e9829d",
+  "cartservice": "docker.io/cct-local/cartservice-otel@sha256:366f30eaef664c4d30f176878e92be812f84ac0ce8f16675616047c9666cce56",
+  "shippingservice": "docker.io/cct-local/shippingservice-otel@sha256:400aaf15d6243bb1c72ee223579804d57052d607f168f89a135576484a14f567",
+  "currencyservice": "docker.io/cct-local/currencyservice-otel@sha256:98960cb33150de6a8f8912edc4fc8241988c9c5c8aa1cae50bab5b03c0290782",
+  "paymentservice": "docker.io/cct-local/paymentservice-otel@sha256:1bea43a573487a4f7f39817ba01d30f1f3b2799bc66039dabac248eee613fbd3",
+  "checkoutservice": "docker.io/cct-local/checkoutservice-otel@sha256:43d0ca54afcb7961797f5f8d75a9b9d638d7b3093d310d0be48e0290b565e18a"
+}

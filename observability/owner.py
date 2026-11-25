@@ -7,6 +7,8 @@ from pathlib import Path
 SERVICES = ("frontend","productcatalogservice","checkoutservice","currencyservice",
             "paymentservice","emailservice","recommendationservice")
 EXTRA = ("adservice", "cartservice", "shippingservice")
+NODE = ("currencyservice", "paymentservice")
+REBUILT = EXTRA + NODE + ("checkoutservice",)
 ADDR = "cct-collector.cct-observability.svc:4317"
 
 
@@ -17,7 +19,7 @@ def command(args):
 def plan(images):
     kube = ["kubectl","--context","kind-cloud-chaos-twin","-n","cct-app"]
     # Emit one strategic patch per Deployment, only touching the 'server' container.
-    for svc in (*SERVICES, *images):
+    for svc in dict.fromkeys((*SERVICES, *images)):
         addr = "http://" + ADDR if svc in {"currencyservice","paymentservice"} else ADDR
         env = {"ENABLE_TRACING": "1", "COLLECTOR_SERVICE_ADDR": addr, "OTEL_SERVICE_NAME": svc}
         container = {"name":"server"}
@@ -35,12 +37,12 @@ def plan(images):
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--images", type=Path, help="JSON object containing immutable local names for all three rebuilt images")
+    p.add_argument("--images", type=Path, help="JSON digest references for the traced native variants")
     a = p.parse_args()
     images = json.loads(a.images.read_text()) if a.images else {}
     if a.images:
         import re
-        if set(images) != set(EXTRA) or not all(re.fullmatch(r"[a-z0-9./_-]+@sha256:[a-f0-9]{64}", v) for v in images.values()):
-            p.error("expected a digest reference for each of adservice, cartservice, shippingservice")
+        if set(images) not in (set(EXTRA), set(EXTRA + NODE), set(REBUILT)) or not all(re.fullmatch(r"[a-z0-9./_-]+@sha256:[a-f0-9]{64}", v) for v in images.values()):
+            p.error("expected ads/cart/shipping digests, optionally with currency/payment and checkout")
     print("set -eu")
     plan(images)
