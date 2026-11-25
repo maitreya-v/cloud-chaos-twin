@@ -9,7 +9,7 @@ Cloud Chaos Twin studies how failures spread through Online Boutique, a microser
 | Component | What the team has verified | Remaining work |
 | --- | --- | --- |
 | Testbed and workload | Maitreya deployed Online Boutique on an ARM64 kind cluster and verified browsing, cart updates, and checkout. A five-user baseline recorded 1,000 successful requests and 46 checkouts. | Repeat the workload with telemetry enabled to measure collection overhead. |
-| Traces, metrics, and logs | Merul implemented the OpenTelemetry Collector, Jaeger, and Prometheus configuration, selected-log capture, pod gauges, and a shopping-journey probe. The probe’s reconstruction logic recovered all 15 expected caller relationships in three synthetic traces. | Verify all three journeys on the shared deployment and match timestamped metrics and logs to workload activity. |
+| Traces, metrics, and logs | The [live rollout](docs/CCT-03_TRACING_ROLLOUT.md) recovered 4/4 browse, 2/2 cart, and 9/9 checkout relationships. Merul independently verified the journeys, service counters, pod gauges and selected log delivery using the [recorded verification workflow](observability/README.md#record-an-independent-shopping-verification). | Measure collection overhead with matched instrumentation-off and instrumentation-on runs. |
 | Health labels and forecasting | Merul implemented a candidate rule for classifying services as healthy, affected, or unknown using observations available at the prediction cutoff. | Merul and Mithil review the rule together and calibrate thresholds on recorded runs. Forecast accuracy remains unmeasured. |
 | Processing and experiments | The repository includes sample telemetry, a normalized-span schema, an offline dependency graph and report, and a scoped fault template. | Validate Kafka/Spark replay, Parquet counts, fault and recovery records, and an integrated experiment. |
 
@@ -17,11 +17,11 @@ The [deployment record](docs/CCT-02_LOCAL_DEPLOYMENT.md) documents the baseline 
 
 ## Repository and frozen version
 
-The public repository is [maitreya-v/cloud-chaos-twin](https://github.com/maitreya-v/cloud-chaos-twin). The tag `merul-telemetry-2026-11-24` identifies the tested telemetry implementation at commit `cfab3d0ce1af576aaa3bbba72276322c8c361c66`. The team merged the implementation into `feature/cct-02-local-boutique`. The submission commit also contains the course deliverables. [Merged telemetry PR](https://github.com/maitreya-v/cloud-chaos-twin/pull/4) · [Presentation slides](docs/submission/Cloud-Chaos-Twin-Slides.pdf) · [Project report](docs/submission/Cloud-Chaos-Twin-Report.pdf)
+The public repository is [maitreya-v/cloud-chaos-twin](https://github.com/maitreya-v/cloud-chaos-twin). The tag `merul-telemetry-2026-11-24` identifies the tested telemetry implementation at commit `cfab3d0ce1af576aaa3bbba72276322c8c361c66`. The tag reproduces the November 24 offline milestone. The [November 25 integrated revision](https://github.com/maitreya-v/cloud-chaos-twin/tree/e764ca675bb8a5ce3e75bb3e7fe9e00345028adf) adds the live tracing fixes, rollout tool and independent verifier. The slides and report linked here describe the November 24 milestone. [Merged telemetry PR](https://github.com/maitreya-v/cloud-chaos-twin/pull/4) · [Presentation slides](docs/submission/Cloud-Chaos-Twin-Slides.pdf) · [Project report](docs/submission/Cloud-Chaos-Twin-Report.pdf)
 
 ## Installation and reproduction
 
-The offline workflow requires Git and Python 3.9 or newer. It uses the Python standard library. Run the commands from a shell, using WSL or the `py -3` launcher for Python on Windows.
+For the current code, clone the repository and stay on `main`. The live verifier runs with `python3 -m observability.record` after cluster setup in the [telemetry runbook](observability/README.md). To reproduce the frozen offline milestone, use the checkout below. The offline workflow requires Git and Python 3.9 or newer. It uses the Python standard library. Run the commands from a shell, using WSL or the `py -3` launcher for Python on Windows.
 
 ```sh
 git clone https://github.com/maitreya-v/cloud-chaos-twin.git Cloud-Chaos-Twin
