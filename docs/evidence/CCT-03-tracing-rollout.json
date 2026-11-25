@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-11-25T05:06:23.609323+00:00",
+  "source": "live-owner-readiness-probe",
+  "status": "ready-for-merul-verification",
+  "collector_grpc": "cct-collector.cct-observability.svc:4317",
+  "application_services_traced": 10,
+  "app_pods_ready": 11,
+  "rebuilt_images_platform": "linux/arm64",
+  "rebuilt_images_count": 6,
+  "upstream_commit": "5b608cb1dfe317d05e4f1bb8c99b7618452fde87",
+  "patch_sha256": "b76f3ad0aec40def23f2455215f6859e259d6639bd52af622af6a51221363214",
+  "services": {
+    "adservice": {
+      "ready": true,
+      "revision": 3,
+      "image": "docker.io/cct-local/adservice-otel@sha256:0e9f1e5ecacc0d3f7908ec47e054d5b2f0ee728abc60eda2ec95c15941e9829d"
+    },
+    "cartservice": {
+      "ready": true,
+      "revision": 2,
+      "image": "docker.io/cct-local/cartservice-otel@sha256:366f30eaef664c4d30f176878e92be812f84ac0ce8f16675616047c9666cce56"
+    },
+    "checkoutservice": {
+      "ready": true,
+      "revision": 3,
+      "image": "docker.io/cct-local/checkoutservice-otel@sha256:43d0ca54afcb7961797f5f8d75a9b9d638d7b3093d310d0be48e0290b565e18a"
+    },
+    "currencyservice": {
+      "ready": true,
+      "revision": 3,
+      "image": "docker.io/cct-local/currencyservice-otel@sha256:98960cb33150de6a8f8912edc4fc8241988c9c5c8aa1cae50bab5b03c0290782"
+    },
+    "emailservice": {
+      "ready": true,
+      "revision": 2,
+      "image": "docker.io/cct-local/emailservice@sha256:cd906c0ac4b1acd3a1257cc68926fc9e0af40a125e62ed50080213c30654a762"
+    },
+    "frontend": {
+      "ready": true,
+      "revision": 2,
+      "image": "docker.io/cct-local/frontend@sha256:32067efbc36ab7ac22c29a29368ff186f0c4e088bbade611507ec019ba744f0e"
+    },
+    "paymentservice": {
+      "ready": true,
+      "revision": 3,
+      "image": "docker.io/cct-local/paymentservice-otel@sha256:1bea43a573487a4f7f39817ba01d30f1f3b2799bc66039dabac248eee613fbd3"
+    },
+    "productcatalogservice": {
+      "ready": true,
+      "revision": 2,
+      "image": "docker.io/cct-local/productcatalogservice@sha256:d1a1afa917326c06da067130982bfa23450c4f6a78dba266f04a785b67afc825"
+    },
+    "recommendationservice": {
+      "ready": true,
+      "revision": 2,
+      "image": "docker.io/cct-local/recommendationservice@sha256:1bc48f8b1a066f126554a1191d5f1646368994ef1828bba32f33622867578d3d"
+    },
+    "shippingservice": {
+      "ready": true,
+      "revision": 2,
+      "image": "docker.io/cct-local/shippingservice-otel@sha256:400aaf15d6243bb1c72ee223579804d57052d607f168f89a135576484a14f567"
+    }
+  },
+  "probe_run": "cct-probe-owner-fixed-20261125050452",
+  "probe_interval": {
+    "started_at": "2026-11-25T05:04:56.167239+00:00",
+    "finished_at": "2026-11-25T05:05:04.494726+00:00"
+  },
+  "journeys": {
+    "browse": {
+      "expected_edges": 4,
+      "matched_edges": 4,
+      "missing_edges": [],
+      "passes_declared_path": true,
+      "trace_id": "1f6d29f3b7fd791bd0eb53518ce6c31d"
+    },
+    "cart": {
+      "expected_edges": 2,
+      "matched_edges": 2,
+      "missing_edges": [],
+      "passes_declared_path": true,
+      "trace_id": "88284dac9d522fe9efb9d426a4b43fe8"
+    },
+    "checkout": {
+      "expected_edges": 9,
+      "matched_edges": 9,
+      "missing_edges": [],
+      "passes_declared_path": true,
+      "trace_id": "adaae700116936a7efae8a22e5ae260c"
+    }
+  },
+  "call_deltas": {
+    "adservice": 1.0,
+    "cartservice": 6.0,
+    "checkoutservice": 1.0,
+    "currencyservice": 18.0,
+    "emailservice": 1.0,
+    "frontend": 7.0,
+    "paymentservice": 1.0,
+    "productcatalogservice": 22.0,
+    "recommendationservice": 3.0,
+    "shippingservice": 4.0
+  },
+  "prometheus_targets": {
+    "cct-collector": "up",
+    "cct-service": "up"
+  },
+  "offline_unit_tests_passed": 26,
+  "pending": [
+    "Merul independent verification",
+    "timestamped selected-log capture and delivery",
+    "paired collection-overhead measurement",
+    "CCT-10 label calibration"
+  ]
+}

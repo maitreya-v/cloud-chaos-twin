@@ -1,0 +1,21 @@
+# Installed on the local ARM64 host after explicit OAuth/operator approval.
+# Store credentials in the pre-created tailscale/operator-oauth Secret, not Helm values.
+operatorConfig:
+  hostname: cct-kubernetes
+  defaultTags:
+    - tag:cct-operator
+  image:
+    repository: tailscale/k8s-operator
+    digest: sha256:25615d0bf5797bf8257d33d1753adf47243f368fce1b5119beb239b2c710083a
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+proxyConfig:
+  defaultTags: tag:cct-workload
+apiServerProxyConfig:
+  mode: "true"
