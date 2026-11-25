@@ -46,7 +46,7 @@ python3 observability/owner.py > outputs/telemetry/owner-seven.sh
 sh outputs/telemetry/owner-seven.sh
 ```
 
-Three additional variants supply missing server-side instrumentation. Cart registers ASP.NET Core instrumentation and the OTLP exporter, with trimming disabled in the traced build. Shipping installs a gRPC stats handler, W3C propagation and a Go OTLP batch exporter. Ads use the versioned, SHA-256-checked OpenTelemetry Java agent with only trace export enabled. Redis remains a datastore outside the ten application-service tracing targets. The [patch](boutique-v0.10.7.patch) applies to Boutique commit `5b608cb1dfe317d05e4f1bb8c99b7618452fde87`. Source context is Apache-2.0; retain upstream notices. Source patch applicability was checked against the pinned files. Image build, runtime compatibility, resources and true path coverage are open gates.
+The cart patch pins OpenTelemetry hosting and the OTLP exporter to 1.15.3. This brings in the fixed API header parser and fixes the exporter's experimental disk-retry defaults; see the upstream [API advisory](https://github.com/open-telemetry/opentelemetry-dotnet/security/advisories/GHSA-g94r-2vxg-569j) and [exporter advisory](https://github.com/open-telemetry/opentelemetry-dotnet/security/advisories/GHSA-4625-4j76-fww9). The original 1.12.0 pins produced NuGet vulnerability warnings during the native build.
 
 ```sh
 # Build on the prepared cluster host after reviewing the native variants

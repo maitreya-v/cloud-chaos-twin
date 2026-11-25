@@ -1,6 +1,9 @@
 import copy
+import io
 import json
+import shlex
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 from observability.fixture import benchmark, fixture
 from observability.health import state
@@ -9,6 +12,7 @@ from observability.stack import stack, probe_job
 from observability.signals import nanos, selected_logs, pod_metrics
 from observability.export_sample import sample
 from observability.overhead import compare, load
+from observability.owner import EXTRA, NODE, REBUILT, plan
 
 
 class LineageTests(unittest.TestCase):
@@ -79,6 +83,27 @@ class SignalTests(unittest.TestCase):
 
 
 class ScopeTests(unittest.TestCase):
+    def test_owner_rolls_each_service_once_with_supported_image_locks(self):
+        for names in (EXTRA, EXTRA + NODE, REBUILT):
+            images = {name: "docker.io/cct-local/" + name + "@sha256:" + "a" * 64 for name in names}
+            output = io.StringIO()
+            with redirect_stdout(output):
+                plan(images)
+            commands = [shlex.split(line) for line in output.getvalue().splitlines()]
+            patches = [args for args in commands if "patch" in args]
+            services = [args[args.index("deployment") + 1] for args in patches]
+            self.assertEqual(len(services), 10)
+            self.assertEqual(len(set(services)), 10)
+            self.assertEqual(len([args for args in commands if "rollout" in args]), 10)
+            for args, service in zip(patches, services):
+                patch = json.loads(args[args.index("-p") + 1])
+                container = patch["spec"]["template"]["spec"]["containers"][0]
+                if service in images:
+                    self.assertEqual(container["image"], images[service])
+                    self.assertEqual(container["imagePullPolicy"], "Never")
+                else:
+                    self.assertNotIn("image", container)
+
     def test_stack_bounds_and_export_routes(self):
         base = stack()
         self.assertTrue(all(i["metadata"]["namespace"]=="cct-observability" for i in base))
