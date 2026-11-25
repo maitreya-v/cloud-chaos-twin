@@ -1,10 +1,10 @@
 # Collecting evidence from Online Boutique
 
-Merul owns trace propagation and Jaeger (CCT-03), service metrics and selected logs (CCT-04), and contributes the health-label contract with Mithil (CCT-10). The [host rollout record](../docs/CCT-03_TRACING_ROLLOUT.md) now records ten traced services, all three complete shopping journeys and service-counter activity. Merul still needs to perform independent verification, capture and confirm selected logs, and measure collection overhead with Maitreya. Health-label calibration with Mithil remains pending.
+Merul implemented trace collection and journey verification (CCT-03), service metrics and selected-log capture (CCT-04), and a candidate health-label rule for review with Mithil (CCT-10). The offline tests cover trace reconstruction, signal handling, and cutoff timing. The shared-cluster acceptance criteria are complete traces for browse, cart, and checkout, plus timestamped metrics and logs that match workload activity. Native image builds, live signal delivery, and collection overhead still require verification.
 
-## Start on Merul's Mac
+## Cluster access and prerequisites
 
-Use your invited Tailscale identity. On macOS, install the client if missing with `brew install kubectl`. The host's setup and access guide is [here](../docs/PRIVATE_ACCESS.md).
+Live checks require kubectl, Tailscale, and an individual account with the project’s Kubernetes permissions. The commands below use the project kubeconfig. On macOS, kubectl is available through `brew install kubectl`. See the [cluster access guide](../docs/PRIVATE_ACCESS.md) for account setup.
 
 ```sh
 mkdir -p "$HOME/.kube"
@@ -16,54 +16,49 @@ kubectl auth can-i create deployments.apps -n cct-observability
 kubectl auth can-i get pods/log -n cct-app
 ```
 
-Confirm the identity is yours. Keep this KUBECONFIG selected for Merul's commands. Monitoring resources use `cct-observability`; the host owns `cct-app`. Everything below runs from the project repository root. Stagger this pilot with Kafka/Spark and fault testing on the 16 GiB Mac.
+Verify that the reported identity matches the signed-in team member and that the permission checks succeed. The monitoring role can deploy in `cct-observability` and read application logs in `cct-app`. Changes to application workloads require the deployment administrator. Run the following commands from the repository root. The shared testbed has 16 GiB of memory, so schedule monitoring, data processing, and fault experiments in separate windows.
 
-## Review and run the monitoring stack
+## Deploy and verify the monitoring stack
 
-The renderer outputs three single-replica Deployments, three ClusterIP Services and two ConfigMaps. All pods run non-root with dropped capabilities, the runtime-default seccomp profile, a read-only root filesystem and no mounted Kubernetes token. Each component requests 50m CPU and 64 MiB, with limits of 500m and 256 MiB. Jaeger retains up to 1,000 traces in memory. Prometheus scrapes every five seconds and uses ephemeral storage. The Collector keeps selected OTLP logs in rotating files on a bounded temporary volume. Save evidence before restarting or deleting workloads.
-
-1. Generate and inspect the installation. A host with Docker/buildx can resolve the three release tags to native linux/arm64 registry digests using `--pin-arm64`. Have Maitreya run the binary checks and review the exact rendered file and available capacity before deployment. Share that reviewed file privately with Merul for the apply. The default render, which needs only Python, is useful for review.
-2. Run server-side dry run under Merul's identity. Inspect existing resources with these names before applying. Use the approved file for the actual rollout.
-3. After the rollout, save the running image IDs. Confirm that both Prometheus targets are up and wait for a few scrapes before the measured shopping pass.
+The monitoring maintainer deploys the Collector, Jaeger, and Prometheus directly in `cct-observability`. The deployment administrator handles changes in `cct-app`. With the project Tailscale account connected, run from the repository root:
 
 ```sh
-mkdir -p outputs/telemetry
-python3 observability/stack.py > outputs/telemetry/stack.review.json
-# Docker host, before review of the final file
-sh observability/validate_images.sh
-python3 observability/stack.py --pin-arm64 > outputs/telemetry/stack.json
-# Merul, after review
-kubectl -n cct-observability apply --dry-run=server -f outputs/telemetry/stack.json
-kubectl -n cct-observability apply -f outputs/telemetry/stack.json
-for d in cct-jaeger cct-collector cct-prometheus; do
-  kubectl -n cct-observability rollout status deployment/"$d" --timeout=180s || break
-done
-kubectl -n cct-observability get pods -o json > outputs/telemetry/monitor-pods.json
-kubectl -n cct-app get pods -o json > outputs/telemetry/app-pods.json
-git rev-parse HEAD > outputs/telemetry/revision.txt
+python3 -m observability.rollout
 ```
+
+The command requires Python 3.9+, kubectl, and the Tailscale CLI. It selects the project kubeconfig, prints the authenticated Kubernetes identity, renders the eight namespace-scoped resources with pinned Linux ARM64 images, checks them with a server-side dry run, and applies them. Re-running the command reconciles the same resources. Kubernetes reports field ownership conflicts for the maintainer to inspect.
+
+Each of the three single-replica deployments requests 50m CPU and 64 MiB of memory and has limits of 500m CPU and 256 MiB. The pods run as non-root with a read-only root filesystem, dropped capabilities, the runtime-default seccomp profile, and service account token mounting disabled. Jaeger retains up to 1,000 traces in memory. Prometheus uses ephemeral storage and scrapes every five seconds. The Collector writes selected logs to rotating files on a bounded temporary volume. Archive measurements before a restart.
+
+The rollout waits for the three deployments, then runs a temporary namespace Job to query Jaeger and check both Prometheus scrape targets. A successful run prints `MONITORING READY` and writes `ready.json`, the pinned manifest, and running image IDs under `outputs/telemetry/rollout-*/`. Share the latest successful receipt and the in-cluster OTLP/gRPC endpoint, `cct-collector.cct-observability.svc:4317`, with the deployment administrator. If a check fails, inspect the output and the corresponding run directory before retrying. Shopping-journey coverage and signal measurements follow the application rollout.
+
+The standalone renderer remains available for inspection (`python3 observability/stack.py`) and can resolve current registry digests on a Docker/buildx host (`python3 observability/stack.py --pin-arm64`). For removal after the pilot, use the exact manifest archived by the rollout that installed the stack.
 
 Prometheus derives request counts, error breakdowns and duration histograms from SERVER spans. CLIENT spans remain available in Jaeger. A gRPC health-check filter removes named health RPCs from span-derived metrics. The Collector's own scrape target records refusals and export failures when those series exist. Successful OTLP receipt and successful delivery to Jaeger or Kafka are distinct checks. Service CPU and memory require a separately authorized source. The pod API reader provides readiness and restart gauges.
 
-## Application changes for Maitreya to review and apply
+## Application instrumentation and rollout
 
-Frontend, catalog, email and recommendation use their existing native images. Six rebuilt variants cover ads, cart, shipping, currency, payment and checkout. The rollout enables tracing, preserves the original profiler settings, and targets the in-cluster Collector. The Node clients receive an HTTP-form gRPC address. The owner script prints a staged rollout with one patch per service. Review it and record each affected Deployment's current revision (`kubectl -n cct-app rollout history deployment/NAME`) and image before applying. Use the owner's project kubeconfig and explicit kind context for this step, with the Collector already Ready.
+The pinned Boutique source supports tracing in frontend, checkout, currency, payment, catalog, email and recommendation. The initial rollout enables only tracing, keeps profilers off as originally configured, and targets the in-cluster Collector. The Node clients receive an HTTP-form gRPC address. The rollout script generates commands for each affected Deployment. Review it and record each affected Deployment's current revision (`kubectl -n cct-app rollout history deployment/NAME`) and image before applying. This step requires the deployment administrator’s project kubeconfig and explicit kind context.
 
-Cart registers ASP.NET Core instrumentation and the OTLP exporter, with trimming disabled in the traced build. Shipping installs a gRPC stats handler, W3C propagation and a Go OTLP batch exporter. Ads use the versioned, SHA-256-checked OpenTelemetry Java agent with only trace export enabled. Its agent directory must remain traversable by the non-root application user. Currency and payment use `@opentelemetry/exporter-trace-otlp-grpc` 0.222.0 to match their Node SDK; the original legacy 0.26.0 exporter did not deliver their spans during the live probe. Both package locks are updated. Checkout passes its request context into the currency RPC rather than `context.TODO()`, which detached that call from the shopping trace. Redis remains a datastore outside the ten application-service tracing targets. The [patch](boutique-v0.10.7.patch) applies to Boutique commit `5b608cb1dfe317d05e4f1bb8c99b7618452fde87`. Source context is Apache-2.0; retain upstream notices. The exporter is documented in the [OpenTelemetry JavaScript repository](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-grpc).
+```sh
+python3 observability/owner.py > outputs/telemetry/owner-seven.sh
+# Deployment administrator, after review and Collector readiness
+sh outputs/telemetry/owner-seven.sh
+```
 
 The cart patch pins OpenTelemetry hosting and the OTLP exporter to 1.15.3. This brings in the fixed API header parser and fixes the exporter's experimental disk-retry defaults; see the upstream [API advisory](https://github.com/open-telemetry/opentelemetry-dotnet/security/advisories/GHSA-g94r-2vxg-569j) and [exporter advisory](https://github.com/open-telemetry/opentelemetry-dotnet/security/advisories/GHSA-4625-4j76-fww9). The original 1.12.0 pins produced NuGet vulnerability warnings during the native build.
 
 ```sh
-# Maitreya on the prepared host, once he approves building native variants
+# Build on the prepared cluster host after reviewing the native variants
 python3 observability/build_images.py
 python3 observability/owner.py --images .local/telemetry/image-lock.json > outputs/telemetry/owner-ten.sh
 # Review image digests, resources and environment. Run during the agreed window.
 sh outputs/telemetry/owner-ten.sh
 ```
 
-The builder clones the owner's pinned source into a temporary directory, applies the patch, builds/loads six new image names and records digests. It checks Java-agent startup under the non-root UID and sends a real SDK span to a local OTLP/gRPC receiver inside each Node image before import. It preserves the original Boutique image lock. The [host image lock](../configs/boutique.telemetry.lock.json) records the imported variants; these references need the corresponding images loaded into kind on another host. If one rollout fails, stop and inspect its events. For each changed application Deployment Maitreya can restore its recorded revision with `kubectl --context kind-cloud-chaos-twin -n cct-app rollout undo deployment/NAME --to-revision=NUMBER`, then wait for readiness and rerun the original shopping smoke check. Save receipts first. Maitreya and Merul can remove only the resources from the approved monitoring manifest with `kubectl delete -f outputs/telemetry/stack.json` after they agree to end the pilot.
+The builder clones the pinned Boutique source into a temporary directory, applies the patch, builds/loads three new image names and records digests. It preserves the original Boutique image lock. If one rollout fails, stop and inspect its events. For each changed application Deployment, the deployment administrator can restore the recorded revision with `kubectl --context kind-cloud-chaos-twin -n cct-app rollout undo deployment/NAME --to-revision=NUMBER`, then wait for readiness and rerun the original shopping smoke check. Save receipts first. At the end of the agreed test window, the monitoring maintainer can remove the pilot resources with `kubectl -n cct-observability delete -f <rollout-directory>/stack.json` for the recorded installation.
 
-## Prove browsing, cart and checkout under Merul's existing role
+## Verify browse, cart, and checkout traces
 
 This Job talks to ClusterIP endpoints and prints a single sanitized JSON receipt. It requires no port-forward permission. Each run creates a fresh cookie jar and a unique W3C trace ID per HTTP request. It checks a home page, an add-to-cart redirect, cart contents, a simulated order confirmation and an empty cart after checkout. It retrieves each selected trace by exact ID, walks parent references to a frontend SERVER span, and requires the [declared journey edges](lineage.py). The checker records missing edges and unattached spans. It cannot establish coverage for unrelated optional features. Aggregate counter deltas corroborate service activity during an isolated test window. Traffic from other users and health checks can influence them.
 
@@ -98,14 +93,14 @@ kubectl -n cct-observability delete -f "$D/relay.json"
 kubectl -n cct-observability delete -f "$D/probe.json"
 ```
 
-If an authorized Collector HTTP endpoint is already available, use `signals.py --otlp-http URL` when making the capture instead. A retry after a partial two-signal send may duplicate records. Deduplicate by log event ID or metric series/timestamp. To inspect Jaeger and Prometheus directly, Maitreya may forward services to his own loopback interface. Private dashboard sharing or additional Kubernetes port-forward access requires his separate configuration.
+If an authorized Collector HTTP endpoint is already available, use `signals.py --otlp-http URL` when making the capture instead. A retry after a partial two-signal send may duplicate records. Deduplicate by log event ID or metric series/timestamp. For local inspection, the deployment administrator can forward Jaeger and Prometheus to a loopback interface. Shared dashboards or additional port-forward permissions require separate configuration.
 
 ## Interfaces, quality and forecasting
 
-- **Param.** Run `python3 -m observability.export_sample outputs/sample-otlp` for nested OTLP/JSON samples. They contain 19 spans, two pod gauges and one sanitized log, all synthetic. Review the [signal contract](CONTRACT.md) together before enabling the optional Kafka branch. Pass the agreed private broker to `stack.py --kafka BROKER:PORT --pin-arm64`, review/dry-run the new manifest, then coordinate the change. Topics are `cct.traces`, `cct.metrics`, `cct.logs` with `otlp_json`. Use this plaintext option only on the team's approved internal transport. Broker operation, consumer counts, availability timestamps, restart recovery and Spark/Parquet belong to Param's integration gate.
-- **Mithil.** The shopping receipt's `lineage.server_records` and `lineage.edges` preserve trace, parent, duration and direction for each matched journey. Service windows and the candidate label rule are defined in [CONTRACT.md](CONTRACT.md). The existing synthetic-only demo schema stays version 1.0. Live records use the separate receipt format.
-- **Overhead.** Maitreya runs the existing 5-user, seed-42, 120 s warm-up / 900 s measured workload in isolated, paired off/on windows. Alternate order across at least three matched pairs when feasible. Preserve hardware, workload code hashes, fixed app versions, sampling policy and raw run directories. Pass actual directories to `python3 observability/overhead.py OFF_DIR ON_DIR`. Report per-pair p95 latency, throughput, mean VM CPU and peak VM memory with signed percentage changes. Perform off/on comparisons under the same application binaries when estimating instrumentation cost. A pre-patch vs post-patch comparison measures bundled deployment overhead. The September result is a historical reference; no instrumented counterpart has been measured.
-- **CCT-11.** Archive the manifest revision, exact running images, UTC interval, both captures, workload counts, collector refusal/export-failure series, missing services and accepted signal counts. Param must reconcile Kafka and Parquet counts. Komalika supplies independent fault timing/recovery. Mithil supplies graph/forecast output. The 3-journey probe alone cannot close the integrated demonstration.
+- **Kafka and Spark (Param).** Run `python3 -m observability.export_sample outputs/sample-otlp` for nested OTLP/JSON samples. They contain 19 spans, two pod gauges and one sanitized log, all synthetic. Review the [signal contract](CONTRACT.md) together before enabling the optional Kafka branch. Pass the agreed private broker to `stack.py --kafka BROKER:PORT --pin-arm64`, review/dry-run the new manifest, then coordinate the change. Topics are `cct.traces`, `cct.metrics`, `cct.logs` with `otlp_json`. Use this plaintext option only on the team's approved internal transport. Broker operation, consumer counts, availability timestamps, restart recovery and Spark/Parquet belong to Param's integration gate.
+- **Dependency graph and health labels (Mithil and Merul).** The shopping receipt's `lineage.server_records` and `lineage.edges` preserve trace, parent, duration and direction for each matched journey. Service windows and the candidate label rule are defined in [CONTRACT.md](CONTRACT.md). The existing synthetic-only demo schema stays version 1.0. Live records use the separate receipt format.
+- **Collection overhead (Maitreya and Merul).** The measurement protocol uses the existing 5-user, seed-42, 120 s warm-up / 900 s measured workload in isolated, paired off/on windows. Alternate order across at least three matched pairs when feasible. Preserve hardware, workload code hashes, fixed app versions, sampling policy and raw run directories. Pass actual directories to `python3 observability/overhead.py OFF_DIR ON_DIR`. Report per-pair p95 latency, throughput, mean VM CPU and peak VM memory with signed percentage changes. Perform off/on comparisons under the same application binaries when estimating instrumentation cost. A pre-patch vs post-patch comparison measures bundled deployment overhead. Maitreya recorded the September baseline. A matched run with instrumentation enabled is pending.
+- **Integrated experiment (CCT-11).** Archive the manifest revision, exact running images, UTC interval, both captures, workload counts, collector refusal/export-failure series, missing services and accepted signal counts. Param must reconcile Kafka and Parquet counts. Komalika supplies independent fault timing/recovery. Mithil supplies graph/forecast output. The 3-journey probe alone cannot close the integrated demonstration.
 
 ## Offline checks
 
