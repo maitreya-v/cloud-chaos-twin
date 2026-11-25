@@ -1,6 +1,6 @@
 # Collecting evidence from Online Boutique
 
-Merul implemented trace collection and journey verification (CCT-03), service metrics and selected-log capture (CCT-04), and a candidate health-label rule for review with Mithil (CCT-10). The offline tests cover trace reconstruction, signal handling, and cutoff timing. The shared-cluster acceptance criteria are complete traces for browse, cart, and checkout, plus timestamped metrics and logs that match workload activity. Native image builds, live signal delivery, and collection overhead still require verification.
+Merul implemented trace collection and journey verification (CCT-03), service metrics and selected-log capture (CCT-04), and a candidate health-label rule for review with Mithil (CCT-10). The offline tests cover trace reconstruction, signal handling, and cutoff timing. The shared-cluster acceptance criteria are complete traces for browse, cart, and checkout, plus timestamped metrics and logs that match workload activity. Maitreya documented the native image builds, live traces and service counters in the [host rollout record](../docs/CCT-03_TRACING_ROLLOUT.md). Merul independently verified the three journeys, pod gauges and selected log delivery. The paired collection-overhead measurement remains open.
 
 ## Cluster access and prerequisites
 
@@ -38,13 +38,9 @@ Prometheus derives request counts, error breakdowns and duration histograms from
 
 ## Application instrumentation and rollout
 
-The pinned Boutique source supports tracing in frontend, checkout, currency, payment, catalog, email and recommendation. The initial rollout enables only tracing, keeps profilers off as originally configured, and targets the in-cluster Collector. The Node clients receive an HTTP-form gRPC address. The rollout script generates commands for each affected Deployment. Review it and record each affected Deployment's current revision (`kubectl -n cct-app rollout history deployment/NAME`) and image before applying. This step requires the deployment administrator’s project kubeconfig and explicit kind context.
+Frontend, catalog, email and recommendation use their existing native images. Six rebuilt variants cover ads, cart, shipping, currency, payment and checkout. The rollout enables tracing, preserves the original profiler settings, and targets the in-cluster Collector. The Node clients receive an HTTP-form gRPC address. The owner script prints a staged rollout with one patch per service. Review it and record each affected Deployment's current revision (`kubectl -n cct-app rollout history deployment/NAME`) and image before applying. Use the owner's project kubeconfig and explicit kind context for this step, with the Collector already Ready.
 
-```sh
-python3 observability/owner.py > outputs/telemetry/owner-seven.sh
-# Deployment administrator, after review and Collector readiness
-sh outputs/telemetry/owner-seven.sh
-```
+Cart registers ASP.NET Core instrumentation and the OTLP exporter, with trimming disabled in the traced build. Shipping installs a gRPC stats handler, W3C propagation and a Go OTLP batch exporter. Ads use the versioned, SHA-256-checked OpenTelemetry Java agent with only trace export enabled. Its agent directory must remain traversable by the non-root application user. Currency and payment use `@opentelemetry/exporter-trace-otlp-grpc` 0.222.0 to match their Node SDK; the original legacy 0.26.0 exporter did not deliver their spans during the live probe. Both package locks are updated. Checkout passes its request context into the currency RPC rather than `context.TODO()`, which detached that call from the shopping trace. Redis remains a datastore outside the ten application-service tracing targets. The [patch](boutique-v0.10.7.patch) applies to Boutique commit `5b608cb1dfe317d05e4f1bb8c99b7618452fde87`. Source context is Apache-2.0; retain upstream notices. The exporter is documented in the [OpenTelemetry JavaScript repository](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-grpc).
 
 The cart patch pins OpenTelemetry hosting and the OTLP exporter to 1.15.3. This brings in the fixed API header parser and fixes the exporter's experimental disk-retry defaults; see the upstream [API advisory](https://github.com/open-telemetry/opentelemetry-dotnet/security/advisories/GHSA-g94r-2vxg-569j) and [exporter advisory](https://github.com/open-telemetry/opentelemetry-dotnet/security/advisories/GHSA-4625-4j76-fww9). The original 1.12.0 pins produced NuGet vulnerability warnings during the native build.
 
@@ -56,7 +52,19 @@ python3 observability/owner.py --images .local/telemetry/image-lock.json > outpu
 sh outputs/telemetry/owner-ten.sh
 ```
 
-The builder clones the pinned Boutique source into a temporary directory, applies the patch, builds/loads three new image names and records digests. It preserves the original Boutique image lock. If one rollout fails, stop and inspect its events. For each changed application Deployment, the deployment administrator can restore the recorded revision with `kubectl --context kind-cloud-chaos-twin -n cct-app rollout undo deployment/NAME --to-revision=NUMBER`, then wait for readiness and rerun the original shopping smoke check. Save receipts first. At the end of the agreed test window, the monitoring maintainer can remove the pilot resources with `kubectl -n cct-observability delete -f <rollout-directory>/stack.json` for the recorded installation.
+The builder clones the pinned Boutique source into a temporary directory, applies the patch, builds and loads six traced images, and records their digests. It checks Java-agent startup under the application UID and sends an SDK span to a local OTLP receiver in each rebuilt Node image. Other hosts must build or import the images listed in the [six-image lock](../configs/boutique.telemetry.lock.json). It preserves the original Boutique image lock. If one rollout fails, stop and inspect its events. For each changed application Deployment, the deployment administrator can restore the recorded revision with `kubectl --context kind-cloud-chaos-twin -n cct-app rollout undo deployment/NAME --to-revision=NUMBER`, then wait for readiness and rerun the original shopping smoke check. Save receipts first. At the end of the agreed test window, the monitoring maintainer can remove the pilot resources with `kubectl -n cct-observability delete -f <rollout-directory>/stack.json` for the recorded installation.
+
+## Record an independent shopping verification
+
+Once the monitoring stack and application tracing are ready, run this command from the repository root.
+
+```sh
+python3 -m observability.record
+```
+
+The command uses the team kubeconfig (`~/.kube/cct-team.yaml`), prints the caller’s Kubernetes identity, and exercises browse, cart, and checkout twice. Warm-up primes the span and exporter counters. The measured run checks each request’s trace relationships, changes in service call counts, selected timestamped frontend and checkout events, and pod-state gauges. Reserve a quiet window so other traffic does not contribute to the exporter count.
+
+Each run gets a private directory under `outputs/telemetry/`. The terminal prints the measured `summary.json` path. The relay checks OTLP acceptance and compares the number of selected records with the change in the file exporter’s sent-log counter on the same Collector instance. A missing baseline, changed Collector instance, or count mismatch leaves delivery unverified. The receipt records count-level delivery evidence. The overhead comparison requires a separate pair of workload runs.
 
 ## Verify browse, cart, and checkout traces
 
@@ -75,7 +83,7 @@ python3 -m json.tool "$D/journeys.json"
 python3 observability/signals.py --evidence "$D/journeys.json" --output "$D/signals"
 ```
 
-Use an unmeasured warm-up probe first so the workload counters already exist; a newly created series has an unknown starting count. For the next measured Job choose a new RUN. Inspect any Job failure via `kubectl -n cct-observability describe job/"$RUN"` and inspect the specific pod's events if the container never started. A seven-service rollout should expose the uninstrumented hops. Keep the negative receipt. For ad, cart and shipping, a CLIENT span alone is insufficient. Client-to-server waits can take up to 45 seconds after shopping completes. The receipt includes times, trace IDs, server IDs, parent-server IDs, operations, durations in microseconds, frontend root counts, connected edges, and before/after Prometheus sample values. Cross-service caller identity is not proof of fault causation.
+Use an unmeasured warm-up probe first so the workload counters already exist; a newly created series has an unknown starting count. For the next measured Job choose a new RUN. Inspect any Job failure via `kubectl -n cct-observability describe job/"$RUN"` and inspect the specific pod's events if the container never started. A partial rollout can leave gaps. Keep the receipt when a relationship is missing. For ad, cart and shipping, a CLIENT span alone is insufficient. Client-to-server waits can take up to 45 seconds after shopping completes. The receipt includes times, trace IDs, server IDs, parent-server IDs, operations, durations in microseconds, frontend root counts, connected edges, and before/after Prometheus sample values. Cross-service caller identity is not proof of fault causation.
 
 ### Send the selected logs and pod gauges
 
