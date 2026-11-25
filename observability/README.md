@@ -18,30 +18,21 @@ kubectl auth can-i get pods/log -n cct-app
 
 Verify that the reported identity matches the signed-in team member and that the permission checks succeed. The monitoring role can deploy in `cct-observability` and read application logs in `cct-app`. Changes to application workloads require the deployment administrator. Run the following commands from the repository root. The shared testbed has 16 GiB of memory, so schedule monitoring, data processing, and fault experiments in separate windows.
 
-## Review and run the monitoring stack
+## Deploy and verify the monitoring stack
 
-The renderer outputs three single-replica Deployments, three ClusterIP Services and two ConfigMaps. All pods run non-root with dropped capabilities, the runtime-default seccomp profile, a read-only root filesystem and no mounted Kubernetes token. Each component requests 50m CPU and 64 MiB, with limits of 500m and 256 MiB. Jaeger retains up to 1,000 traces in memory. Prometheus scrapes every five seconds and uses ephemeral storage. The Collector keeps selected OTLP logs in rotating files on a bounded temporary volume. Save evidence before restarting or deleting workloads.
-
-1. Generate and inspect the installation. A host with Docker/buildx can resolve the three release tags to native linux/arm64 registry digests using `--pin-arm64`. The deployment administrator runs the binary checks, reviews the rendered file and available capacity, and shares the approved manifest with the monitoring maintainer. The default render, which needs only Python, is useful for review.
-2. Run the server-side dry run with the monitoring maintainer’s project identity. Inspect existing resources with these names before applying. Use the approved file for the actual rollout.
-3. After the rollout, save the running image IDs. Confirm that both Prometheus targets are up and wait for a few scrapes before the measured shopping pass.
+The monitoring maintainer deploys the Collector, Jaeger, and Prometheus directly in `cct-observability`. The deployment administrator handles changes in `cct-app`. With the project Tailscale account connected, run from the repository root:
 
 ```sh
-mkdir -p outputs/telemetry
-python3 observability/stack.py > outputs/telemetry/stack.review.json
-# Docker host, before review of the final file
-sh observability/validate_images.sh
-python3 observability/stack.py --pin-arm64 > outputs/telemetry/stack.json
-# Monitoring maintainer, after manifest review
-kubectl -n cct-observability apply --dry-run=server -f outputs/telemetry/stack.json
-kubectl -n cct-observability apply -f outputs/telemetry/stack.json
-for d in cct-jaeger cct-collector cct-prometheus; do
-  kubectl -n cct-observability rollout status deployment/"$d" --timeout=180s || break
-done
-kubectl -n cct-observability get pods -o json > outputs/telemetry/monitor-pods.json
-kubectl -n cct-app get pods -o json > outputs/telemetry/app-pods.json
-git rev-parse HEAD > outputs/telemetry/revision.txt
+python3 -m observability.rollout
 ```
+
+The command requires Python 3.9+, kubectl, and the Tailscale CLI. It selects the project kubeconfig, prints the authenticated Kubernetes identity, renders the eight namespace-scoped resources with pinned Linux ARM64 images, checks them with a server-side dry run, and applies them. Re-running the command reconciles the same resources. Kubernetes reports field ownership conflicts for the maintainer to inspect.
+
+Each of the three single-replica deployments requests 50m CPU and 64 MiB of memory and has limits of 500m CPU and 256 MiB. The pods run as non-root with a read-only root filesystem, dropped capabilities, the runtime-default seccomp profile, and service account token mounting disabled. Jaeger retains up to 1,000 traces in memory. Prometheus uses ephemeral storage and scrapes every five seconds. The Collector writes selected logs to rotating files on a bounded temporary volume. Archive measurements before a restart.
+
+The rollout waits for the three deployments, then runs a temporary namespace Job to query Jaeger and check both Prometheus scrape targets. A successful run prints `MONITORING READY` and writes `ready.json`, the pinned manifest, and running image IDs under `outputs/telemetry/rollout-*/`. Share the latest successful receipt and the in-cluster OTLP/gRPC endpoint, `cct-collector.cct-observability.svc:4317`, with the deployment administrator. If a check fails, inspect the output and the corresponding run directory before retrying. Shopping-journey coverage and signal measurements follow the application rollout.
+
+The standalone renderer remains available for inspection (`python3 observability/stack.py`) and can resolve current registry digests on a Docker/buildx host (`python3 observability/stack.py --pin-arm64`). For removal after the pilot, use the exact manifest archived by the rollout that installed the stack.
 
 Prometheus derives request counts, error breakdowns and duration histograms from SERVER spans. CLIENT spans remain available in Jaeger. A gRPC health-check filter removes named health RPCs from span-derived metrics. The Collector's own scrape target records refusals and export failures when those series exist. Successful OTLP receipt and successful delivery to Jaeger or Kafka are distinct checks. Service CPU and memory require a separately authorized source. The pod API reader provides readiness and restart gauges.
 
@@ -65,7 +56,7 @@ python3 observability/owner.py --images .local/telemetry/image-lock.json > outpu
 sh outputs/telemetry/owner-ten.sh
 ```
 
-The builder clones the pinned Boutique source into a temporary directory, applies the patch, builds/loads three new image names and records digests. It preserves the original Boutique image lock. If one rollout fails, stop and inspect its events. For each changed application Deployment, the deployment administrator can restore the recorded revision with `kubectl --context kind-cloud-chaos-twin -n cct-app rollout undo deployment/NAME --to-revision=NUMBER`, then wait for readiness and rerun the original shopping smoke check. Save receipts first. At the end of the agreed test window, the monitoring maintainer can remove the pilot resources with `kubectl delete -f outputs/telemetry/stack.json`.
+The builder clones the pinned Boutique source into a temporary directory, applies the patch, builds/loads three new image names and records digests. It preserves the original Boutique image lock. If one rollout fails, stop and inspect its events. For each changed application Deployment, the deployment administrator can restore the recorded revision with `kubectl --context kind-cloud-chaos-twin -n cct-app rollout undo deployment/NAME --to-revision=NUMBER`, then wait for readiness and rerun the original shopping smoke check. Save receipts first. At the end of the agreed test window, the monitoring maintainer can remove the pilot resources with `kubectl -n cct-observability delete -f <rollout-directory>/stack.json` for the recorded installation.
 
 ## Verify browse, cart, and checkout traces
 
