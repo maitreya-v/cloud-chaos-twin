@@ -63,6 +63,18 @@ sh outputs/telemetry/owner-ten.sh
 
 The builder clones the owner's pinned source into a temporary directory, applies the patch, builds/loads six new image names and records digests. It checks Java-agent startup under the non-root UID and sends a real SDK span to a local OTLP/gRPC receiver inside each Node image before import. It preserves the original Boutique image lock. The [host image lock](../configs/boutique.telemetry.lock.json) records the imported variants; these references need the corresponding images loaded into kind on another host. If one rollout fails, stop and inspect its events. For each changed application Deployment Maitreya can restore its recorded revision with `kubectl --context kind-cloud-chaos-twin -n cct-app rollout undo deployment/NAME --to-revision=NUMBER`, then wait for readiness and rerun the original shopping smoke check. Save receipts first. Maitreya and Merul can remove only the resources from the approved monitoring manifest with `kubectl delete -f outputs/telemetry/stack.json` after they agree to end the pilot.
 
+## Record an independent shopping verification
+
+From the repository root, with the three monitoring services ready and tracing enabled on the application, run:
+
+```sh
+python3 -m observability.record
+```
+
+The command uses the team kubeconfig (`~/.kube/cct-team.yaml`), prints the caller’s Kubernetes identity, and exercises browse, cart, and checkout twice. Warm-up primes the span and exporter counters. The measured run checks each request’s trace relationships, changes in service call counts, selected timestamped frontend and checkout events, and pod-state gauges. Reserve a quiet window so other traffic does not contribute to the exporter count.
+
+Each run gets a private directory under `outputs/telemetry/`. The terminal prints the measured `summary.json` path. The relay checks OTLP acceptance and compares the number of selected records with the change in the file exporter’s sent-log counter on the same Collector instance. A missing baseline, changed Collector instance, or count mismatch leaves delivery unverified. The receipt records count-level delivery evidence. The overhead comparison requires a separate pair of workload runs.
+
 ## Prove browsing, cart and checkout under Merul's existing role
 
 This Job talks to ClusterIP endpoints and prints a single sanitized JSON receipt. It requires no port-forward permission. Each run creates a fresh cookie jar and a unique W3C trace ID per HTTP request. It checks a home page, an add-to-cart redirect, cart contents, a simulated order confirmation and an empty cart after checkout. It retrieves each selected trace by exact ID, walks parent references to a frontend SERVER span, and requires the [declared journey edges](lineage.py). The checker records missing edges and unattached spans. It cannot establish coverage for unrelated optional features. Aggregate counter deltas corroborate service activity during an isolated test window. Traffic from other users and health checks can influence them.
