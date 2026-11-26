@@ -39,6 +39,8 @@ Open `outputs/analytics-demo/report.html`. The [runbook](../analytics/README.md)
 
 ## Acceptance and required handoffs
 
+The [November 26 CCT-10 status](CCT-10_STATUS.md) records the validated Merul handoff and remaining capture/review dependencies. The supplied partial windows reproduce correctly, but none qualify for calibration.
+
 - [x] Executable graph, calibration, root/cascade baselines and evaluation.
 - [x] Synthetic reproduction and regression checks.
 - [x] Adapters for the measured receipt and normalized-span contracts.

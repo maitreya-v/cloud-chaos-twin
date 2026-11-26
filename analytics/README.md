@@ -31,6 +31,8 @@ Receipt mode reconstructs the nearest-server projection and reconciles call coun
 
 ## Calibrate, predict, then evaluate
 
+See the [November 26 CCT-10 status](../docs/CCT-10_STATUS.md) for the validated handoff, collection/join tools, and the real data still required for calibration.
+
 The demo writes examples of every required input. A real split assigns entire experiment IDs to disjoint `train`, `validation`, and `test` lists. `healthy_intervals.json` maps each training run to its independently declared healthy `[start_ms,end_ms]` interval. Select these before inspecting test performance.
 
 ```sh

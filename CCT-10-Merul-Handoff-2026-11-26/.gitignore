@@ -1,0 +1,8 @@
+# Local measured derivatives; regenerate with from_receipt.py.
+measured_windows.json
+post_run_gauges.json
+source_audit.json
+rebuilt/
+*.pods.jsonl
+*.partial.json
+*.reviewed.json
