@@ -1,0 +1,14 @@
+{
+  "run_id": "cct-probe-merul-261125052110-5d9e-measured",
+  "synthetic": false,
+  "observed_ns": 1795584105147622000,
+  "counts": {
+    "spans": 36,
+    "metrics": 42,
+    "logs": 14
+  },
+  "source_revision": "d22e05207013a26eb0544faf06db305aa24448e0",
+  "source_summary_sha256": "0cdb22735f7a551d0b4e5ce537174e9432cdc04008c85aa8473b28833b5def6a",
+  "trace_representation": "Jaeger server projection; client/internal spans not available",
+  "historical_live_forecast_valid": false
+}

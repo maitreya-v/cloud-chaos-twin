@@ -1,0 +1,16 @@
+{
+  "acknowledged": {
+    "cct.logs": 2,
+    "cct.metrics": 21,
+    "cct.traces": 10
+  },
+  "archive_sha256": "c824cce3957e295b089b4b8fe5362bfeeb838fa9ec09a616d1b9d7a2d971bd9a",
+  "last_acknowledged_end_offsets": {
+    "cct.logs:2": 2,
+    "cct.metrics:2": 21,
+    "cct.traces:2": 10
+  },
+  "run_id": "cct-probe-merul-261125052110-5d9e-measured",
+  "seconds": 0.3277964579174295,
+  "synthetic": false
+}

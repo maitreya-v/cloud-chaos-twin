@@ -1,0 +1,22 @@
+{
+  "fixture_runs": 100,
+  "messages": 1111,
+  "messages_per_second": 139.44648582894945,
+  "parquet_bytes": 429740,
+  "producer_seconds": 1.92430079204496,
+  "replay_seconds": 7.9672140419716015,
+  "restart_count_check": true,
+  "table_counts": {
+    "edge_windows": 900,
+    "lineage": 1000,
+    "log_windows": 100,
+    "logs": 100,
+    "metric_deltas": 200,
+    "metric_windows": 200,
+    "metrics": 200,
+    "raw_experiments": 0,
+    "raw_telemetry": 1111,
+    "service_windows": 900,
+    "spans": 1900
+  }
+}

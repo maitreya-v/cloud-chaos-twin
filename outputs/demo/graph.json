@@ -1,0 +1,22 @@
+{
+  "synthetic": true,
+  "edge_direction": "caller_to_callee",
+  "nodes": [
+    "cartservice",
+    "checkoutservice",
+    "frontend"
+  ],
+  "missing_parent_spans": 0,
+  "edges": [
+    {
+      "source": "checkoutservice",
+      "target": "cartservice",
+      "call_count": 3
+    },
+    {
+      "source": "frontend",
+      "target": "checkoutservice",
+      "call_count": 3
+    }
+  ]
+}

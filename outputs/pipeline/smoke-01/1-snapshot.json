@@ -1,0 +1,50 @@
+{
+  "bootstrap": "localhost:9092",
+  "captured_ns": 1795649750743568000,
+  "endingOffsets": {
+    "cct.experiments": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "cct.logs": {
+      "0": 4,
+      "1": 0,
+      "2": 0
+    },
+    "cct.metrics": {
+      "0": 4,
+      "1": 0,
+      "2": 0
+    },
+    "cct.traces": {
+      "0": 36,
+      "1": 0,
+      "2": 0
+    }
+  },
+  "message_count": 22,
+  "schema_version": "1.0",
+  "startingOffsets": {
+    "cct.experiments": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "cct.logs": {
+      "0": 2,
+      "1": 0,
+      "2": 0
+    },
+    "cct.metrics": {
+      "0": 2,
+      "1": 0,
+      "2": 0
+    },
+    "cct.traces": {
+      "0": 18,
+      "1": 0,
+      "2": 0
+    }
+  }
+}

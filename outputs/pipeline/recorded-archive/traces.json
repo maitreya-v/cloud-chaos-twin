@@ -1,0 +1,673 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "adservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "982ab3b2ca0ca98c",
+              "name": "hipstershop.AdService/GetAds",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099097452000",
+              "endTimeUnixNano": "1795584099099666000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "cartservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "302e7113191eb7e2",
+              "name": "POST /hipstershop.CartService/GetCart",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099090147000",
+              "endTimeUnixNano": "1795584099090469000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "b204c308555d8c319dcad7c2fceab9d0",
+              "spanId": "b572afc3b340398d",
+              "name": "POST /hipstershop.CartService/AddItem",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099101272000",
+              "endTimeUnixNano": "1795584099101870000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "9e2bdf857c8e9f9b"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "2ca2804fd0cff5a6",
+              "name": "POST /hipstershop.CartService/GetCart",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099108601000",
+              "endTimeUnixNano": "1795584099108810000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "ad7f661c916ae3de",
+              "name": "POST /hipstershop.CartService/EmptyCart",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099111507000",
+              "endTimeUnixNano": "1795584099111735000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "checkoutservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "65549333057daec5",
+              "name": "hipstershop.CheckoutService/PlaceOrder",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099108317000",
+              "endTimeUnixNano": "1795584099112660000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "currencyservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "055d2103e6ec3f79",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099091000000",
+              "endTimeUnixNano": "1795584099091051000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "0cfd047e278a4204",
+              "name": "grpc.hipstershop.CurrencyService/GetSupportedCurrencies",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099088000000",
+              "endTimeUnixNano": "1795584099088092000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "11a02de4838406e9",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099092000000",
+              "endTimeUnixNano": "1795584099092038000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "3d1f8c95f51ce99c",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099093000000",
+              "endTimeUnixNano": "1795584099093029000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "4014bf450513e8f8",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099092000000",
+              "endTimeUnixNano": "1795584099092029000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "719fe269060110e5",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099093000000",
+              "endTimeUnixNano": "1795584099093033000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "a079f91629b2575c",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099090000000",
+              "endTimeUnixNano": "1795584099090086000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "aeb78c4ec72bce80",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099091000000",
+              "endTimeUnixNano": "1795584099091035000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "dbdef3645f545487",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099091000000",
+              "endTimeUnixNano": "1795584099091031000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "dbf34093396c12c2",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099092000000",
+              "endTimeUnixNano": "1795584099092030000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "0044d4bf39e78c5c",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099109000000",
+              "endTimeUnixNano": "1795584099109048000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "993acb41604d4f81",
+              "name": "grpc.hipstershop.CurrencyService/Convert",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099109000000",
+              "endTimeUnixNano": "1795584099109039000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "9bdf1ec5090d9be5",
+              "name": "grpc.hipstershop.CurrencyService/GetSupportedCurrencies",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099114000000",
+              "endTimeUnixNano": "1795584099114055000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "emailservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "5ff35fd228dee685",
+              "name": "/hipstershop.EmailService/SendOrderConfirmation",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099112450000",
+              "endTimeUnixNano": "1795584099112543000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "frontend"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "744da20bb282eab8",
+              "name": "GET",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099088429000",
+              "endTimeUnixNano": "1795584099099876000",
+              "status": {
+                "code": 0
+              }
+            },
+            {
+              "traceId": "b204c308555d8c319dcad7c2fceab9d0",
+              "spanId": "9e2bdf857c8e9f9b",
+              "name": "POST",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099100615000",
+              "endTimeUnixNano": "1795584099102172000",
+              "status": {
+                "code": 0
+              }
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "a828fc8a9861328a",
+              "name": "POST",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099108126000",
+              "endTimeUnixNano": "1795584099115050000",
+              "status": {
+                "code": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "paymentservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "9e7934d1144bf41c",
+              "name": "grpc.hipstershop.PaymentService/Charge",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099110000000",
+              "endTimeUnixNano": "1795584099110339000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "productcatalogservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "d7166f0c8121efd97c24c139accecfd0",
+              "spanId": "94359e1933bd4111",
+              "name": "hipstershop.ProductCatalogService/ListProducts",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099089865000",
+              "endTimeUnixNano": "1795584099089906000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "744da20bb282eab8"
+            },
+            {
+              "traceId": "b204c308555d8c319dcad7c2fceab9d0",
+              "spanId": "36cd20690bbee69d",
+              "name": "hipstershop.ProductCatalogService/GetProduct",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099100834000",
+              "endTimeUnixNano": "1795584099100866000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "9e2bdf857c8e9f9b"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "5d851e036c553830",
+              "name": "hipstershop.ProductCatalogService/ListProducts",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099113423000",
+              "endTimeUnixNano": "1795584099113451000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "df18de8704fdb2e4"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "6f14d4d9ad31c6b5",
+              "name": "hipstershop.ProductCatalogService/GetProduct",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099113973000",
+              "endTimeUnixNano": "1795584099113996000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "83178d0fcb7a1e0a",
+              "name": "hipstershop.ProductCatalogService/GetProduct",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099114297000",
+              "endTimeUnixNano": "1795584099114307000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "9b831df23b1ab9d6",
+              "name": "hipstershop.ProductCatalogService/GetProduct",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099114394000",
+              "endTimeUnixNano": "1795584099114407000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "a3d57df91283cbde",
+              "name": "hipstershop.ProductCatalogService/GetProduct",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099114200000",
+              "endTimeUnixNano": "1795584099114207000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "be6d6b24f1fef137",
+              "name": "hipstershop.ProductCatalogService/GetProduct",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099108982000",
+              "endTimeUnixNano": "1795584099109005000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "e8d711647be78791",
+              "name": "hipstershop.ProductCatalogService/GetProduct",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099114117000",
+              "endTimeUnixNano": "1795584099114129000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "recommendationservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "df18de8704fdb2e4",
+              "name": "/hipstershop.RecommendationService/ListRecommendations",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099113240000",
+              "endTimeUnixNano": "1795584099113815000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "a828fc8a9861328a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "shippingservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "16f016d7b4521c88",
+              "name": "hipstershop.ShippingService/GetQuote",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099109561000",
+              "endTimeUnixNano": "1795584099109599000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            },
+            {
+              "traceId": "c9ff5967a2c58f4c2a0bdbb6e9f42e8f",
+              "spanId": "21182829d92aefe8",
+              "name": "hipstershop.ShippingService/ShipOrder",
+              "kind": 2,
+              "startTimeUnixNano": "1795584099111220000",
+              "endTimeUnixNano": "1795584099111264000",
+              "status": {
+                "code": 0
+              },
+              "parentSpanId": "65549333057daec5"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

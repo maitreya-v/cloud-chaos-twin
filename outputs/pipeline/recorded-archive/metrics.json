@@ -1,0 +1,1306 @@
+{
+  "resourceMetrics": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "adservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "0e21116b-dc7b-4141-8db4-83f10217ff10"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "cartservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "21532cd9-3bc1-46db-a201-86b00f5de068"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "checkoutservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "de96416d-85e2-49ce-8747-3ef373ee7970"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "currencyservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "32a70fa2-ddde-43d6-abce-a5b31132d20a"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "emailservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "de893a41-645c-48cb-9053-562c4d31f420"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "frontend"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "0b12ef55-6a26-4699-a0ac-d6817c333399"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "paymentservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "05ff3554-17c2-4837-9867-7fcd05ceb01f"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "productcatalogservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "d463c793-bd52-4486-8d1f-e105ff3032ae"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "recommendationservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "8db294c4-a56c-4ded-95e3-e6544cea51a5"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "redis-cart"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "94557724-3a83-476c-b59d-4ac1704536c3"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "4",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "shippingservice"
+            }
+          },
+          {
+            "key": "k8s.pod.uid",
+            "value": {
+              "stringValue": "a4550ffc-07ff-43df-916e-c6a6bb94bd56"
+            }
+          },
+          {
+            "key": "k8s.namespace.name",
+            "value": {
+              "stringValue": "cct-app"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.pod.ready",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "1",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cct.pod.restarts",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584120198987000",
+                    "asInt": "0",
+                    "attributes": [
+                      {
+                        "key": "cct.run_id",
+                        "value": {
+                          "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+                        }
+                      },
+                      {
+                        "key": "cct.schema_version",
+                        "value": {
+                          "stringValue": "1.0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "adservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 12.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 13.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "cartservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 48.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 54.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "checkoutservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 6.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 7.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "currencyservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 158.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 176.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "emailservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 6.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 7.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "frontend"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 433.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 442.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "paymentservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 6.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 7.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "productcatalogservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 166.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 188.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "recommendationservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 22.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 25.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "shippingservice"
+            }
+          },
+          {
+            "key": "cct.run_id",
+            "value": {
+              "stringValue": "cct-probe-merul-261125052110-5d9e-measured"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "metrics": [
+            {
+              "name": "cct.probe.observed_call_counter",
+              "unit": "1",
+              "gauge": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1795584099086999808",
+                    "asDouble": 26.0
+                  },
+                  {
+                    "timeUnixNano": "1795584115160000000",
+                    "asDouble": 30.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

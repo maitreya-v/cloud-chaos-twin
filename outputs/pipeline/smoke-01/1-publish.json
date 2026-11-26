@@ -1,0 +1,13 @@
+{
+  "acknowledged": {
+    "cct.logs": 2,
+    "cct.metrics": 2,
+    "cct.traces": 18
+  },
+  "last_acknowledged_end_offsets": {
+    "cct.logs:0": 4,
+    "cct.metrics:0": 4,
+    "cct.traces:0": 36
+  },
+  "seconds": 0.35034954198636115
+}

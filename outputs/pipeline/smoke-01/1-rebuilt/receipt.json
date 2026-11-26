@@ -1,0 +1,98 @@
+{
+  "broker_messages": 22,
+  "duplicates_removed": {
+    "logs": 1,
+    "metrics": 2,
+    "spans": 19
+  },
+  "elapsed_seconds": 6.757063457975164,
+  "feature_emitted_ms": 1795649781634,
+  "historical_live_forecast_valid": false,
+  "messages_per_second": 3.255852211071667,
+  "mode": "offline-replay",
+  "parquet_bytes": {
+    "edge_windows": 3554,
+    "lineage": 4096,
+    "log_windows": 2264,
+    "logs": 5279,
+    "metric_deltas": 5285,
+    "metric_windows": 5896,
+    "metrics": 10391,
+    "raw_experiments": 819,
+    "raw_telemetry": 18527,
+    "service_windows": 4765,
+    "spans": 9677
+  },
+  "settings": {
+    "cutoff_ms": null,
+    "master": "local[2]",
+    "min_requests": 20,
+    "pipeline_version": "1.0",
+    "snapshot_sha256": "3e26e787cb039f606cb6a9a402700611e27f92e2160116cc3a432e6dae2d2c1e",
+    "window_ms": 5000
+  },
+  "snapshot": {
+    "bootstrap": "localhost:9092",
+    "captured_ns": 1795649750743568000,
+    "endingOffsets": {
+      "cct.experiments": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      },
+      "cct.logs": {
+        "0": 4,
+        "1": 0,
+        "2": 0
+      },
+      "cct.metrics": {
+        "0": 4,
+        "1": 0,
+        "2": 0
+      },
+      "cct.traces": {
+        "0": 36,
+        "1": 0,
+        "2": 0
+      }
+    },
+    "message_count": 22,
+    "schema_version": "1.0",
+    "startingOffsets": {
+      "cct.experiments": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      },
+      "cct.logs": {
+        "0": 2,
+        "1": 0,
+        "2": 0
+      },
+      "cct.metrics": {
+        "0": 2,
+        "1": 0,
+        "2": 0
+      },
+      "cct.traces": {
+        "0": 18,
+        "1": 0,
+        "2": 0
+      }
+    }
+  },
+  "spark_version": "4.0.1",
+  "table_counts": {
+    "edge_windows": 9,
+    "lineage": 10,
+    "log_windows": 1,
+    "logs": 1,
+    "metric_deltas": 2,
+    "metric_windows": 2,
+    "metrics": 2,
+    "raw_experiments": 0,
+    "raw_telemetry": 22,
+    "service_windows": 9,
+    "spans": 19
+  }
+}

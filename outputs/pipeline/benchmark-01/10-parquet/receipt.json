@@ -1,0 +1,98 @@
+{
+  "broker_messages": 121,
+  "duplicates_removed": {
+    "logs": 1,
+    "metrics": 2,
+    "spans": 19
+  },
+  "elapsed_seconds": 7.832158208009787,
+  "feature_emitted_ms": 1795650228685,
+  "historical_live_forecast_valid": false,
+  "messages_per_second": 15.449126126724023,
+  "mode": "offline-replay",
+  "parquet_bytes": {
+    "edge_windows": 4146,
+    "lineage": 4934,
+    "log_windows": 2473,
+    "logs": 6084,
+    "metric_deltas": 6682,
+    "metric_windows": 7289,
+    "metrics": 14251,
+    "raw_experiments": 819,
+    "raw_telemetry": 50447,
+    "service_windows": 5560,
+    "spans": 23274
+  },
+  "settings": {
+    "cutoff_ms": null,
+    "master": "local[2]",
+    "min_requests": 20,
+    "pipeline_version": "1.0",
+    "snapshot_sha256": "b9cfd458678c46f58d6863c8c0b293dc790357b357a167b14e5e05588efaa845",
+    "window_ms": 5000
+  },
+  "snapshot": {
+    "bootstrap": "localhost:9092",
+    "captured_ns": 1795650220850445000,
+    "endingOffsets": {
+      "cct.experiments": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      },
+      "cct.logs": {
+        "0": 9,
+        "1": 3,
+        "2": 5
+      },
+      "cct.metrics": {
+        "0": 9,
+        "1": 3,
+        "2": 5
+      },
+      "cct.traces": {
+        "0": 81,
+        "1": 27,
+        "2": 45
+      }
+    },
+    "message_count": 121,
+    "schema_version": "1.0",
+    "startingOffsets": {
+      "cct.experiments": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      },
+      "cct.logs": {
+        "0": 4,
+        "1": 0,
+        "2": 2
+      },
+      "cct.metrics": {
+        "0": 4,
+        "1": 0,
+        "2": 2
+      },
+      "cct.traces": {
+        "0": 36,
+        "1": 0,
+        "2": 18
+      }
+    }
+  },
+  "spark_version": "4.0.1",
+  "table_counts": {
+    "edge_windows": 90,
+    "lineage": 100,
+    "log_windows": 10,
+    "logs": 10,
+    "metric_deltas": 20,
+    "metric_windows": 20,
+    "metrics": 20,
+    "raw_experiments": 0,
+    "raw_telemetry": 121,
+    "service_windows": 90,
+    "spans": 190
+  }
+}
