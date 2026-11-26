@@ -24,7 +24,7 @@ Update these checkboxes through pull requests. Owners are from the proposal; Git
 | CCT-06 | Param | Spark normalization and Parquet | CCT-05 | Correct feature rows; restart does not double counts |
 | CCT-07 | Komalika | Scoped fault and recovery check | CCT-02 | Effective fault interval and cleanup verified three times |
 | CCT-08 | Komalika | Experiment runner and manifest | CCT-07 | Warm-up/baseline/fault/recovery recorded automatically |
-| CCT-09 | Mithil | Real trace graph and baseline metrics | CCT-03 | Service edges verified against request traces |
+| CCT-09 | Mithil | [Completed: real trace graph and baseline metrics](CCT-09-10_ANALYTICS.md#cct-09-recorded-run-acceptance) | CCT-03 | Service edges verified against request traces |
 | CCT-10 | Mithil + Merul | Health labels and forecast timing | CCT-04, CCT-08 | Cutoffs, labels, missing-data rules, and horizons documented |
 | CCT-11 | Maitreya + all | First integrated demo | CCT-06, CCT-08, CCT-09 | One saved real run reproduces a graph and timeline |
 
@@ -72,3 +72,11 @@ Maitreya and Merul still need paired off/on workload measurements for collection
 ### Param's pipeline implementation — November 25, 2026
 
 CCT-05 and CCT-06 now have a versioned Kafka replay implementation, Spark normalization and five-second feature windows, Parquet output, a receipt adapter and a synthetic scale benchmark. Offline tests, local broker/Spark synthetic acceptance, three scale points and recorded healthy-data replay passed. Fault-run replay and final evaluation remain open. See the [implementation and acceptance record](CCT-05-06_PIPELINE.md). Merul's summary is upstream evidence; the separately supplied measured archive was used for healthy-data replay.
+
+### Mithil's analytics implementation — November 25, 2026
+
+CCT-09/CCT-10 now have executable dependency graphs and baseline metrics, recorded-receipt/Parquet adapters, training-only health calibration, two root rankings, five cascade methods, independent-outcome evaluation, control alarms and a graph/timeline report. Reproduce the synthetic workflow with `python3 -m analytics demo` and run the repository tests. See [Mithil's handoff](CCT-09-10_ANALYTICS.md) and [runbook](../analytics/README.md).
+
+CCT-09 real acceptance subsequently passed on Merul's saved measured receipt: 4/4 browse, 2/2 cart and 9/9 checkout required relationships; 10 services, 36 server spans and 13 distinct service edges, with no missing parents. The graph and baseline summaries reproduce under `outputs/analytics-real/`. See the [hashed acceptance evidence](evidence/CCT-09-mithil-real.json).
+
+CCT-10 remains open: independently verified health windows, completed fault datasets, Merul's joint review and whole-run calibration/evaluation are still required. Incomplete pipeline windows stay unknown, and retrospective replay is not evidence of live warning.
