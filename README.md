@@ -50,7 +50,7 @@ For reproduction from an existing Git bundle, replace the clone command with `gi
 
 The monitoring stack accepts application spans over OTLP. The Collector sends full traces to Jaeger and derives request counts and duration histograms from server spans for Prometheus. During a shopping test, the probe retrieves the trace for each request by ID and checks its caller–callee relationships. A separate reader captures selected application logs, pod readiness, and restart counts for the workload evidence. The [telemetry runbook](observability/README.md) covers scoped deployment, native image builds, verification, and rollback. The [signal contract](observability/CONTRACT.md) defines identities, timestamps, units, and missing-data rules.
 
-The diagram shows the planned end-to-end experiment. Kafka export is optional in the monitoring configuration. The processing and prediction stages still require an integrated run.
+The diagram shows the planned end-to-end experiment. Kafka export is optional in the monitoring configuration. The processing stage has passed local synthetic and recorded healthy-data replay. Fault-run integration and prediction evaluation remain pending.
 
 ```mermaid
 flowchart TD
@@ -86,3 +86,7 @@ A dependency edge points from the calling service to the service it calls. A fai
 | `docs/`, `outputs/` | Versioned evidence and submission files in `docs/`. Generated local results in `outputs/`. |
 
 See the [setup guide](docs/SETUP.md), [cluster access guide](docs/PRIVATE_ACCESS.md), and [project plan](docs/PROJECT_PLAN.md) for deployment requirements and milestones. The [contribution guide](CONTRIBUTING.md), [data guide](data/README.md), and [sharing guide](docs/SHARING.md) cover review, storage, and repository access.
+
+### Kafka / Spark / Parquet replay (Param)
+
+The staged pipeline implementation, local setup and acceptance commands are in [ingestion/README.md](ingestion/README.md); table contracts and cutoff semantics are in [processing/README.md](processing/README.md). See [CCT-05/06 status](docs/CCT-05-06_PIPELINE.md) for measured local acceptance and scalability results, limitations and remaining fault-run integration gates. The offline starter demo does not start Kafka or Spark.

@@ -1,0 +1,72 @@
+{
+  "master": "local[2]",
+  "results": [
+    {
+      "fixture_runs": 1,
+      "messages": 22,
+      "messages_per_second": 1.5891704247825051,
+      "parquet_bytes": 71759,
+      "producer_seconds": 0.36334749998059124,
+      "replay_seconds": 13.84370087494608,
+      "restart_count_check": true,
+      "table_counts": {
+        "edge_windows": 9,
+        "lineage": 10,
+        "log_windows": 1,
+        "logs": 1,
+        "metric_deltas": 2,
+        "metric_windows": 2,
+        "metrics": 2,
+        "raw_experiments": 0,
+        "raw_telemetry": 22,
+        "service_windows": 9,
+        "spans": 19
+      }
+    },
+    {
+      "fixture_runs": 10,
+      "messages": 121,
+      "messages_per_second": 15.449126126724023,
+      "parquet_bytes": 125959,
+      "producer_seconds": 0.5626169160241261,
+      "replay_seconds": 7.832158208009787,
+      "restart_count_check": true,
+      "table_counts": {
+        "edge_windows": 90,
+        "lineage": 100,
+        "log_windows": 10,
+        "logs": 10,
+        "metric_deltas": 20,
+        "metric_windows": 20,
+        "metrics": 20,
+        "raw_experiments": 0,
+        "raw_telemetry": 121,
+        "service_windows": 90,
+        "spans": 190
+      }
+    },
+    {
+      "fixture_runs": 100,
+      "messages": 1111,
+      "messages_per_second": 139.44648582894945,
+      "parquet_bytes": 429740,
+      "producer_seconds": 1.92430079204496,
+      "replay_seconds": 7.9672140419716015,
+      "restart_count_check": true,
+      "table_counts": {
+        "edge_windows": 900,
+        "lineage": 1000,
+        "log_windows": 100,
+        "logs": 100,
+        "metric_deltas": 200,
+        "metric_windows": 200,
+        "metrics": 200,
+        "raw_experiments": 0,
+        "raw_telemetry": 1111,
+        "service_windows": 900,
+        "spans": 1900
+      }
+    }
+  ],
+  "synthetic": true
+}
