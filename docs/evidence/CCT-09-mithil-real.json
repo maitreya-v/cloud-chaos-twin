@@ -1,0 +1,182 @@
+{
+  "analyst_base_revision": "d6d309952490f46ca640d0242ba1e20ee824d807",
+  "analyst_source_sha256": {
+    "analytics/__init__.py": "2efab6149cbeabf28931aeec77a7dcbdc8eea7b79368622ddb9504bd249c6cfb",
+    "analytics/__main__.py": "83a18a786ee33700f76a7fc68c5e6bccb13aaeb7b4b5fe01d5763585ffd984da",
+    "analytics/benchmark.py": "584a8ea02d1047a67b1354b71b86bd0306d83c1be0ff66a02edb0dfffda4447d",
+    "analytics/demo.py": "13f48ec185b87854c329a252fc3712fe78d7487f3273df9c02b133e6ac82329f",
+    "analytics/evaluate.py": "2b620178b3317a1b8421a27255c71d210e90d303b6ee8eda586ab22c9f1c84b8",
+    "analytics/forecast.py": "8c9891015d0982e8b4edb0cc75f6a98da74a3b7bbe208b8beff9537539473ca2",
+    "analytics/graph.py": "254438d2e3b10118113e14d3bbcde4473e4637bcbd459066f85dbaf2edc7f849",
+    "analytics/health.py": "6e8988e6c1bd32f17071721423ad5402383e67f1ec9dd2b9ffda2b89a9020942",
+    "analytics/io.py": "0e84cb0244256a9d8580bc9cf50a5bc178167cc0719cb1909e597dfe5b3ab0c2",
+    "analytics/report.py": "dc5607c69cacf72f82e659f403f95356bf4974be73544509f220e788ee884d26"
+  },
+  "artifacts": {
+    "outputs/analytics-real/graph.json": "276e64161136500a2095c356488abeaadcb0201fc25ed3f6b9aa791ebe787970",
+    "outputs/analytics-real/report.html": "61b19b86843a83d68ae531ce3332ed108b362521570b1dca31ac7cd1f3d3d0eb",
+    "outputs/analytics-real/service_metrics.csv": "5598421a873657123c877b548ae84d2d86b43fb78fd0afcdb91acd2e31bc1c98"
+  },
+  "checks": {
+    "aggregate_call_counts_match": true,
+    "all_required_journey_edges": true,
+    "measured_receipt_passed": true,
+    "per_trace_call_counts_match": true,
+    "run_identity_matches": true,
+    "service_counts_match": true,
+    "summary_signals_verified": true,
+    "summary_trace_complete": true
+  },
+  "command": "python3 -m analytics graph --receipt outputs/telemetry/cct-probe-merul-261125052110-5d9e/measured/journeys.json --output outputs/analytics-real",
+  "counts": {
+    "distinct_service_edges": 13,
+    "duplicate_spans": 0,
+    "error_server_spans": 0,
+    "matched_journey_relationships": 15,
+    "missing_parent_spans": 0,
+    "required_journey_relationships": 15,
+    "rpc_calls": 33,
+    "server_spans": 36,
+    "services": 10,
+    "traces": 3
+  },
+  "journeys": [
+    {
+      "distinct_observed_edges": 4,
+      "expected_edges": 4,
+      "journey": "browse",
+      "matched_expected_edges": 4,
+      "rpc_calls": 13,
+      "server_spans": 14
+    },
+    {
+      "distinct_observed_edges": 2,
+      "expected_edges": 2,
+      "journey": "cart",
+      "matched_expected_edges": 2,
+      "rpc_calls": 2,
+      "server_spans": 3
+    },
+    {
+      "distinct_observed_edges": 11,
+      "expected_edges": 9,
+      "journey": "checkout",
+      "matched_expected_edges": 9,
+      "rpc_calls": 18,
+      "server_spans": 19
+    }
+  ],
+  "limitations": [
+    "Three healthy shopping traces only; all service counts below 20, so p95 is descriptive, not calibrated.",
+    "Recorded nearest-SERVER projection; raw CLIENT/INTERNAL ancestry is not present for independent reinspection.",
+    "No fault-run accuracy, CCT-10 health calibration or prospective warning acceptance is implied."
+  ],
+  "owner": "Mithil Bavishi",
+  "run_id": "cct-probe-merul-261125052110-5d9e-measured",
+  "schema_version": "1.0",
+  "service_metrics": [
+    {
+      "call_count": 1,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 2.214,
+      "p95_ms": 2.214,
+      "service": "adservice"
+    },
+    {
+      "call_count": 4,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 0.33925,
+      "p95_ms": 0.598,
+      "service": "cartservice"
+    },
+    {
+      "call_count": 1,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 4.343,
+      "p95_ms": 4.343,
+      "service": "checkoutservice"
+    },
+    {
+      "call_count": 13,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 0.04584615384615384,
+      "p95_ms": 0.092,
+      "service": "currencyservice"
+    },
+    {
+      "call_count": 1,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 0.093,
+      "p95_ms": 0.093,
+      "service": "emailservice"
+    },
+    {
+      "call_count": 3,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 6.642666666666667,
+      "p95_ms": 11.447,
+      "service": "frontend"
+    },
+    {
+      "call_count": 1,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 0.339,
+      "p95_ms": 0.339,
+      "service": "paymentservice"
+    },
+    {
+      "call_count": 9,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 0.021,
+      "p95_ms": 0.041,
+      "service": "productcatalogservice"
+    },
+    {
+      "call_count": 1,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 0.575,
+      "p95_ms": 0.575,
+      "service": "recommendationservice"
+    },
+    {
+      "call_count": 2,
+      "error_fraction": 0.0,
+      "errors": 0,
+      "low_count": true,
+      "mean_ms": 0.040999999999999995,
+      "p95_ms": 0.044,
+      "service": "shippingservice"
+    }
+  ],
+  "source_files": {
+    "outputs/telemetry/cct-probe-merul-261125052110-5d9e/measured/journeys.json": "a9fd58dcad2c21c8a1722cd6842ae2c5e00a39d7e07f13313795a916e004a8c8",
+    "outputs/telemetry/cct-probe-merul-261125052110-5d9e/measured/summary.json": "702838c0547cebfa3c6d060c4f03210cb8a597b2df32aa2f441190d209f339ec"
+  },
+  "source_interval_utc": [
+    "2026-11-25T05:21:38.897773+00:00",
+    "2026-11-25T05:21:55.162467+00:00"
+  ],
+  "source_revision": "d22e05207013a26eb0544faf06db305aa24448e0",
+  "status": "passed",
+  "synthetic": false,
+  "task": "CCT-09",
+  "verified_at": "2026-11-26T01:35:22.209281+00:00"
+}

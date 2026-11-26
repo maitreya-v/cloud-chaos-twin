@@ -1,0 +1,124 @@
+{
+  "analytics_tests": 17,
+  "base_revision": "d6d309952490f46ca640d0242ba1e20ee824d807",
+  "branch": "feature/mithil-analytics",
+  "browser_check": {
+    "engine": "Chromium via Playwright",
+    "page_errors": 0,
+    "report_tables": 6,
+    "svg_graphs": 1
+  },
+  "checks": [
+    {
+      "command": "python3 -m analytics graph --archive outputs/analytics-demo/otlp-archive --output outputs/analytics-demo/archive-graph",
+      "passed": true
+    },
+    {
+      "command": "python3 -m cct check",
+      "passed": true
+    },
+    {
+      "command": "python3 -m cct demo",
+      "passed": true
+    },
+    {
+      "command": "python3 -m analytics demo",
+      "passed": true
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -v",
+      "passed": true
+    }
+  ],
+  "graph_benchmark": {
+    "machine": "arm64",
+    "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+    "python": "3.14.7",
+    "repetitions": 3,
+    "results": [
+      {
+        "edges": 9,
+        "median_seconds": 0.00011129199992865324,
+        "seconds": [
+          0.0001925830147229135,
+          0.00011129199992865324,
+          0.00010241701966151595
+        ],
+        "services": 10,
+        "spans": 10
+      },
+      {
+        "edges": 99,
+        "median_seconds": 0.0008575000101700425,
+        "seconds": [
+          0.0009749580058269203,
+          0.0008575000101700425,
+          0.0008377499761991203
+        ],
+        "services": 100,
+        "spans": 100
+      },
+      {
+        "edges": 999,
+        "median_seconds": 0.008784832956735045,
+        "seconds": [
+          0.008698749996256083,
+          0.008784832956735045,
+          0.009322999976575375
+        ],
+        "services": 1000,
+        "spans": 1000
+      }
+    ],
+    "schema_version": "1.0",
+    "scope": "local graph construction; invented chains; excludes Kafka, Spark and live application",
+    "synthetic": true
+  },
+  "historical_live_forecast_valid": false,
+  "json_parquet_cli_parity": true,
+  "parquet_scope": "synthetic graph/calibrate/predict/evaluate/aggregate/control CLI smoke",
+  "pending": [
+    "Raw measured journey receipt unavailable in checkout",
+    "Reviewed independent health and coverage windows",
+    "Real whole-run threshold calibration and reserved fault evaluation",
+    "Joint CCT-10 review with Merul",
+    "Prospective warning and calibrated time-to-impact"
+  ],
+  "previous_tests": 36,
+  "python": "3.14.7",
+  "real_data_acceptance": false,
+  "schema_version": "1.0",
+  "source_sha256": {
+    "analytics/__init__.py": "2efab6149cbeabf28931aeec77a7dcbdc8eea7b79368622ddb9504bd249c6cfb",
+    "analytics/__main__.py": "83a18a786ee33700f76a7fc68c5e6bccb13aaeb7b4b5fe01d5763585ffd984da",
+    "analytics/benchmark.py": "584a8ea02d1047a67b1354b71b86bd0306d83c1be0ff66a02edb0dfffda4447d",
+    "analytics/demo.py": "13f48ec185b87854c329a252fc3712fe78d7487f3273df9c02b133e6ac82329f",
+    "analytics/evaluate.py": "2b620178b3317a1b8421a27255c71d210e90d303b6ee8eda586ab22c9f1c84b8",
+    "analytics/forecast.py": "8c9891015d0982e8b4edb0cc75f6a98da74a3b7bbe208b8beff9537539473ca2",
+    "analytics/graph.py": "254438d2e3b10118113e14d3bbcde4473e4637bcbd459066f85dbaf2edc7f849",
+    "analytics/health.py": "6e8988e6c1bd32f17071721423ad5402383e67f1ec9dd2b9ffda2b89a9020942",
+    "analytics/io.py": "0e84cb0244256a9d8580bc9cf50a5bc178167cc0719cb1909e597dfe5b3ab0c2",
+    "analytics/report.py": "dc5607c69cacf72f82e659f403f95356bf4974be73544509f220e788ee884d26",
+    "tests/test_analytics.py": "bee6fbf9740892990bfd1a2033451ff4ddf32c505e65e1de54ac2e8fbcf2bbbd"
+  },
+  "synthetic_demo": {
+    "calibration_training_runs": [
+      "synthetic-train"
+    ],
+    "graph_edges": 2,
+    "graph_nodes": 3,
+    "historical_live_forecast_valid": false,
+    "horizons_ms": [
+      10000,
+      30000,
+      60000
+    ],
+    "methods": 5,
+    "report": "outputs/analytics-demo/report.html",
+    "run_id": "synthetic-test",
+    "schema_version": "1.0",
+    "synthetic": true
+  },
+  "tests_passed": 53,
+  "verified_at": "2026-11-26T01:18:51.295079+00:00"
+}

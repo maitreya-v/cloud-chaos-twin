@@ -10,8 +10,9 @@ Cloud Chaos Twin studies how failures spread through Online Boutique, a microser
 | --- | --- | --- |
 | Testbed and workload | Maitreya deployed Online Boutique on an ARM64 kind cluster and verified browsing, cart updates, and checkout. A five-user baseline recorded 1,000 successful requests and 46 checkouts. | Repeat the workload with telemetry enabled to measure collection overhead. |
 | Traces, metrics, and logs | The [live rollout](docs/CCT-03_TRACING_ROLLOUT.md) recovered 4/4 browse, 2/2 cart, and 9/9 checkout relationships. Merul independently verified the journeys, service counters, pod gauges and selected log delivery using the [recorded verification workflow](observability/README.md#record-an-independent-shopping-verification). | Measure collection overhead with matched instrumentation-off and instrumentation-on runs. |
-| Health labels and forecasting | Merul implemented a candidate rule for classifying services as healthy, affected, or unknown using observations available at the prediction cutoff. | Merul and Mithil review the rule together and calibrate thresholds on recorded runs. Forecast accuracy remains unmeasured. |
-| Processing and experiments | The repository includes sample telemetry, a normalized-span schema, an offline dependency graph and report, and a scoped fault template. | Validate Kafka/Spark replay, Parquet counts, fault and recovery records, and an integrated experiment. |
+| Dependency graph and baseline metrics | Mithil reproduced the graph from Merul's measured receipt: 10 services, 36 server spans, 13 distinct edges and all 15 required journey relationships. [CCT-09 acceptance](docs/evidence/CCT-09-mithil-real.json). | Longer baseline sampling and CCT-10 calibration; current service counts are below 20. |
+| Health labels and forecasting | Merul's candidate health rule is integrated with Mithil's training-only calibration, graph/root/cascade baselines and separate outcome evaluator. Synthetic checks pass. | Joint review, real calibration and independently labeled fault runs. Forecast accuracy remains unmeasured. |
+| Processing and experiments | Param recorded successful Kafka/Spark/Parquet replay on synthetic and healthy recorded data. Mithil's analytics accepts normalized spans and produces graph/timeline reports. | Share approved datasets, verify fault/recovery records, and reproduce an integrated experiment. |
 
 The [deployment record](docs/CCT-02_LOCAL_DEPLOYMENT.md) documents the baseline and its timing precision. The [task board](docs/TEAM_TASKS.md) defines the acceptance criteria for each deliverable.
 
@@ -90,3 +91,7 @@ See the [setup guide](docs/SETUP.md), [cluster access guide](docs/PRIVATE_ACCESS
 ### Kafka / Spark / Parquet replay (Param)
 
 The staged pipeline implementation, local setup and acceptance commands are in [ingestion/README.md](ingestion/README.md); table contracts and cutoff semantics are in [processing/README.md](processing/README.md). See [CCT-05/06 status](docs/CCT-05-06_PIPELINE.md) for measured local acceptance and scalability results, limitations and remaining fault-run integration gates. The offline starter demo does not start Kafka or Spark.
+
+### Dependency graphs and forecast evaluation (Mithil)
+
+Run `python3 -m analytics demo` and open `outputs/analytics-demo/report.html` for a synthetic graph, health timeline, root rankings and cascade comparisons. The [analytics runbook](analytics/README.md) covers real receipt/Parquet input, calibration, prediction and evaluation. [Mithil's handoff](docs/CCT-09-10_ANALYTICS.md) records completed CCT-09 real-data acceptance and pending CCT-10 calibration/evaluation. The reproduced real graph and service summaries are under `outputs/analytics-real/`. The synthetic example establishes no measured forecasting accuracy.
