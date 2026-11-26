@@ -1,0 +1,64 @@
+{
+  "calibration_eligible_windows": 0,
+  "cct09_metrics_match": true,
+  "cct10_complete": false,
+  "checked_at": "2026-11-26T20:09:53.332233+00:00",
+  "complete_windows": 0,
+  "distinct_intervals": 1,
+  "fault_run_supplied": false,
+  "handoff_files_sha256": {
+    "README.md": "be2807419083c6105856ef27cbc9ccc6c2c6b54fa7a5dcb0f5dc68a873f44e78",
+    "capture_pods.py": "f7d934bdf90105bd7a2831e3473d92fa3af4dd3eb7cacaf3b85ec55a31101a7a",
+    "from_receipt.py": "e5f8424e14ee0c1feb509f7b39f16f67041a291335d702bf7381f8743ff3656a",
+    "join_windows.py": "e6666fa7930ed76fe362765602e6eb128ec513d8c088b9668d6656f16bf9d7a2",
+    "measured_windows.json": "b21170c10fe54c3004baf1e30b07b9a2e9dd4485c09196d4c55a4603f4a5629b",
+    "post_run_gauges.json": "bbb7fcba548f29e4ca0546bad30e89aa2ec9a6447f9c4b8b42c72ae1080fe8a0",
+    "source_audit.json": "d5336ed7e447f926ef67425c5c59accf14dc0743c69d6ffb9fd2fa41f0ca98b3"
+  },
+  "missing": [
+    "Sustained healthy capture with complete per-window evidence and enough requests",
+    "Independent fault/recovery manifest and matching health windows",
+    "Merul/Mithil review of fitted thresholds"
+  ],
+  "ready_known": 0,
+  "rebuilt_json_matches": {
+    "measured_windows.json": true,
+    "post_run_gauges.json": true,
+    "source_audit.json": true
+  },
+  "request_count_range": [
+    1,
+    13
+  ],
+  "restart_delta_known": 0,
+  "run_id": "cct-probe-merul-261125052110-5d9e-measured",
+  "schema_version": "1.0",
+  "service_window_rows": 10,
+  "software_checks": {
+    "cct_check": "passed",
+    "cct_demo": "passed",
+    "live_pod_capture_verified": false,
+    "new_synthetic_join_tests": 4,
+    "repository_tests_passed": 57
+  },
+  "source_hashes_match": {
+    "journeys.json": true,
+    "signals/metrics.json": true,
+    "signals/summary.json": true,
+    "summary.json": true
+  },
+  "states_at_latest_source_availability": {
+    "adservice": "unknown",
+    "cartservice": "unknown",
+    "checkoutservice": "unknown",
+    "currencyservice": "unknown",
+    "emailservice": "unknown",
+    "frontend": "unknown",
+    "paymentservice": "unknown",
+    "productcatalogservice": "unknown",
+    "recommendationservice": "unknown",
+    "shippingservice": "unknown"
+  },
+  "status": "handoff-validated-calibration-pending",
+  "window_schema_valid": true
+}

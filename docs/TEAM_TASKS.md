@@ -80,3 +80,7 @@ CCT-09/CCT-10 now have executable dependency graphs and baseline metrics, record
 CCT-09 real acceptance subsequently passed on Merul's saved measured receipt: 4/4 browse, 2/2 cart and 9/9 checkout required relationships; 10 services, 36 server spans and 13 distinct service edges, with no missing parents. The graph and baseline summaries reproduce under `outputs/analytics-real/`. See the [hashed acceptance evidence](evidence/CCT-09-mithil-real.json).
 
 CCT-10 remains open: independently verified health windows, completed fault datasets, Merul's joint review and whole-run calibration/evaluation are still required. Incomplete pipeline windows stay unknown, and retrospective replay is not evidence of live warning.
+
+### CCT-10 handoff validation — November 26, 2026
+
+Merul's handoff reproduces correctly from the measured archive and matches the CCT-09 service counts/errors/p95. Its ten rows cover one five-second interval with 1–13 requests per service, no verified complete coverage or in-window readiness/restart deltas, and no fault/recovery record. Zero windows qualify for calibration. Collection and join scripts are now included for the next run; shared-cluster validation remains pending. See [current status and owner dependencies](CCT-10_STATUS.md) and [validation evidence](evidence/CCT-10-handoff-validation.json). CCT-10 remains open.
