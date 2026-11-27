@@ -42,6 +42,10 @@ def main():
                   "metadata": {"name": "cct-merul-observability", "namespace": "cct-observability"},
                   "roleRef": {"kind": "Role", "name": "cct-observability-maintainer", "apiGroup": "rbac.authorization.k8s.io"},
                   "subjects": [{"kind": "User", "name": teammates["Merul"], "apiGroup": "rbac.authorization.k8s.io"}]})
+    items.append({"apiVersion": "rbac.authorization.k8s.io/v1", "kind": "RoleBinding",
+                  "metadata": {"name": "cct-komalika-monitoring-portforward", "namespace": "cct-observability"},
+                  "roleRef": {"kind": "Role", "name": "cct-monitoring-portforward", "apiGroup": "rbac.authorization.k8s.io"},
+                  "subjects": [{"kind": "User", "name": teammates["Komalika"], "apiGroup": "rbac.authorization.k8s.io"}]})
     save("rbac-bindings.review.json", {"apiVersion": "v1", "kind": "List", "items": items})
     print("Prepared private network policy and Kubernetes bindings for five identities. Nothing applied.")
 

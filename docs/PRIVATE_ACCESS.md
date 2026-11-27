@@ -10,6 +10,7 @@
 - Team network rules and individual Kubernetes permissions are applied. All 40 authorization checks and 20 integration/admission checks passed; see [sanitized evidence](evidence/PRIVATE_ACCESS-maitreya.json). Teammate checks use host-administrator impersonation, not a teammate device.
 - The owner sent all four approved Member invitations. The reloaded Tailscale Users page confirms Merul, Param, Mithil, and Komalika are each `Invited` with role `Member`. Acceptance is pending for all four. The console requires owner approval when invited users join.
 - Cross-network verification with a teammate remains pending. A successful request from the host Mac does not prove another device can connect.
+- On 2026-11-27, the owner authorized Komalika to port-forward monitoring pods. The dedicated permission and her individual binding are applied in `cct-observability`. Twenty-seven authorization checks and three actual service-forward tests passed using host-admin impersonation; see the [access receipt](evidence/komal-monitoring-portforward.json).
 
 Personal login emails, tailnet addresses, rendered policy/bindings, and credentials belong in the ignored `.local/tailscale/` directory. They must not be committed to the public repository.
 
@@ -23,7 +24,8 @@ Kubernetes traffic uses the official operator's authenticated API proxy, with ho
 | --- | --- |
 | Maitreya | Administration through the private proxy |
 | Merul | Read project workloads/logs; manage workloads/configuration in `cct-observability` |
-| Param, Mithil, Komalika | Read project workloads/logs in `cct-app` and `cct-observability` |
+| Param, Mithil | Read project workloads/logs in `cct-app` and `cct-observability` |
+| Komalika | Read project workloads/logs; port-forward pods in `cct-observability` |
 
 The monitoring namespace enforces Kubernetes' restricted pod-security profile before granting workload-write access. The maintainer role does not grant secret access, RBAC changes, or cluster-wide installation. Instrumentation changes in the application namespace and cluster-wide monitoring components remain owner-applied. Komalika's fault-write permissions require the separate scoped fault installation and validation task; a namespace alone cannot constrain every fault selector. Param and Mithil can develop with fixtures until their live data paths exist.
 
@@ -47,6 +49,8 @@ Run `python3 scripts/prepare_private_access.py` to regenerate local review files
 
 For a future reinstall, create the Secret from the private files and install the pinned chart with the saved values. Never put credentials in Git, chat, command arguments, or Helm values/history. The role manifest creates the restricted monitoring namespace before its Role and bindings. Verify identity and permissions again after any access change.
 
+Apply the additional [monitoring port-forward Role](../infra/tailscale/monitoring-portforward-role.json) before restoring the generated Komalika binding. The private-access preparer reads her existing login from the ignored members file; no personal login is stored in the public Role definition. For an incremental change, review and apply only the intended Role and binding rather than replacing all project bindings or network policy.
+
 ## Teammate connection steps
 
 1. Accept the Tailscale Member invitation with the exact invited email address. If the account is awaiting approval, the owner must approve that named account in Tailscale's Users page.
@@ -68,6 +72,34 @@ On a Mac with the standalone app, if `tailscale` is not on PATH, use `/Applicati
 The generated connection file contains the endpoint and a non-secret `unused` token placeholder. The network identity provides authentication. It does not contain the host's administrator certificate. `kubectl auth whoami` should show the teammate's own invited identity.
 
 All teammates can inspect application and monitoring workloads/logs. Merul can also manage monitoring workloads and configuration in `cct-observability`. Other live data pipelines, monitoring dashboards, and fault permissions are separate tasks and are not available merely by joining the network.
+
+## Komalika's monitoring access
+
+The owner-authorized `cct-monitoring-portforward` Role grants `get` and `create` on `pods/portforward` only in `cct-observability`. The generated `cct-komalika-monitoring-portforward` binding names her existing individual identity. Her original observer bindings provide the pod/service reads needed to select a service's pod. Other teammates do not receive this extra permission.
+
+With Tailscale connected, run each command in a separate terminal on her own computer. These commands explicitly select the project connection and bind only her laptop's loopback address:
+
+```sh
+kubectl --kubeconfig "$HOME/.kube/cct-team.yaml" -n cct-observability \
+  port-forward --address 127.0.0.1 service/cct-jaeger 16686:16686
+kubectl --kubeconfig "$HOME/.kube/cct-team.yaml" -n cct-observability \
+  port-forward --address 127.0.0.1 service/cct-prometheus 9090:9090
+```
+
+Open `http://127.0.0.1:16686` for Jaeger or `http://127.0.0.1:9090` for Prometheus. Collector troubleshooting can use `service/cct-collector 8889:8889` for exported metrics or `8888:8888` for Collector telemetry. Stop a forwarding session with Ctrl+C. A pod replacement requires reconnecting.
+
+This namespace-scoped permission permits connections to any listening port on monitoring pods, including Collector ingestion; it is not an HTTP read-only or per-port restriction. It grants no pod shell, Secret reads, deployment changes, or port-forwarding in the application/operator namespaces. Komalika remains a Tailscale Member. Kubernetes namespace permissions are separate from Tailscale administration.
+
+The checked cluster has no Chaos Mesh resources or controller installed. CCT-07 must install and validate the scoped fault mechanism before fault-changing permissions can make experiments executable. Port-forward access supports inspection while that work is prepared.
+
+The host verified real Jaeger, Prometheus and Collector HTTP requests through forwards authenticated as Komalika. Her own laptop must still confirm its project connection. For authorization checks, use the actual subresource flag, for example `kubectl auth can-i create pods --subresource=portforward -n cct-observability`; `pods/NAME` syntax can instead select a named pod.
+
+To revoke only the added capability from the owner connection:
+
+```sh
+kubectl --context kind-cloud-chaos-twin -n cct-observability \
+  delete rolebinding cct-komalika-monitoring-portforward
+```
 
 ## Verified access boundaries
 
