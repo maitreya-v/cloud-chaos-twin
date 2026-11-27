@@ -1,0 +1,117 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "admissionregistration.k8s.io/v1",
+      "kind": "ValidatingAdmissionPolicy",
+      "metadata": {
+        "name": "cct-networkchaos-scope"
+      },
+      "spec": {
+        "failurePolicy": "Fail",
+        "matchConstraints": {
+          "resourceRules": [
+            {
+              "apiGroups": [
+                "chaos-mesh.org"
+              ],
+              "apiVersions": [
+                "v1alpha1"
+              ],
+              "operations": [
+                "CREATE",
+                "UPDATE"
+              ],
+              "resources": [
+                "networkchaos"
+              ],
+              "scope": "Namespaced"
+            }
+          ]
+        },
+        "matchConditions": [
+          {
+            "name": "project-namespace",
+            "expression": "request.namespace == 'cct-app'"
+          }
+        ],
+        "validations": [
+          {
+            "expression": "object.metadata.namespace == 'cct-app'",
+            "message": "Experiments must live in cct-app."
+          },
+          {
+            "expression": "object.spec.action == 'delay' && object.spec.mode == 'one'",
+            "message": "Only a single-pod delay is enabled for the initial pilot."
+          },
+          {
+            "expression": "has(object.spec.selector.namespaces) && object.spec.selector.namespaces.size() == 1 && object.spec.selector.namespaces[0] == 'cct-app'",
+            "message": "Select only the cct-app namespace."
+          },
+          {
+            "expression": "has(object.spec.selector.labelSelectors) && object.spec.selector.labelSelectors.size() == 1 && 'app' in object.spec.selector.labelSelectors && ((object.metadata.name == 'cct-productcatalog-delay' && object.spec.selector.labelSelectors.app == 'productcatalogservice') || (object.metadata.name == 'cct-runtime-check' && object.spec.selector.labelSelectors.app == 'cct-chaos-canary'))",
+            "message": "Use the approved productcatalog pilot name/selector or isolated runtime canary."
+          },
+          {
+            "expression": "!has(object.spec.selector.pods) || object.spec.selector.pods.size() == 0",
+            "message": "Explicit pod maps cannot bypass the approved label selector."
+          },
+          {
+            "expression": "has(object.spec.duration) && object.spec.duration.matches('^([1-9]|[1-5][0-9]|60)s$')",
+            "message": "Duration must be an integer from 1s through 60s."
+          },
+          {
+            "expression": "has(object.spec.delay) && object.spec.delay.latency.matches('^([1-9][0-9]?|[1-4][0-9]{2}|500)ms$')",
+            "message": "Latency must be an integer from 1ms through 500ms."
+          },
+          {
+            "expression": "!has(object.spec.delay.jitter) || object.spec.delay.jitter.matches('^([0-9]|[1-9][0-9]|100)ms$')",
+            "message": "Jitter must be between 0ms and 100ms."
+          },
+          {
+            "expression": "!has(object.spec.delay.correlation) || object.spec.delay.correlation == '0'",
+            "message": "The pilot uses uncorrelated delay."
+          },
+          {
+            "expression": "!has(object.spec.delay.reorder)",
+            "message": "Packet reordering is outside the initial pilot."
+          },
+          {
+            "expression": "has(object.spec.direction) && object.spec.direction == 'to'",
+            "message": "Only outgoing delay is enabled."
+          },
+          {
+            "expression": "!has(object.spec.target) && (!has(object.spec.externalTargets) || object.spec.externalTargets.size() == 0)",
+            "message": "Additional pod targets and external targets are outside the pilot."
+          },
+          {
+            "expression": "!has(object.spec.remoteCluster) || object.spec.remoteCluster == ''",
+            "message": "Remote-cluster faults are outside the pilot."
+          },
+          {
+            "expression": "(!has(object.spec.device) || object.spec.device == '' || object.spec.device == 'eth0') && (!has(object.spec.targetDevice) || object.spec.targetDevice == '')",
+            "message": "Only the application pod network interface is in scope."
+          },
+          {
+            "expression": "!has(object.metadata.annotations) || (!('chaos-mesh.chaos-mesh.org/cleanFinalizer' in object.metadata.annotations) && !('experiment.chaos-mesh.org/pause' in object.metadata.annotations))",
+            "message": "Use deletion for cleanup; force-finalizer and pause overrides are disabled."
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "admissionregistration.k8s.io/v1",
+      "kind": "ValidatingAdmissionPolicyBinding",
+      "metadata": {
+        "name": "cct-networkchaos-scope"
+      },
+      "spec": {
+        "policyName": "cct-networkchaos-scope",
+        "validationActions": [
+          "Deny"
+        ]
+      }
+    }
+  ]
+}
