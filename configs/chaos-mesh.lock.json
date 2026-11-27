@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "chart": "chaos-mesh",
+  "version": "2.8.8",
+  "chart_url": "https://charts.chaos-mesh.org/chaos-mesh-2.8.8.tgz",
+  "chart_sha256": "35f3caded3d33428d0864eb6d6ece97a5d859a1c0a6e49020fb4d07dd3676bdf",
+  "official_index_digest_verified": true,
+  "upstream_commit": "3ffa399f44be86c12acb1b05228f8384b7ee8b31",
+  "platform": "linux/arm64",
+  "images": {
+    "chaos-mesh": "ghcr.io/chaos-mesh/chaos-mesh:v2.8.8@sha256:1175a4cf37fc244e33480c6d4f4cd9cfcb28e217bed66be195e5f735502e27e5",
+    "chaos-daemon": "ghcr.io/chaos-mesh/chaos-daemon:v2.8.8@sha256:5a765c4fe3253e7104664cec6e0ceceb49f0fd6b615bac4a3e981636d9f62bc0"
+  },
+  "canary_image": "python:3.12.11-alpine3.22@sha256:4e3cc5a3bccb10071da7fb8c9038d9e476d2c701cbe87af83ff369c7e2add931",
+  "namespace": "cct-chaos-system",
+  "target_namespace": "cct-app",
+  "release": "cct-chaos",
+  "values_sha256": "83ee4bb2f2d6752ff2dd6132aa85680ca846ba294b8cd7503af71b8f3f79d4fd",
+  "kubernetes_version": "1.36.4",
+  "container_runtime": "containerd 2.3.4",
+  "runtime_socket": "/run/containerd/containerd.sock"
+}

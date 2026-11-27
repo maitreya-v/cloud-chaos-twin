@@ -25,9 +25,9 @@ Kubernetes traffic uses the official operator's authenticated API proxy, with ho
 | Maitreya | Administration through the private proxy |
 | Merul | Read project workloads/logs; manage workloads/configuration in `cct-observability` |
 | Param, Mithil | Read project workloads/logs in `cct-app` and `cct-observability` |
-| Komalika | Read project workloads/logs; port-forward pods in `cct-observability` |
+| Komalika | Read project workloads/logs; port-forward monitoring pods; run the bounded NetworkChaos pilot in `cct-app` |
 
-The monitoring namespace enforces Kubernetes' restricted pod-security profile before granting workload-write access. The maintainer role does not grant secret access, RBAC changes, or cluster-wide installation. Instrumentation changes in the application namespace and cluster-wide monitoring components remain owner-applied. Komalika's fault-write permissions require the separate scoped fault installation and validation task; a namespace alone cannot constrain every fault selector. Param and Mithil can develop with fixtures until their live data paths exist.
+The monitoring namespace enforces Kubernetes' restricted pod-security profile before granting workload-write access. The maintainer role does not grant secret access, RBAC changes, or cluster-wide installation. Instrumentation changes in the application namespace and cluster-wide monitoring components remain owner-applied. Komalika now has the initial NetworkChaos experiment role. Admission constrains its name, target, action and duration; a namespace alone cannot constrain every fault selector. See the [fault setup record](CCT-07_CHAOS_SETUP.md). Param and Mithil can develop with fixtures until their live data paths exist.
 
 ## Kubernetes connector and version record
 
@@ -90,7 +90,7 @@ Open `http://127.0.0.1:16686` for Jaeger or `http://127.0.0.1:9090` for Promethe
 
 This namespace-scoped permission permits connections to any listening port on monitoring pods, including Collector ingestion; it is not an HTTP read-only or per-port restriction. It grants no pod shell, Secret reads, deployment changes, or port-forwarding in the application/operator namespaces. Komalika remains a Tailscale Member. Kubernetes namespace permissions are separate from Tailscale administration.
 
-The checked cluster has no Chaos Mesh resources or controller installed. CCT-07 must install and validate the scoped fault mechanism before fault-changing permissions can make experiments executable. Port-forward access supports inspection while that work is prepared.
+Chaos Mesh 2.8.8 is now installed in `cct-chaos-system` with experiment scope restricted to `cct-app`. The canary verified injection, automatic recovery and cleanup. Komalika can create/read/watch/delete the approved bounded product-catalog delay through her additional Role; other fault families and in-place experiment edits are outside that initial scope. Follow the [CCT-07 setup record](CCT-07_CHAOS_SETUP.md) for pilot and owner reproduction steps.
 
 The host verified real Jaeger, Prometheus and Collector HTTP requests through forwards authenticated as Komalika. Her own laptop must still confirm its project connection. For authorization checks, use the actual subresource flag, for example `kubectl auth can-i create pods --subresource=portforward -n cct-observability`; `pods/NAME` syntax can instead select a named pod.
 

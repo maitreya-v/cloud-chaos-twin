@@ -1,0 +1,79 @@
+{
+  "clusterScoped": false,
+  "timezone": "UTC",
+  "enableProfiling": false,
+  "images": {
+    "registry": "ghcr.io",
+    "tag": "v2.8.8"
+  },
+  "controllerManager": {
+    "replicaCount": 1,
+    "targetNamespace": "cct-app",
+    "allowHostNetworkTesting": false,
+    "enableFilterNamespace": false,
+    "leaderElection": {
+      "enabled": false
+    },
+    "enabledControllers": [
+      "networkchaos",
+      "podnetworkchaos"
+    ],
+    "enabledWebhooks": [
+      "networkchaos"
+    ],
+    "image": {
+      "tag": "v2.8.8@sha256:1175a4cf37fc244e33480c6d4f4cd9cfcb28e217bed66be195e5f735502e27e5"
+    },
+    "resources": {
+      "requests": {
+        "cpu": "50m",
+        "memory": "256Mi"
+      },
+      "limits": {
+        "cpu": "500m",
+        "memory": "512Mi"
+      }
+    }
+  },
+  "chaosDaemon": {
+    "runtime": "containerd",
+    "socketPath": "/run/containerd/containerd.sock",
+    "privileged": true,
+    "hostNetwork": false,
+    "mtls": {
+      "enabled": true
+    },
+    "image": {
+      "tag": "v2.8.8@sha256:5a765c4fe3253e7104664cec6e0ceceb49f0fd6b615bac4a3e981636d9f62bc0"
+    },
+    "resources": {
+      "requests": {
+        "cpu": "50m",
+        "memory": "128Mi"
+      },
+      "limits": {
+        "cpu": "500m",
+        "memory": "256Mi"
+      }
+    }
+  },
+  "dashboard": {
+    "create": false,
+    "securityMode": true
+  },
+  "dnsServer": {
+    "create": false
+  },
+  "prometheus": {
+    "create": false
+  },
+  "bpfki": {
+    "create": false
+  },
+  "webhook": {
+    "FailurePolicy": "Fail",
+    "CRDS": [
+      "networkchaos"
+    ]
+  }
+}

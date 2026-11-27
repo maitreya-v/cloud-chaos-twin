@@ -1,0 +1,257 @@
+{
+  "verified_at": "2026-11-27T21:25:26.541429+00:00",
+  "installed": true,
+  "release": "cct-chaos",
+  "version": "2.8.8",
+  "install_namespace": "cct-chaos-system",
+  "experiment_namespace": "cct-app",
+  "components": [
+    {
+      "name": "chaos-mesh",
+      "image": "sha256:bd7e23aacab7d76805e852f38bb70d904597262c34a9ee4389b4b49cadd9e691",
+      "ready": true,
+      "restarts": 0
+    },
+    {
+      "name": "chaos-daemon",
+      "image": "sha256:b99b314ef140024302b2f9e6eab73b84a9906a3879901de4b8176e4ac2648b62",
+      "ready": true,
+      "restarts": 0
+    }
+  ],
+  "application_pods_ready": 11,
+  "monitoring_pods_ready": 3,
+  "runtime_canary": {
+    "started_at": "2026-11-27T21:20:49.967352+00:00",
+    "fault_requested_at": "2026-11-27T21:20:54.640513+00:00",
+    "injected_observed_at": "2026-11-27T21:20:54.998203+00:00",
+    "recovered_observed_at": "2026-11-27T21:21:04.065748+00:00",
+    "finished_at": "2026-11-27T21:21:11.259087+00:00",
+    "baseline_ms": [
+      17.87258300009853,
+      0.7082500005708425,
+      74.04704200052947,
+      0.8406249999097781,
+      0.7013329995970707
+    ],
+    "during_ms": [
+      236.14591699970333,
+      203.72633399983897,
+      204.4051250004486,
+      202.6019159993666,
+      204.61966699986078
+    ],
+    "recovered_ms": [
+      95.03899999981513,
+      0.7583329997942201,
+      0.7446249992426601,
+      0.7653749999008141,
+      0.6072919995858683
+    ],
+    "median_ms": {
+      "baseline": 0.8406249999097781,
+      "during": 204.4051250004486,
+      "recovered": 0.7583329997942201
+    },
+    "passed": true,
+    "cleanup_errors": []
+  },
+  "canary_status": {
+    "injected": [
+      {
+        "status": "False",
+        "type": "AllRecovered"
+      },
+      {
+        "status": "False",
+        "type": "Paused"
+      },
+      {
+        "status": "True",
+        "type": "Selected"
+      },
+      {
+        "status": "True",
+        "type": "AllInjected"
+      }
+    ],
+    "recovered": [
+      {
+        "status": "True",
+        "type": "AllRecovered"
+      },
+      {
+        "status": "False",
+        "type": "Paused"
+      },
+      {
+        "status": "True",
+        "type": "Selected"
+      },
+      {
+        "status": "False",
+        "type": "AllInjected"
+      }
+    ],
+    "injected_count": 1,
+    "recovered_count": 1
+  },
+  "authorization_checks": 28,
+  "authorization_checks_passed": 28,
+  "admission_dry_runs": [
+    {
+      "case": "approved-pilot",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "passed": true
+    },
+    {
+      "case": "maximum-bounds",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "passed": true
+    },
+    {
+      "case": "wrong-resource-name",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "wrong-app",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "cross-namespace-selector",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "multiple-namespaces",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "explicit-pod-map",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "all-pods-mode",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "missing-duration",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "excess-duration",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "long-duration-unit",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "excess-latency",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "long-latency-unit",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "excess-jitter",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "correlation-override",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "external-targets",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "additional-target",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "remote-cluster",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "reverse-direction",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "other-device",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "pause-override",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "finalizer-override",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "case": "partition-action",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    }
+  ],
+  "komal_access": "create/read/watch/delete NetworkChaos; initial productcatalog delay pilot only",
+  "policy_bounds": {
+    "mode": "one",
+    "duration_max_seconds": 60,
+    "latency_max_ms": 500,
+    "jitter_max_ms": 100,
+    "direction": "to",
+    "target_app": "productcatalogservice",
+    "resource_name": "cct-productcatalog-delay"
+  },
+  "remaining": [
+    "Komalika: three recorded Boutique pilot runs with effect, cleanup and recovery evidence",
+    "CCT-08: experiment runner implementation and validation"
+  ],
+  "teammate_device_tested": false,
+  "active_faults_after_validation": 0
+}

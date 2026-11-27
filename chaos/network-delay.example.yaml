@@ -1,4 +1,4 @@
-# Example only. Validate Chaos Mesh/runtime compatibility and this exact selector first.
+# Initial approved pilot. Use a reserved test window and preserve the experiment receipt.
 apiVersion: chaos-mesh.org/v1alpha1
 kind: NetworkChaos
 metadata:
@@ -7,6 +7,7 @@ metadata:
 spec:
   action: delay
   mode: one
+  direction: to
   selector:
     namespaces:
       - cct-app

@@ -84,3 +84,7 @@ CCT-10 remains open: independently verified health windows, completed fault data
 ### CCT-10 handoff validation — November 26, 2026
 
 Merul's handoff reproduces correctly from the measured archive and matches the CCT-09 service counts/errors/p95. Its ten rows cover one five-second interval with 1–13 requests per service, no verified complete coverage or in-window readiness/restart deltas, and no fault/recovery record. Zero windows qualify for calibration. Collection and join scripts are now included for the next run; shared-cluster validation remains pending. See [current status and owner dependencies](CCT-10_STATUS.md) and [validation evidence](evidence/CCT-10-handoff-validation.json). CCT-10 remains open.
+
+### CCT-07 host readiness — November 27, 2026
+
+Maitreya installed the pinned native Chaos Mesh 2.8.8 controller/daemon and constrained experiments to the application namespace. A disposable 10-second delay verified injection, automatic recovery and cleanup; all 28 authorization checks and 23 admission dry runs passed. Komalika has the initial bounded NetworkChaos pilot permissions and monitoring access. See the [setup, limits and pilot commands](CCT-07_CHAOS_SETUP.md) and [sanitized evidence](evidence/CCT-07-chaos-mesh-setup.json). CCT-07 still requires her three recorded Boutique fault/recovery runs. CCT-08's experiment runner remains open.
