@@ -1,0 +1,276 @@
+{
+  "verified_at": "2026-11-27T21:06:06.374381+00:00",
+  "principal": "Komalika",
+  "namespace": "cct-observability",
+  "role": "cct-monitoring-portforward",
+  "authorization_checks_passed": 27,
+  "authorization_checks_total": 27,
+  "authorization_checks": [
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "pods",
+      "namespace": "cct-app",
+      "expected": true,
+      "answer": "yes",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "pods/log",
+      "namespace": "cct-app",
+      "expected": true,
+      "answer": "yes",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "pods",
+      "namespace": "cct-observability",
+      "expected": true,
+      "answer": "yes",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "pods/log",
+      "namespace": "cct-observability",
+      "expected": true,
+      "answer": "yes",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "services",
+      "namespace": "cct-observability",
+      "expected": true,
+      "answer": "yes",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": true,
+      "answer": "yes",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": true,
+      "answer": "yes",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "pods/portforward",
+      "namespace": "cct-app",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "pods/portforward",
+      "namespace": "cct-app",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "pods/portforward",
+      "namespace": "tailscale",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "pods/portforward",
+      "namespace": "kube-system",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "get",
+      "resource": "secrets",
+      "namespace": "cct-app",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "pods/exec",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "pods/exec",
+      "namespace": "cct-app",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-app",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "patch",
+      "resource": "deployments.apps",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "delete",
+      "resource": "pods",
+      "namespace": "cct-app",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "rolebindings",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "roles",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Komalika",
+      "verb": "create",
+      "resource": "clusterrolebindings",
+      "namespace": null,
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Merul",
+      "verb": "get",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Merul",
+      "verb": "create",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Param",
+      "verb": "get",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Param",
+      "verb": "create",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Mithil",
+      "verb": "get",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    },
+    {
+      "principal": "Mithil",
+      "verb": "create",
+      "resource": "pods/portforward",
+      "namespace": "cct-observability",
+      "expected": false,
+      "answer": "no",
+      "passed": true
+    }
+  ],
+  "portforward_tests": [
+    {
+      "service": "cct-jaeger",
+      "remote_port": 16686,
+      "http_status": 200,
+      "passed": true
+    },
+    {
+      "service": "cct-prometheus",
+      "remote_port": 9090,
+      "http_status": 200,
+      "passed": true
+    },
+    {
+      "service": "cct-collector",
+      "remote_port": 8889,
+      "http_status": 200,
+      "passed": true
+    }
+  ],
+  "verification_method": "host-admin impersonation of Komalika; teammate laptop not exercised",
+  "fault_controller_installed": false,
+  "scope": "All monitoring pods and their listening ports; no other namespace port-forward access"
+}
