@@ -72,6 +72,20 @@ def website_ready():
     raise RuntimeError("Frontend endpoint did not recover after rollout")
 
 
+def quiescent(timeout=120):
+    """Deployment availability can precede deletion of old terminating pods."""
+    deadline=time.monotonic()+timeout;previous=None
+    while time.monotonic()<deadline:
+        items=get(["get","pods","-A","-o","json"])["items"]
+        healthy=all(not p["metadata"].get("deletionTimestamp") and p["status"].get("phase")=="Running" and
+                    any(c.get("type")=="Ready" and c.get("status")=="True" for c in p["status"].get("conditions",[])) for p in items)
+        roster={p["metadata"]["uid"] for p in items}
+        if healthy and roster==previous:return
+        previous=roster if healthy else None
+        time.sleep(2)
+    raise RuntimeError("Old pods did not finish terminating before the measured protocol")
+
+
 def benchmark(directory,label,stop):
     previous=set((ROOT/"outputs/baselines").iterdir())
     log=(directory/(label+".log")).open("w")
@@ -156,11 +170,13 @@ def main():
             attempted.append(service)
             set_env(service,original[service],disabled(original[service],service))
         website_ready()
+        quiescent()
         receipt["runs"]["off"]=benchmark(directory,"off",stop)
         for service in PORTS:
             print("Restoring runtime tracing: "+service,flush=True)
             set_env(service,disabled(original[service],service),original[service])
         website_ready()
+        quiescent()
         receipt["runs"]["on"]=benchmark(directory,"on",stop)
         receipt["comparison"]=compare(receipt["runs"]["off"]["summary"],receipt["runs"]["on"]["summary"])
         receipt["passed"]=True
@@ -171,7 +187,7 @@ def main():
         for service in attempted:
             try:set_env(service,disabled(original[service],service),original[service])
             except Exception as e:receipt["restoration_errors"].append(service+": "+str(e))
-        try:website_ready();receipt["frontend_recovered"]=True
+        try:website_ready();quiescent();receipt["frontend_recovered"]=True
         except Exception as e:receipt["restoration_errors"].append(str(e))
         receipt["passed"] &= not receipt["restoration_errors"]
         receipt["finished_at"]=dt.datetime.now(dt.timezone.utc).isoformat()
