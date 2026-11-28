@@ -1,0 +1,201 @@
+{
+  "controller_events": [
+    {
+      "operation": "Apply",
+      "timestamp": "2026-11-28T06:10:34Z",
+      "type": "Succeeded"
+    },
+    {
+      "operation": "Recover",
+      "timestamp": "2026-11-28T06:11:03Z",
+      "type": "Succeeded"
+    }
+  ],
+  "controller_precision_ms": 1000,
+  "decisions": 53,
+  "edges": [
+    {
+      "callee": "cartservice",
+      "caller": "checkoutservice",
+      "journeys": [
+        "checkout"
+      ]
+    },
+    {
+      "callee": "currencyservice",
+      "caller": "checkoutservice",
+      "journeys": [
+        "checkout"
+      ]
+    },
+    {
+      "callee": "emailservice",
+      "caller": "checkoutservice",
+      "journeys": [
+        "checkout"
+      ]
+    },
+    {
+      "callee": "paymentservice",
+      "caller": "checkoutservice",
+      "journeys": [
+        "checkout"
+      ]
+    },
+    {
+      "callee": "productcatalogservice",
+      "caller": "checkoutservice",
+      "journeys": [
+        "checkout"
+      ]
+    },
+    {
+      "callee": "shippingservice",
+      "caller": "checkoutservice",
+      "journeys": [
+        "checkout"
+      ]
+    },
+    {
+      "callee": "adservice",
+      "caller": "frontend",
+      "journeys": [
+        "browse"
+      ]
+    },
+    {
+      "callee": "cartservice",
+      "caller": "frontend",
+      "journeys": [
+        "browse",
+        "cart"
+      ]
+    },
+    {
+      "callee": "checkoutservice",
+      "caller": "frontend",
+      "journeys": [
+        "checkout"
+      ]
+    },
+    {
+      "callee": "currencyservice",
+      "caller": "frontend",
+      "journeys": [
+        "browse",
+        "checkout"
+      ]
+    },
+    {
+      "callee": "productcatalogservice",
+      "caller": "frontend",
+      "journeys": [
+        "browse",
+        "cart"
+      ]
+    },
+    {
+      "callee": "recommendationservice",
+      "caller": "frontend",
+      "journeys": [
+        "checkout"
+      ]
+    }
+  ],
+  "five_second_labels": null,
+  "flagged_during_injection": 6,
+  "forecasts": [
+    {
+      "censored_services": 59,
+      "coverage_run_mean": 0.8672506738544474,
+      "empty_empty": 42,
+      "f1_run_mean": 0.0,
+      "method": "distance_weighted"
+    },
+    {
+      "censored_services": 59,
+      "coverage_run_mean": 0.8672506738544474,
+      "empty_empty": 42,
+      "f1_run_mean": 0.0,
+      "method": "no_additional"
+    },
+    {
+      "censored_services": 59,
+      "coverage_run_mean": 0.8672506738544474,
+      "empty_empty": 42,
+      "f1_run_mean": 0.0,
+      "method": "reverse_one_hop"
+    },
+    {
+      "censored_services": 59,
+      "coverage_run_mean": 0.8672506738544474,
+      "empty_empty": 42,
+      "f1_run_mean": 0.0,
+      "method": "reverse_reachable"
+    },
+    {
+      "censored_services": 59,
+      "coverage_run_mean": 0.8672506738544474,
+      "empty_empty": 42,
+      "f1_run_mean": 0.0,
+      "method": "temporal_risk"
+    }
+  ],
+  "health_controls": {
+    "after_recovery_plus_30s": {
+      "alarm_incidents": 0,
+      "end_ms": 1795846380000,
+      "false_alarms_per_observed_hour": 0.0,
+      "has_false_alarm": false,
+      "observed_hours": 0.016666666666666666,
+      "run_id": "cct-probe-cct10-test-20261128c-02",
+      "start_ms": 1795846295000,
+      "unknown_windows": 5
+    },
+    "before_injection": {
+      "alarm_incidents": 1,
+      "end_ms": 1795846230000,
+      "false_alarms_per_observed_hour": 37.89473684210526,
+      "has_false_alarm": true,
+      "observed_hours": 0.02638888888888889,
+      "run_id": "cct-probe-cct10-test-20261128c-02",
+      "start_ms": 1795846115000,
+      "unknown_windows": 4
+    }
+  },
+  "label_counts": {
+    "true_negative": 478,
+    "true_positive": 16,
+    "unknown_or_censored": 36
+  },
+  "nonempty_no_additional_cutoffs": 11,
+  "observed_deadline_reasons": {
+    "reference requests still in flight": 7
+  },
+  "phase_latency": [
+    {
+      "end_utc": "2026-11-28T06:10:33.891Z",
+      "median_ms": 0.274,
+      "n": 5415,
+      "phase": "healthy",
+      "start_utc": "2026-11-28T06:08:32.845609Z"
+    },
+    {
+      "end_utc": "2026-11-28T06:11:03.900Z",
+      "median_ms": 106.93,
+      "n": 1350,
+      "phase": "injection_observed",
+      "start_utc": "2026-11-28T06:10:34.943Z"
+    },
+    {
+      "end_utc": "2026-11-28T06:13:04.246888Z",
+      "median_ms": 0.282,
+      "n": 5400,
+      "phase": "recovery",
+      "start_utc": "2026-11-28T06:11:03.900Z"
+    }
+  ],
+  "receipt_sha256": "c93f64c14eda68259229a748eb349aba62893c1a15f84dafc5c558e494c77109",
+  "run_id": "cct-probe-cct10-test-20261128c-02",
+  "target": "productcatalogservice"
+}

@@ -119,3 +119,7 @@ Merul's handoff reproduces correctly from the measured archive and matches the C
 ### CCT-07 host readiness — November 27, 2026
 
 Maitreya installed the pinned native Chaos Mesh 2.8.8 controller/daemon and constrained experiments to the application namespace. A disposable 10-second delay verified injection, automatic recovery and cleanup; all 28 authorization checks and 23 admission dry runs passed. Komalika has the initial bounded NetworkChaos pilot permissions and monitoring access. See the [setup, limits and pilot commands](CCT-07_CHAOS_SETUP.md) and [sanitized evidence](evidence/CCT-07-chaos-mesh-setup.json). CCT-07 still requires her three recorded Boutique fault/recovery runs. CCT-08's experiment runner remains open.
+
+### November 28 saved-run demo and independent review
+
+Merul packaged the final delay trial and independently verified the November 25 replay and paired overhead arithmetic. The public demo covers the verified graph, phase/control health timeline and recovery. The hash-checked, five-second service-label view requires the private November 28 handoff. The new 30-second candidate awaits joint review and fresh runs. [Reproduction and ownership](CCT-11_SAVED_RUN.md)

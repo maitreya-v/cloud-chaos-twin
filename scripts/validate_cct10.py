@@ -7,6 +7,7 @@ No empirical completion is asserted until independently reconciled inputs pass.
 from collections import defaultdict
 import datetime as dt
 import gzip
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -99,6 +100,8 @@ def main():
     p.add_argument("--after-pair",type=Path,required=True)
     p.add_argument("--campaign",default="20261127")
     p.add_argument("--reuse-healthy",type=Path,help="Reconcile an existing passed healthy run; retain thresholds unchanged and reserve fresh fault IDs")
+    p.add_argument("--near-limit", action="store_true",
+                   help="Reserve a fresh campaign for the 30-second near-limit comparison")
     a=p.parse_args()
     a.after_pair=a.after_pair.resolve()
     paired=load(a.after_pair/"receipt.json")
@@ -114,6 +117,18 @@ def main():
         a.reuse_healthy=a.reuse_healthy.resolve()
         retained=retained_training(a.reuse_healthy,lock['image'])
         plan['train']=[retained[0]['run_id']]
+    if a.near_limit:
+        previous = load(ROOT/"docs/evidence/CCT-10-validation-20261128.json")["runs"]
+        if set(plan["test"] + plan["validation"]) & previous.keys():
+            raise ValueError("Reserve new validation and test IDs for the near-limit comparison")
+        sources = ("analytics/forecast.py", "analytics/health.py", "analytics/evaluate.py",
+                   "observability/live_windows.py", "scripts/validate_cct10.py")
+        save(directory/"near-limit-plan.json", {
+            "frozen_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "split": plan,
+            "method": "near_limit", "score_threshold": 0.8, "horizon_ms": 30000,
+            "outcome_policy": "observed-pending-v2", "comparators": "all five existing methods",
+            "implementation_sha256": {f: hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in sources},
+        })
     save(directory/"split.json",plan)
     receipt={"passed":False,"actor":"owner-assisted validation","paired_evidence":str(a.after_pair.relative_to(ROOT)),
              "split":plan,"runs":{},"restoration_errors":[],"teammate_signoff_recorded":False}
@@ -125,7 +140,7 @@ def main():
         reference.install();reference.connect();website_ready()
         def collect(run,mode,calibration=None):
             out=directory/"runs"/run
-            observer=LiveWindows(calibration)
+            observer=LiveWindows(calibration, near_limit=a.near_limit)
             result=capture.run_protocol(run,out,profile="balanced",mode=mode,reference=reference,observer=observer)
             receipt["runs"][run]={"passed":result["passed"],"coverage_review":result.get("coverage_review"),"error":result.get("error")}
             save(directory/"progress.json",receipt)
@@ -168,6 +183,14 @@ def main():
             save(out/"prospective-evaluations.json",evaluations)
             if not evaluations:raise ValueError("No timely prospective decisions were recorded for "+run)
             save(out/"prospective-summary.json",aggregate(evaluations))
+            if a.near_limit:
+                comparison = [evaluate(prediction, independent, frozen["native"],
+                              "independent Envoy upstream-completion ledger and HCM counters",
+                              "productcatalogservice", frozen["independent_reference"], True)
+                              for prediction in observer.predictions]
+                save(out/"near-limit-evaluations.v2.json", comparison)
+                save(out/"near-limit-summary.v2.json", [row for row in aggregate(comparison)
+                                                       if row["horizon_ms"] == 30000])
             latency=phase_latency(out)
             receipt["runs"][run]["effect_and_recovery_passed"]=latency["effect_and_recovery_passed"]
             if not latency["effect_and_recovery_passed"]:raise ValueError("Fault effect/recovery latency did not pass its declared gate")

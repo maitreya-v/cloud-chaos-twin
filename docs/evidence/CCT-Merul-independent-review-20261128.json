@@ -1,0 +1,47 @@
+{
+  "complete_windows": 0,
+  "first_pod_gauge_ns_after_last_window_end": 20198987000,
+  "five_second_intervals": 1,
+  "original_receipt_checked": true,
+  "paired_tracing_overhead": {
+    "mean_vm_cpu_cores": {
+      "off": 0.256,
+      "on": 0.306,
+      "percent_change": 19.531249999999996
+    },
+    "p95_ms": {
+      "off": 21,
+      "on": 32,
+      "percent_change": 52.38095238095238
+    },
+    "peak_vm_working_set_bytes": {
+      "off": 3673444352,
+      "on": 3856375808,
+      "percent_change": 4.979834685678669
+    },
+    "requests_per_second": {
+      "off": 1.1066649289518868,
+      "on": 1.1111005304106323,
+      "percent_change": 0.40080799008841483
+    }
+  },
+  "partial_service_windows": 10,
+  "pod_gauge_points": 22,
+  "replay_availability_delay_ms": [
+    69934085,
+    69934122
+  ],
+  "request_range": [
+    1,
+    13
+  ],
+  "review_scope": "recorded shopping probe before independent coverage join",
+  "run_id": "cct-probe-merul-261125052110-5d9e-measured",
+  "server_spans": 36,
+  "services": 10,
+  "source_counts": {
+    "logs": 14,
+    "metrics": 42,
+    "spans": 36
+  }
+}
