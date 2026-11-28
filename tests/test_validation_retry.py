@@ -1,9 +1,11 @@
 import json
+import copy
 from pathlib import Path
 import tempfile
 import unittest
 
 from scripts.validate_cct10 import retained_training
+from observability.reference_control import assert_same_templates
 
 
 class RetainedTrainingTests(unittest.TestCase):
@@ -39,3 +41,11 @@ class RetainedTrainingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as root:
             _,source=self.archive(root)
             with self.assertRaises(FileNotFoundError):retained_training(source,'pinned-image')
+
+    def test_training_environment_cannot_silently_change_on_retry(self):
+        before={'frontend':{'spec':{'template':{'spec':{'containers':[{'image':'immutable-a','resources':{'cpu':'200m'}}]}}}}}
+        assert_same_templates(copy.deepcopy(before),before)
+        for key,value in (('image','immutable-b'),('resources',{'cpu':'400m'})):
+            current=copy.deepcopy(before)
+            current['frontend']['spec']['template']['spec']['containers'][0][key]=value
+            with self.assertRaisesRegex(ValueError,'template differs'):assert_same_templates(current,before)

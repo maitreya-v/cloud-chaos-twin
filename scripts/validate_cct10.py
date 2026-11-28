@@ -117,7 +117,8 @@ def main():
     save(directory/"split.json",plan)
     receipt={"passed":False,"actor":"owner-assisted validation","paired_evidence":str(a.after_pair.relative_to(ROOT)),
              "split":plan,"runs":{},"restoration_errors":[],"teammate_signoff_recorded":False}
-    reference=ReferenceSession(directory,a.session_id,lock["image"])
+    expected_original=load(a.reuse_healthy.parent.parent/'reference-state.json')['original_deployments'] if retained else None
+    reference=ReferenceSession(directory,a.session_id,lock["image"],expected_original)
     spec=importlib.util.spec_from_file_location("cct_capture",ROOT/"scripts/cct10_pilot.py")
     capture=importlib.util.module_from_spec(spec);spec.loader.exec_module(capture)
     try:

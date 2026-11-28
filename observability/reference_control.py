@@ -17,14 +17,22 @@ from observability.paired import KUBE, ROOT, get, kube, ready, save, quiescent
 from observability.reference import PORTS, DATA_PORT, ADMIN_PORT, configuration, sidecar
 
 
+def assert_same_templates(current,expected):
+    if set(current)!=set(expected):raise ValueError('Retained training application roster differs')
+    for service in expected:
+        if current[service]['spec']['template']!=expected[service]['spec']['template']:
+            raise ValueError('Retained training application template differs: '+service)
+
+
 class ReferenceSession:
-    def __init__(self,directory,session_id,image):
+    def __init__(self,directory,session_id,image,expected_original=None):
         self.directory=Path(directory);self.session_id=session_id;self.image=image
         self.original={};self.services={};self.expected={};self.attempted=[];self.changed_services=[]
         self.processes=[];self.threads=[];self.logs=None;self.log_lock=threading.Lock()
         self.log_counts={s:0 for s in PORTS};self.pods={};self.admin={};self.errors=[]
         self.event_counts={s:{"DownstreamStart":0,"DownstreamEnd":0} for s in PORTS}
         self.observations=[]
+        self.expected_original=expected_original
 
     def state(self):
         save(self.directory/"reference-state.json",{"session_id":self.session_id,"image":self.image,
@@ -56,6 +64,7 @@ class ReferenceSession:
             if env.get("ENABLE_TRACING")!="1":raise RuntimeError("Tracing is not restored: "+service)
             self.original[service]=d
         if set(self.original)!=set(PORTS):raise RuntimeError("Incomplete application roster")
+        if self.expected_original is not None:assert_same_templates(self.original,self.expected_original)
         pods=get(["-n","cct-app","get","pods","-o","json"])["items"]
         if any(p["metadata"]["name"].startswith("cct-baseline-") for p in pods):
             raise RuntimeError("A paired benchmark is still active")

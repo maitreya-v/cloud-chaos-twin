@@ -153,6 +153,23 @@ class AnalyticsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'matching'):
             aggregate([first,other])
 
+    def test_observed_pending_does_not_backdate_confirmed_onset_or_hide_real_gaps(self):
+        rows=[dict(r,ready=True,errors=0,p95_ms=50 if r['service']=='checkoutservice' and r['end_ms']>=BASE+35000 else 10) for r in self.windows]
+        def score(data,pending):
+            result=evaluate(self.prediction(),data,self.calibration,'synthetic observed latency',allow_observed_pending=pending)
+            return result,next(f for f in result['forecasts'] if f['method']=='reverse_one_hop' and f['horizon_ms']==10000)
+        strict,old=score(rows,False);supplement,new=score(rows,True)
+        self.assertIn('checkoutservice',old['censored'])
+        self.assertEqual(new['onset_ms'],{'checkoutservice':BASE+40000})
+        self.assertEqual(new['signed_warning_ms'],{'checkoutservice':9000})
+        self.assertEqual((new['tp'],new['fp'],new['fn']),(1,0,0))
+        gap=[r for r in rows if not (r['service']=='checkoutservice' and r['run_id']=='synthetic-test' and r['end_ms']==BASE+35000)]
+        self.assertIn('checkoutservice',score(gap,True)[1]['censored'])
+        low=[dict(r,requests=19) if r['service']=='checkoutservice' and r['end_ms']==BASE+35000 else r for r in rows]
+        self.assertIn('checkoutservice',score(low,True)[1]['censored'])
+        supplement['cutoff_ms']+=1
+        with self.assertRaisesRegex(ValueError,'matching'):aggregate([strict,supplement])
+
     def test_aggregation_weights_runs_and_rejects_mixed_evidence(self):
         e = evaluate(self.prediction(), self.windows, self.calibration, 'synthetic-probes')
         second_cutoff = copy.deepcopy(e)
