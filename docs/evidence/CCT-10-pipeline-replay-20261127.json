@@ -1,0 +1,183 @@
+{
+  "artifact_bundle": {
+    "bytes": 8208473,
+    "file_manifest_sha256": "676f4a53abab744d01850e8577c62f09dbd825f851627d690c12c9267bd97c9c",
+    "filename": "cct10-pilot-20261127-02-handoff.zip",
+    "sha256": "d077f89bd394df72d6124b7cbdd8ca938e29af5108438a5f1df3f76d26740f34"
+  },
+  "cct10_complete": false,
+  "cleanup": {
+    "all_relevant_pods_ready": true,
+    "boutique_private_https_status": 200,
+    "broker_data_retained": true,
+    "broker_oom_killed": false,
+    "broker_stopped": true,
+    "health_unchanged_from_before_spark": true,
+    "monitoring_targets": {
+      "cct-collector": "up",
+      "cct-service": "up"
+    },
+    "verified_at": "2026-11-28T04:09:43.743613+00:00"
+  },
+  "duplicates_removed": {
+    "logs": 0,
+    "metrics": 0,
+    "spans": 0
+  },
+  "execution_date_local": "2026-11-27",
+  "first_replay_seconds": 21.245333041995764,
+  "graph": {
+    "distinct_directed_edges": 14,
+    "missing_parent_spans": 0,
+    "services": 10,
+    "spans": 6492,
+    "traces": 447
+  },
+  "independent_coverage_verified": false,
+  "new_source_sha256": {
+    "ingestion/compose.pilot.yaml": "970d5eb92defd7a8a0543bff174d45bbf93191da421e4b4e6a73934d7f3ca28c",
+    "ingestion/pilot.py": "f8061636d81e5c9fd2317f0dd812a43f3a9e799721fea35a8e771b9e60bb6c0d",
+    "processing/verify_pilot.py": "6904011302c0ba2d2b65ce662a0258e1899d5788fb6096177a177dc90411e8d9"
+  },
+  "parquet_bytes": {
+    "edge_windows": 11869,
+    "lineage": 207566,
+    "log_windows": 3390,
+    "logs": 107676,
+    "metric_deltas": 17145,
+    "metric_windows": 19796,
+    "metrics": 164478,
+    "raw_experiments": 8803,
+    "raw_telemetry": 561658,
+    "service_windows": 17641,
+    "spans": 1204115
+  },
+  "pipeline_base_revision": "951be0bdb23168b823aeb82fcf61d95c561fdbcb",
+  "publish": {
+    "acknowledged": {
+      "cct.experiments": 1,
+      "cct.logs": 2,
+      "cct.metrics": 995,
+      "cct.traces": 2685
+    },
+    "archive_sha256": "4e99f6458029cb23a7aea39b0b758e1baf2028f18240744a1ecd2915868c709c",
+    "last_acknowledged_end_offsets": {
+      "cct.experiments:2": 1,
+      "cct.logs:2": 2,
+      "cct.metrics:2": 995,
+      "cct.traces:2": 2685
+    },
+    "run_id": "cct-probe-cct10-20261127-02",
+    "seconds": 3.6943149159196764,
+    "synthetic": false
+  },
+  "rebuild_seconds": 9.432518916903064,
+  "restart_check": {
+    "all_parquet_files_unchanged": true,
+    "passed": true,
+    "receipt_unchanged": true,
+    "verified_at_ms": 1795838707142
+  },
+  "runtime": {
+    "cpu": "Apple M5",
+    "driver_heap": "1g",
+    "java": {
+      "package": "OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.21.1_2.tar.gz",
+      "release": "jdk-17.0.21.1+2",
+      "verified_sha256": "2a88ccb044a8fb00957be93245da6357c11b55717511509d147cbcc5d93b2109"
+    },
+    "kafka": {
+      "architecture": "arm64",
+      "memory_limit_bytes": 1073741824,
+      "nano_cpus": 1000000000,
+      "ports": {
+        "19092/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "19092"
+          }
+        ]
+      },
+      "repo_digests": [
+        "apache/kafka@sha256:4ceccc577f03f51f6af8dbfda55194d0d892f4fa7913ffbded567ce3895622ed"
+      ]
+    },
+    "kafka_python": "2.2.15",
+    "logical_cpus": 10,
+    "memory_bytes": 17179869184,
+    "os": "Darwin",
+    "os_version": "27.2",
+    "pyarrow": "21.0.0",
+    "python": "3.13.15",
+    "spark": "4.0.1",
+    "spark_master": "local[2]"
+  },
+  "source_run_id": "cct-probe-cct10-20261127-02",
+  "source_sha256": {
+    "fault.recovered.json": "0eed145c71ece6bf8fc7badf2f4fbe8cfda52885e08b1c0080cddc3024fa88ba",
+    "fault.request.json": "09b1633235569807564b6147c755a9a5a389334433a4f6a86138dbcb5e131059",
+    "pods.jsonl": "c6784704263b37e8df9b7259f416f40fa730d5a5fa25959046b05f47ed0369d0",
+    "prometheus.jsonl": "920a21ad66a32920d2da908bba5ad8da457112e124f3f496c61d75296cfc5c75",
+    "receipt.json": "2cb7ae9dd0725e3dbd77854f548847edc837b6cd0810e2f6340b8f9d4a5bb009",
+    "signals/logs.json": "08c6404c686319f6d7b407fc7c4bd1548e26c5ee0171adf744163ac5c31582e3",
+    "signals/metrics.json": "3f667667f747dda97053df1261b4de44cae1cfe2d91fb66ce5b2661943facc1f",
+    "traces.jsonl.gz": "014cee405b86a4fd0d5d7571045161d9f5b998c00b79342bb243d2e84be64a31"
+  },
+  "teammate_acceptance_recorded": false,
+  "validation_id": "cct10-fault-pipeline-replay-20261127-01",
+  "verification": {
+    "all_normalized_content_and_availability_match": true,
+    "archive_sha256": "4e99f6458029cb23a7aea39b0b758e1baf2028f18240744a1ecd2915868c709c",
+    "broker_messages": 3683,
+    "calibration_eligible_windows": 0,
+    "complete_windows": 0,
+    "controller_timestamp_precision_ms": 1000,
+    "experiment_isolated": true,
+    "fresh_ready_zero_restart_windows": 399,
+    "full_rebuild_matches": true,
+    "fully_contained_measured_windows": 399,
+    "historical_live_forecast_valid": false,
+    "limits": [
+      "Raw replay spans include warm-up; measured window comparison excludes both partial boundary windows.",
+      "Sampled SERVER projection and selected metrics/logs are not independent backend accounting.",
+      "This is an offline replay; no calibration, impact-label acceptance or live warning claim."
+    ],
+    "lineage_status_counts": {
+      "linked": 5951,
+      "root": 541
+    },
+    "maximum_measured_p95_difference_ms": 0.0,
+    "measured_window_counts_match_source": true,
+    "passed": true,
+    "replay_availability_not_backdated": true,
+    "run_id": "cct-probe-cct10-20261127-02",
+    "source_window_sha256": "09dc9647b85533e3272bd7239dba5ed004f516ca367ff84d1f5f24bf4ebd23b1",
+    "table_counts": {
+      "edge_windows": 663,
+      "lineage": 6492,
+      "log_windows": 66,
+      "logs": 495,
+      "metric_deltas": 1006,
+      "metric_windows": 1006,
+      "metrics": 1006,
+      "raw_experiments": 1,
+      "raw_telemetry": 3682,
+      "service_windows": 591,
+      "spans": 6492
+    },
+    "table_logical_sha256": {
+      "edge_windows": "c0f8248bab7915bc0f29279e4fb5a8ffc2918359727c9ef46a6a5ac50fb46118",
+      "lineage": "7889f4edf4015679890aa23d996eb4286ec4e174addeca56bb95283415064c9e",
+      "log_windows": "6f04e5817aedebc4b5022af709e746927a6889056e45a9f84ea48618bed29430",
+      "logs": "38fc9eabb050e66022777f836d8e112d8fd97285432205c614d2431c3c7f992b",
+      "metric_deltas": "ca175e48d648a4cb884929c0aae44a84ea710794e85d065a43216dd749da183a",
+      "metric_windows": "909f9da3814c06b1810aa6129c5e37bcf09f1aeb8fa99aaf7669c90f2f42ac92",
+      "metrics": "63a79a5f831103ed471c20bf9bbf1e29c4d1dc83e6d2d1658798f17f4af89fa2",
+      "raw_experiments": "937447fc99cbc31d20664b296b7a702ac8a761d81fe156203a082036d403d705",
+      "raw_telemetry": "3e0d0690dcb1368e314ea5e425230296d30b79e5ba83f82588489a4fd7fd6201",
+      "service_windows": "9f62de1504e68b7872d934df599f3104d2aa57fd7f670e8d5ac4e79e76b39715",
+      "spans": "a39728ab660bb7be430532f59196a609c1018b1e9c83ac1f0312a9f67ac1db56"
+    },
+    "verified_at_ms": 1795838845273
+  }
+}
