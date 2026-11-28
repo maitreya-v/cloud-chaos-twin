@@ -43,6 +43,7 @@ def main():
         e.add_argument('--' + name, type=Path, required=True)
     e.add_argument('--outcome-source', required=True)
     e.add_argument('--root-target', help='Verified initiating intervention, used only in scoring')
+    e.add_argument('--outcome-calibration',type=Path,help='Separately fitted reference-channel thresholds using the same frozen protocol/split')
     a = commands.add_parser('aggregate', help='Produce averages with equal weight per run')
     a.add_argument('evaluations', type=Path, nargs='+')
     a.add_argument('--output', type=Path, required=True)
@@ -87,7 +88,8 @@ def main():
             print(args.output.resolve())
         elif args.command == 'evaluate':
             result = evaluate(read_json(args.prediction), table(args.outcomes), read_json(args.calibration),
-                              args.outcome_source, args.root_target)
+                              args.outcome_source, args.root_target,
+                              read_json(args.outcome_calibration) if args.outcome_calibration else None)
             write_json(args.output, result)
             print(args.output.resolve())
         elif args.command == 'aggregate':

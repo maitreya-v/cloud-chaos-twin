@@ -1,5 +1,6 @@
 """Score frozen predictions against a separate, finalized outcome channel."""
 from statistics import mean
+from math import isfinite
 
 from .health import classify, latest, validate_windows
 from ingestion.contract import digest
@@ -31,7 +32,23 @@ def control_alarms(windows, run_id, services, start_ms, end_ms, calibration):
                 false_alarms_per_observed_hour=incidents / hours if hours else None)
 
 
-def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=None):
+def observed_pending(index,service,at,calibration):
+    """A first breach with two observed windows is not a telemetry gap.
+
+    This changes only supplementary outcome censoring, never the health rule,
+    cutoff eligibility or the confirmed-onset timestamp.
+    """
+    for end in (at-calibration['width_ms'],at):
+        r=index.get((service,end))
+        if (not r or r['complete'] is not True or r['ready'] is not True or r['restart_delta']!=0 or
+            r['requests'] is None or r['requests']<calibration['min_requests'] or
+            r['errors'] is None or not 0<=r['errors']<=r['requests'] or
+            r['p95_ms'] is None or not isfinite(r['p95_ms'])):return False
+    r=index[service,at];limit=calibration['latency_limits_ms'].get(service)
+    return limit is not None and (r['p95_ms']>limit or r['errors']/r['requests']>=calibration['error_limit'])
+
+
+def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=None, outcome_calibration=None,allow_observed_pending=False):
     if not isinstance(outcome_source, str) or not outcome_source.strip():
         raise ValueError('identify the independently collected outcome source')
     if prediction['calibration_sha256'] != digest(calibration):
@@ -41,12 +58,16 @@ def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=
     if root_target is not None and root_target not in prediction['services']:
         raise ValueError('root target is outside declared roster')
     width, cutoff = calibration['width_ms'], prediction['cutoff_ms']
+    outcome_calibration=outcome_calibration or calibration
+    if any(outcome_calibration[k]!=calibration[k] for k in ('split','width_ms','min_requests','min_windows','error_limit')):
+        raise ValueError('independent outcome calibration must use the same frozen protocol and run split')
     validate_windows(outcome_rows, width)
     rows = [r for r in outcome_rows if r['run_id'] == prediction['run_id']]
     # Finalized outcomes may arrive later. Select the final revision, then evaluate event time.
     final = latest(rows, max((r['available_ms'] for r in rows), default=0))
     event_rows = [dict(r, available_ms=r['end_ms']) for r in final]
-    baseline = classify(event_rows, prediction['run_id'], prediction['eligible'], cutoff, calibration)
+    outcome_index={(r['service'],r['end_ms']):r for r in event_rows}
+    baseline = classify(event_rows, prediction['run_id'], prediction['eligible'], cutoff, outcome_calibration)
     result = []
     for forecast in prediction['forecasts']:
         onset, censored = {}, set()
@@ -56,8 +77,10 @@ def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=
                 continue
             # Any unknown interval before onset prevents an exact new-onset label.
             for at in range((cutoff // width + 1) * width, cutoff + forecast['horizon_ms'] + 1, width):
-                status = classify(event_rows, prediction['run_id'], [s], at, calibration)[s]
+                status = classify(event_rows, prediction['run_id'], [s], at, outcome_calibration)[s]
                 if status == 'unknown':
+                    if allow_observed_pending and observed_pending(outcome_index,s,at,outcome_calibration):
+                        continue
                     censored.add(s)
                     break
                 if status == 'affected':
@@ -98,6 +121,8 @@ def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=
     return dict(schema_version='1.0', run_id=prediction['run_id'], cutoff_ms=cutoff,
                 synthetic=prediction['synthetic'], outcome_source=outcome_source,
                 calibration_sha256=prediction['calibration_sha256'],
+                outcome_calibration_sha256=digest(outcome_calibration),
+                outcome_unknown_policy='observed-pending-v2' if allow_observed_pending else 'strict-unknown-v1',
                 partition='test' if prediction['run_id'] in calibration['split']['test'] else 'validation',
                 outcome_sha256=digest(sorted(final, key=lambda r: (r['service'], r['end_ms']))),
                 historical_live_forecast_valid=False, roots=roots, forecasts=result)
@@ -107,7 +132,8 @@ def aggregate(evaluations):
     """Average cutoffs within a run first, so long runs do not dominate the result."""
     if not evaluations:
         raise ValueError('no evaluations to aggregate')
-    if len({(e['synthetic'], e['partition'], e['calibration_sha256']) for e in evaluations}) != 1:
+    if len({(e['synthetic'], e['partition'], e['calibration_sha256'],e.get('outcome_calibration_sha256',e['calibration_sha256']),
+             e.get('outcome_unknown_policy','strict-unknown-v1')) for e in evaluations}) != 1:
         raise ValueError('aggregate only matching provenance, partition and frozen calibration')
     groups, seen = {}, set()
     for e in evaluations:

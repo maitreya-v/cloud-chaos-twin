@@ -1,0 +1,36 @@
+{
+  "frozen_at_ms": 1795845799646,
+  "status": "supplementary protocol; original conservative evaluations retained",
+  "identified_on_validation_run": "cct-probe-cct10-validation-20261128c-01",
+  "reserved_test_runs": [
+    "cct-probe-cct10-test-20261128c-02"
+  ],
+  "problem": "A fully observed first latency breach is classified unknown while waiting for persistence; treating it as missing telemetry censors every subsequent latency onset.",
+  "rules": [
+    "Do not change predictions, thresholds, eligible-at-cutoff services, source windows, or original availability times.",
+    "Baseline outcome must still be healthy at cutoff under the frozen independent calibration.",
+    "Rule-confirmed onset is the first subsequent affected window; never backdate it to the first breach.",
+    "An intermediate unknown with complete ready=true restart_delta=0 requests>=20 finite p95 and valid errors is pending confirmation, not absent measurement; continue scanning.",
+    "Unknown due absent/incomplete/low-volume/readiness/restart evidence still censors the service.",
+    "Report TP/FP/FN and signed emission-relative timing; no claimed physical onset or generalized forecasting accuracy.",
+    "Retain and compare the original conservative results and disclose this validation-informed outcome distinction."
+  ],
+  "original_intended_test_runs": [
+    "cct-probe-cct10-test-20261128c-01",
+    "cct-probe-cct10-test-20261128c-02"
+  ],
+  "exploratory_only_runs": [
+    "cct-probe-cct10-validation-20261128c-01",
+    "cct-probe-cct10-test-20261128c-01"
+  ],
+  "scope_amended_at_ms": 1795845821653,
+  "scope_reason": "Initial written plan followed test-01 injection, so that run is exploratory for this supplementary analysis. Only test-02 remains held out.",
+  "implementation_bound_at_ms": 1795845947583,
+  "implementation_sha256": {
+    "analytics/evaluate.py": "40786e5af45936a6ada4724aba30a5a5aacf1d3157573ef51e02e272458246b8",
+    "scripts/evaluate_confirmed_cct10.py": "8b0a7c0b4e748f98de7b35e33e8c91d82c7220dabafb3940c808784b667f2f40"
+  },
+  "implementation_note": "Pending confirmation requires both current and preceding windows to be fully observed; any missing/low-volume evidence still censors.",
+  "implementation_git_revision": "635796532e1796f17122e36f446ce11b001de95a",
+  "implementation_revision_recorded_at_ms": 1795846056566
+}

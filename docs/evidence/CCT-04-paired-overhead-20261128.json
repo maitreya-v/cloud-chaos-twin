@@ -1,0 +1,154 @@
+{
+  "checks": {
+    "off": {
+      "failures": 0,
+      "locust_errors": 0,
+      "measured_seconds": 900.0014132039978,
+      "minimum_vm_memory_headroom_percent": 55.8,
+      "requests": 996,
+      "sample_count": 179
+    },
+    "on": {
+      "failures": 0,
+      "locust_errors": 0,
+      "measured_seconds": 900.0085704490011,
+      "minimum_vm_memory_headroom_percent": 53.6,
+      "requests": 1000,
+      "sample_count": 179
+    }
+  },
+  "executed_runner_revision": "3a49e65",
+  "limits": [
+    "One sequential off/on pair; no statistical or long-term causal claim.",
+    "Runtime tracing/export was disabled, not the instrumented binaries, monitoring stack or entire logs pipeline.",
+    "CPU and memory describe the Linux VM, not all macOS processes.",
+    "Five closed-loop users do not give an identical request arrival sequence."
+  ],
+  "matching": {
+    "measured_seconds": 900,
+    "monitoring_stack_retained": true,
+    "reference_proxies_present": false,
+    "same_instrumented_images": true,
+    "seed": 42,
+    "spawn_per_second": 1,
+    "users": 5,
+    "warmup_seconds": 120
+  },
+  "measured_receipt": {
+    "actor": "owner-assisted paired measurement",
+    "comparison": {
+      "mean_vm_cpu_cores": {
+        "off": 0.256,
+        "on": 0.306,
+        "percent_change": 19.531249999999996
+      },
+      "p95_ms": {
+        "off": 21,
+        "on": 32,
+        "percent_change": 52.38095238095238
+      },
+      "peak_vm_working_set_bytes": {
+        "off": 3673444352,
+        "on": 3856375808,
+        "percent_change": 4.979834685678669
+      },
+      "requests_per_second": {
+        "off": 1.1066649289518868,
+        "on": 1.1111005304106323,
+        "percent_change": 0.40080799008841483
+      }
+    },
+    "finished_at": "2026-11-28T05:12:58.244484+00:00",
+    "frontend_recovered": true,
+    "passed": true,
+    "restoration_errors": [],
+    "runs": {
+      "off": {
+        "directory": "outputs/baselines/20261128T043602Z",
+        "summary": {
+          "mean_vm_cpu_cores": 0.256,
+          "measured_workload_sha256": "a6028d6244729d6b4fc2a3bf708a38224544ea3ba7e869a36a7995d0ff624850",
+          "p95_ms": 21,
+          "passed": true,
+          "peak_vm_working_set_bytes": 3673444352,
+          "requests_per_second": 1.1066649289518868,
+          "seed": 42,
+          "started_utc": 1795840688.6381867,
+          "target_seconds": 900,
+          "upstream_workload_sha256": "476beb8b4e8ab5fe46d511515cd915b27ef3c7e1d818d482c2301ac2813dd9f3",
+          "users": 5,
+          "warmup_seconds": 120
+        }
+      },
+      "on": {
+        "directory": "outputs/baselines/20261128T045539Z",
+        "summary": {
+          "mean_vm_cpu_cores": 0.306,
+          "measured_workload_sha256": "a6028d6244729d6b4fc2a3bf708a38224544ea3ba7e869a36a7995d0ff624850",
+          "p95_ms": 32,
+          "passed": true,
+          "peak_vm_working_set_bytes": 3856375808,
+          "requests_per_second": 1.1111005304106323,
+          "seed": 42,
+          "started_utc": 1795841864.9071326,
+          "target_seconds": 900,
+          "upstream_workload_sha256": "476beb8b4e8ab5fe46d511515cd915b27ef3c7e1d818d482c2301ac2813dd9f3",
+          "users": 5,
+          "warmup_seconds": 120
+        }
+      }
+    },
+    "scope": "runtime tracing/export and derived spanmetrics; same instrumented images, monitoring stack retained",
+    "started_at": "2026-11-28T04:34:15.242719+00:00"
+  },
+  "raw_bundle": {
+    "bytes": 2712365,
+    "path": "outputs/overhead/cct-paired-20261128-handoff.zip",
+    "sha256": "7c4b6e74ab570f926a55f5c696db9e34561dbd2f4a063b158927a4503fca797c"
+  },
+  "single_pair_descriptive": true,
+  "source_hashes": {
+    "outputs/baselines/20261128T043602Z/events.json": "84bedc083d4766d72e684481a76dae69eb0f2e707d461bce2b0fa4aa6c12dc7c",
+    "outputs/baselines/20261128T043602Z/final.json": "0b35063b35c2b59854ab6ee9746a72cf29cf64019de5353061c4635b1dcc6d01",
+    "outputs/baselines/20261128T043602Z/image-lock.json": "4a0be3e1b6ff3a8c51e1ecacd7f9c95ab4514a83b6ddfb7a5ef72095a006b1d5",
+    "outputs/baselines/20261128T043602Z/initial.json": "187fbd7149cc0a8ae7ba9f88822694e247092e7c040c0f7dc9938f81496bbce9",
+    "outputs/baselines/20261128T043602Z/locust.log": "879258afd23efd47ff40d7fb6c012b1ac2f9da781b57a49ba299e8fa75a07ea0",
+    "outputs/baselines/20261128T043602Z/locust/baseline-start.json": "6c323f616bd10d2b7eee1bd04aed1e72430f06818da58c302651f889d1479eab",
+    "outputs/baselines/20261128T043602Z/locust/baseline.json": "8566ae81ee7a51b82d67a4fc6d5190ef87378945bf7f1ef8dd108ff8bae368ca",
+    "outputs/baselines/20261128T043602Z/locust/exit-code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "outputs/baselines/20261128T043602Z/locust/progress.json": "8566ae81ee7a51b82d67a4fc6d5190ef87378945bf7f1ef8dd108ff8bae368ca",
+    "outputs/baselines/20261128T043602Z/locust/request-events.jsonl": "f6986a677838c1d73261f9250ba64a3c2b65bda0250c63792d324549eb138dfa",
+    "outputs/baselines/20261128T043602Z/locust/requests_exceptions.csv": "3e73e8f665731ee4e45a6a91202a31b06999f2c53240f14aee2532e0e0b42b09",
+    "outputs/baselines/20261128T043602Z/locust/requests_failures.csv": "ecadae309edce3f98facc62c31013d2720c05029732a1bb3d8f288639ffc3736",
+    "outputs/baselines/20261128T043602Z/locust/requests_stats.csv": "d940b74dbc26a3a4845fd79152a1e317dff3684dea5f78351cf8b4e34c603b9e",
+    "outputs/baselines/20261128T043602Z/locust/requests_stats_history.csv": "05183595720a8fd56ecad2b6a35ab04534473daa80d3d06e98654ee88ef8b058",
+    "outputs/baselines/20261128T043602Z/locust/warmup.json": "ad2c54e1332cd1e3b488957631ba13cf336a726886e5cdf79a128acecd16b738",
+    "outputs/baselines/20261128T043602Z/resources.jsonl": "7af41f39e8165573ffe725afe73e9d0a1b7cda31726e0d6edd7b69e8a17faef8",
+    "outputs/baselines/20261128T043602Z/run-config.json": "f511cc4c7591981bc4a980c49d96920bed7541510bc1a165e85f9f29bc4d1979",
+    "outputs/baselines/20261128T043602Z/summary.json": "1e96ee78f14d15a1d5bc7e27f20679564f7ec26a6e9ef2856df39847ae94f883",
+    "outputs/baselines/20261128T045539Z/events.json": "89dbe29651cf78e3c8d9704e1ae56db8f65dc2d36c46dc672cc43582db0aab6e",
+    "outputs/baselines/20261128T045539Z/final.json": "621a747307b723833eb25640f5460f9ee0bd51b876d92590a6f7c0a331590c30",
+    "outputs/baselines/20261128T045539Z/image-lock.json": "4a0be3e1b6ff3a8c51e1ecacd7f9c95ab4514a83b6ddfb7a5ef72095a006b1d5",
+    "outputs/baselines/20261128T045539Z/initial.json": "14faff443a939c456e9fe38172ba41b77afc9d9ee0ca1020a8d2c79a692719d7",
+    "outputs/baselines/20261128T045539Z/locust.log": "a7e8806396ee997b6553cd70c568d4bb2eabcb352e94a4facc1987daeb94f735",
+    "outputs/baselines/20261128T045539Z/locust/baseline-start.json": "e247ad5888ebe0539a5785aa442d8d436c18ebf5d1dd110cbb3b8246a9c6367b",
+    "outputs/baselines/20261128T045539Z/locust/baseline.json": "abc9cdfbfc73bdbb5ff056592f76de1e07a15efb81f91830b44ec846212a3f03",
+    "outputs/baselines/20261128T045539Z/locust/exit-code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "outputs/baselines/20261128T045539Z/locust/progress.json": "abc9cdfbfc73bdbb5ff056592f76de1e07a15efb81f91830b44ec846212a3f03",
+    "outputs/baselines/20261128T045539Z/locust/request-events.jsonl": "2f4ecedc9a4b6336cbd5431d443be0ec677989f049806f84f125616f7c1fd11a",
+    "outputs/baselines/20261128T045539Z/locust/requests_exceptions.csv": "3e73e8f665731ee4e45a6a91202a31b06999f2c53240f14aee2532e0e0b42b09",
+    "outputs/baselines/20261128T045539Z/locust/requests_failures.csv": "ecadae309edce3f98facc62c31013d2720c05029732a1bb3d8f288639ffc3736",
+    "outputs/baselines/20261128T045539Z/locust/requests_stats.csv": "add1bfff137f9a88fe9a0df004fc49e06666075ed949d4e1776e77dd6a16180c",
+    "outputs/baselines/20261128T045539Z/locust/requests_stats_history.csv": "f54cb0828a60b697aea03afb8402a572c4673d2ecf05ecdf97922d8cac7ffb1f",
+    "outputs/baselines/20261128T045539Z/locust/warmup.json": "b7bc226f1992ac8b1753efbaf45854b002c185ae67bac162756a245a530b9858",
+    "outputs/baselines/20261128T045539Z/resources.jsonl": "8c5c93d4cada0711306dda050d00895e789acf3f9187608dcc5a5b8a595fe0d2",
+    "outputs/baselines/20261128T045539Z/run-config.json": "adbd8dfd51525db24285e7f3dbde3f17a556661a388f8b60af3c36868fd96cf4",
+    "outputs/baselines/20261128T045539Z/summary.json": "96dabae3de7d38194c614b38215725d15bd6cbf551909e21856e8c72a451f5ba",
+    "outputs/overhead/20261128T043415Z/deployments.before.json": "c91b87aac4aadd1332c47b8bf4ab72fdec808ff77447c9d59cd7e8056b78dbf5",
+    "outputs/overhead/20261128T043415Z/environment.before.json": "ac568eed0a0f36f00c0df34cce5d2a5d84de53b3711a135e9233887053d177b2",
+    "outputs/overhead/20261128T043415Z/off.log": "c3921ff000e1578f96febaf4ba71f25dc5e34f06de274e517425cd0b7f7f21d4",
+    "outputs/overhead/20261128T043415Z/on.log": "c545f9ae1540ef70e4a6f0f485b47088ff832557ffa739f3d986d31aab15f90f",
+    "outputs/overhead/20261128T043415Z/receipt.json": "78dad4aaf20ed025cdfd5f8dcad79552ed7cd63dad7f7e045ef93a987950d4d3"
+  },
+  "teammate_signoff_recorded": false
+}

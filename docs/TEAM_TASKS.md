@@ -1,5 +1,36 @@
 # Team task board
 
+## Owner-run integration update — November 28, 2026
+
+The technical follow-up to the pilot is complete; these checks do not record
+personal teammate acceptance or establish generalized forecasting accuracy.
+
+- **CCT-03/04/10 coverage and calibration:** 70,200 independently reconciled
+  healthy SERVER calls; 59 qualifying healthy windows for each of ten services;
+  training-only native/reference thresholds frozen before reserved faults.
+- **CCT-07/08 repeatability:** three fresh scoped 30-second productcatalog-delay
+  trials passed effect, automatic recovery, full post-recovery observation and
+  cleanup. All three were run with owner assistance, rather than attributed to
+  Komalika personally.
+- **CCT-10 assessment:** 1,600 complete held-out service/windows; 1,548 scorable
+  native/reference labels agree and 52 remain unknown. Original prospective
+  evaluations are retained. A separately frozen final-trial outcome check gives
+  30-second F1 0.0 for all five baselines, so no successful warning is claimed.
+- **CCT-04 overhead:** matched 900-second off/on measurements passed with zero
+  failed requests; p95 21 → 32 ms. One pair describes runtime tracing/export,
+  rather than the entire monitoring stack's cost.
+- **CCT-05/06 fault replay:** the earlier real pilot passed Kafka → Spark →
+  Parquet, restart and full rebuild in [PR #16](https://github.com/maitreya-v/cloud-chaos-twin/pull/16).
+- **Shared deployment:** original templates/ports restored; 11 healthy app pods,
+  no remaining faults/reference proxies, both monitoring targets up and private
+  HTTPS responding.
+
+See [results, limitations and run IDs](CCT-10_STATUS.md),
+[validation protocol](CCT-10_VALIDATION.md),
+[paired tracing record](CCT-04_PAIRED_OVERHEAD.md) and
+[sanitized validation evidence](evidence/CCT-10-validation-20261128.json).
+Earlier dated entries below retain the status at those milestones.
+
 Update these checkboxes through pull requests. Owners are from the proposal; GitHub handles have not yet been collected, so no automatic account assignments are configured.
 
 ## Initial setup
