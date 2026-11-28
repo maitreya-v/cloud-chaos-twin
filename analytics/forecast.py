@@ -8,7 +8,8 @@ from .health import classify, latest, validate_windows
 from ingestion.contract import digest
 
 
-def predict(spans, windows, run_id, services, cutoff_ms, calibration, horizons=(10000, 30000, 60000)):
+def predict(spans, windows, run_id, services, cutoff_ms, calibration, horizons=(10000, 30000, 60000),
+            *, near_limit=False):
     if run_id in calibration['split']['train']:
         raise ValueError('prediction run overlaps calibration training runs')
     if (type(cutoff_ms) is not int or cutoff_ms < 0 or not horizons
@@ -78,10 +79,18 @@ def predict(spans, windows, run_id, services, cutoff_ms, calibration, horizons=(
         'temporal_risk': {s: weights[s] / distance[s] * (1 + anomaly[s] + trend[s])
                           for s in eligible if s in distance},
     }
+    # A prospective comparator for new runs. A currently healthy service can
+    # approach its own frozen limit before any graph neighbor is affected.
+    if near_limit:
+        methods["near_limit"] = {s: anomaly[s] for s in eligible}
     forecasts = []
     for horizon in sorted(set(horizons)):
         for method, scores in methods.items():
             threshold = 0.5 if method in ('distance_weighted', 'temporal_risk') else 0.0
+            if method == "near_limit":
+                if horizon != 30000:
+                    continue
+                threshold = 0.8
             predicted = sorted(s for s, score in scores.items() if score >= threshold)
             forecasts.append(dict(method=method, horizon_ms=horizon, predicted_new=predicted,
                                   scores=dict(sorted(scores.items())), score_threshold=threshold,

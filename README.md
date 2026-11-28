@@ -4,15 +4,19 @@
 
 Cloud Chaos Twin studies how failures spread through Online Boutique, a microservice shopping application. The project has two objectives. The first is to reconstruct which services handled a request and became unhealthy during a recorded fault. The second is to test whether signals available at a given time can predict which services will be affected next.
 
+## Reproduce the saved fault demo
+
+Open the included `docs/demo/index.html` in a browser, or run `python3 -m analytics.saved_run` from the repository root and open `outputs/cct11-demo/index.html`. The offline demo follows one real catalog-delay trial from injection to recovery, shows the verified journey graph and compares the health observations with five 30-second forecasts. [Demo and reproduction guide](docs/CCT-11_SAVED_RUN.md) · [Recorded summary](docs/demo/summary.json)
+
 ## Implementation and evidence
 
 | Component | What the team has verified | Remaining work |
 | --- | --- | --- |
 | Testbed and workload | Maitreya deployed Online Boutique on an ARM64 kind cluster and verified browsing, cart updates, and checkout. The [matched tracing pair](docs/CCT-04_PAIRED_OVERHEAD.md) passed both 15-minute measurements with zero failed requests. | Broader host/workload replication; the single pair is descriptive. |
 | Traces, metrics, and logs | The [live rollout](docs/CCT-03_TRACING_ROLLOUT.md) recovered all 15 required journey relationships. Merul independently verified the journeys and service data. The owner's new [coverage campaign](docs/CCT-10_STATUS.md) reconciled 70,200 healthy calls against an untraced request ledger and independent counters. | Teammate acceptance of new artifacts; coverage outside the measured scope. |
-| Dependency graph and baseline metrics | Mithil reproduced the graph and all 15 required journey relationships. [CCT-09 acceptance](docs/evidence/CCT-09-mithil-real.json). New healthy capture supplies 59 qualifying calibration windows for each of ten services. | Reserved-run evaluation and broader replication. |
+| Dependency graph and baseline metrics | Mithil reproduced the graph and all 15 required journey relationships. [CCT-09 acceptance](docs/evidence/CCT-09-mithil-real.json). New healthy capture supplies 59 qualifying calibration windows for each of ten services. | Replication on additional targets and workloads. |
 | Health labels and forecasting | The [owner-run validation](docs/CCT-10_STATUS.md) fitted 59 healthy windows per service and completed three reserved fault/recovery trials. Native and independent health labels agree on all 1,548 scorable held-out service/windows; 52 remain unknown. | No positive advance-warning result: final supplementary 30-second F1 is 0.0. Broader scenarios, model improvement and personal teammate acceptance remain. |
-| Processing and experiments | Param recorded successful Kafka/Spark/Parquet replay on synthetic and healthy data. The owner subsequently verified a [controlled fault replay](docs/CCT-10_PIPELINE_REPLAY.md), restart and full rebuild. Mithil's analytics produced its retrospective graph. | Teammate artifact acceptance, independent coverage/impact review and calibrated evaluation. |
+| Processing and experiments | Param recorded successful Kafka/Spark/Parquet replay on synthetic and healthy data. The owner subsequently verified a [controlled fault replay](docs/CCT-10_PIPELINE_REPLAY.md), restart and full rebuild. Mithil's analytics produced its retrospective graph. | Continuous live ingestion and processing-delay measurement. |
 
 The [deployment record](docs/CCT-02_LOCAL_DEPLOYMENT.md) documents the baseline and its timing precision. The [task board](docs/TEAM_TASKS.md) defines the acceptance criteria for each deliverable.
 
@@ -26,7 +30,9 @@ accuracy is not established.
 
 ## Repository and frozen version
 
-The public repository is [maitreya-v/cloud-chaos-twin](https://github.com/maitreya-v/cloud-chaos-twin). The tag `merul-telemetry-2026-11-24` identifies the tested telemetry implementation at commit `cfab3d0ce1af576aaa3bbba72276322c8c361c66`. The tag reproduces the November 24 offline milestone. The [November 25 integrated revision](https://github.com/maitreya-v/cloud-chaos-twin/tree/e764ca675bb8a5ce3e75bb3e7fe9e00345028adf) adds the live tracing fixes, rollout tool and independent verifier. The slides and report linked here describe the November 24 milestone. [Merged telemetry PR](https://github.com/maitreya-v/cloud-chaos-twin/pull/4) · [Presentation slides](docs/submission/Cloud-Chaos-Twin-Slides.pdf) · [Project report](docs/submission/Cloud-Chaos-Twin-Report.pdf)
+The report source and PDF builder are in `docs/submission/`. To rebuild both the eight-page report and three-slide presentation, install `reportlab==4.4.9` and run `python3 docs/submission/build_pdfs.py`.
+
+The public repository is [maitreya-v/cloud-chaos-twin](https://github.com/maitreya-v/cloud-chaos-twin). The tag `merul-telemetry-2026-11-24` identifies the tested telemetry implementation at commit `cfab3d0ce1af576aaa3bbba72276322c8c361c66`. The tag reproduces the November 24 offline milestone. The [November 25 integrated revision](https://github.com/maitreya-v/cloud-chaos-twin/tree/e764ca675bb8a5ce3e75bb3e7fe9e00345028adf) adds the live tracing fixes, rollout tool and independent verifier. The slides and report include evidence through November 28. Campaign inputs are fixed at commit `6499bd8cee286c6b485418a4f8091de2919de470`. [Merged telemetry PR](https://github.com/maitreya-v/cloud-chaos-twin/pull/4) · [Presentation slides](docs/submission/Cloud-Chaos-Twin-Slides.pdf) · [Project report](docs/submission/Cloud-Chaos-Twin-Report.pdf)
 
 ## Installation and reproduction
 

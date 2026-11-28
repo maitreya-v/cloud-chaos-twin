@@ -17,7 +17,8 @@ from observability.reference import PORTS
 
 
 class LiveWindows:
-    def __init__(self,calibration=None):
+    def __init__(self,calibration=None, *, near_limit=False):
+        self.near_limit = near_limit
         self.calibration=calibration;self.stop_event=threading.Event();self.thread=None
         self.frames=[];self.predictions=[];self.errors=[];self.windows=[];self.deadlines={}
         self.caches={"reference":{},"trace":{}}
@@ -84,7 +85,8 @@ class LiveWindows:
             while time.time_ns()//1000000<max(r["available_ms"] for r in joined):time.sleep(.001)
             cutoff=time.time_ns()//1000000
             if cutoff//5000*5000!=end:return
-            prediction=predict(self.native_rows(entries,cutoff),self.windows,self.run,list(PORTS),cutoff,self.calibration)
+            prediction=predict(self.native_rows(entries,cutoff),self.windows,self.run,list(PORTS),cutoff,self.calibration,
+                               near_limit=self.near_limit)
             prediction.update(mode="live-direct-observation",observation_frame_end_ms=end,
                 observation_verified_at_ms=now,scope="prospective owner-assisted direct-query candidate; historical validity flag retained")
             self.predictions.append(prediction)
