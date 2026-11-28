@@ -8,6 +8,9 @@ Load `.local/env`, then run `python3 scripts/cct10_pilot.py --run-id UNIQUE_ID`.
 Use a new `cct-probe-*` ID for each attempt, including failed attempts. Evidence
 is saved under `outputs/experiments/UNIQUE_ID/`. Keep the host awake and online.
 Touch that directory's `STOP` file to abort; Ctrl-C also requests cleanup.
+After completion, run `python3 scripts/summarize_cct10_pilot.py outputs/experiments/UNIQUE_ID`
+to derive descriptive comparisons and request-root journey examples. This reads
+the archive without changing its completeness flags. See [the pilot result](CCT-10_STATUS.md#first-controlled-live-pilot).
 
 The existing pinned ARM64 loadgenerator supplies five upstream users at one
 user/second, seed 42, original task weights and 1–10 second waits. After all five

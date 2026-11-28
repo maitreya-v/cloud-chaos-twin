@@ -1,0 +1,232 @@
+{
+  "all_http_failures": 0,
+  "all_http_operations": 447,
+  "artifact_bundle": {
+    "bytes": 4650719,
+    "file_manifest_sha256": "f59b52088d3852d6ff62069bf16e6f26b441182605e781193f0e224044bd44bb",
+    "filename": "cct-probe-cct10-20261127-02-handoff.zip",
+    "sha256": "003e652e9c667302052d9f59521ae934b179d3fae9f134aeb125e4abb957ac49"
+  },
+  "calibration_eligible_windows": 0,
+  "captured_server_records_all_phases": 6492,
+  "captured_server_records_measured": 4396,
+  "captured_workload_trace_ids": 447,
+  "cct10_complete": false,
+  "cleanup": {
+    "boutique_private_https_status": 200,
+    "checked_at": "2026-11-28T03:48:06.641436+00:00",
+    "networkchaos_count": 0,
+    "productcatalog_network_rules": {},
+    "tailscale_health": [],
+    "tailscale_state": "Running"
+  },
+  "cleanup_errors": [],
+  "client_operations_by_interval": {
+    "healthy": {
+      "median_ms": 11.60904150128772,
+      "n": 148,
+      "p95_ms": 17.007416998239933
+    },
+    "injection_observed": {
+      "median_ms": 855.2134999990813,
+      "n": 29,
+      "p95_ms": 1586.710542000219
+    },
+    "recovery": {
+      "median_ms": 12.144166999860317,
+      "n": 120,
+      "p95_ms": 19.70587499818066
+    }
+  },
+  "complete_windows": 0,
+  "controller_timestamp_precision_ms": 1000,
+  "descriptive_intervals_epoch": {
+    "healthy": [
+      1795837199.142601,
+      1795837319.825
+    ],
+    "injection_observed": [
+      1795837320.824,
+      1795837349.125
+    ],
+    "recovery": [
+      1795837349.125,
+      1795837470.070625
+    ]
+  },
+  "execution_passed": true,
+  "fault_observations": {
+    "injected_observed_ms": 1795837320824,
+    "recovered_observed_ms": 1795837349125,
+    "request_completed_ms": 1795837319906,
+    "request_started_ms": 1795837319825,
+    "requested_at": "2026-11-28T03:41:59.824224Z",
+    "uid": "3a146397-2a22-4bf9-be18-52e50eb849f9"
+  },
+  "fault_timeline": [
+    {
+      "events": [
+        {
+          "operation": "Apply",
+          "timestamp": "2026-11-28T03:41:59Z",
+          "type": "Succeeded"
+        },
+        {
+          "operation": "Recover",
+          "timestamp": "2026-11-28T03:42:29Z",
+          "type": "Succeeded"
+        }
+      ],
+      "phase": "Not Injected",
+      "target": "cct-app/productcatalogservice-76fd6fd7c8-m756b"
+    }
+  ],
+  "fresh_readiness_zero_restart_windows": 405,
+  "frontend_counter_snapshots": {
+    "first_scrape_epoch": 1795837201.114,
+    "first_value": 5028.0,
+    "last_scrape_epoch": 1795837466.111,
+    "last_value": 5436.0,
+    "observed_growth": 408.0,
+    "scope": "shared span-derived counters; not an independent or run-exclusive denominator"
+  },
+  "health_unchanged": true,
+  "limits": [
+    "Observed injection interval includes polling/controller timing uncertainty; it is not exact physical fault timing.",
+    "Client/RPC samples crossing interval boundaries are excluded from phase comparisons.",
+    "Closed-loop workload and low counts make latency comparisons descriptive.",
+    "All service windows remain incomplete without independent backend accounting; no thresholds or forecast scores were fitted.",
+    "One pilot is not three repeat trials or a paired telemetry-overhead benchmark.",
+    "Forty-eight unsuccessful Jaeger query attempts were retried; all workload trace IDs were eventually saved."
+  ],
+  "matching_journey_roots": {
+    "browse": 33,
+    "cart": 46,
+    "checkout": 11
+  },
+  "maximum_adjacent_pod_read_gap_ms": 1128,
+  "measured_http_operations": 298,
+  "measurement_interval_utc": [
+    "2026-11-28T03:39:59.142601Z",
+    "2026-11-28T03:44:30.070625Z"
+  ],
+  "monitoring_target_polls": {
+    "cct-collector:up": 78,
+    "cct-service:up": 78
+  },
+  "observed_service_windows": 405,
+  "pod_observations": 395,
+  "previous_attempt": {
+    "result": "Stopped before injection: short log-stream timeout. No fault applied; cleanup verified.",
+    "run_id": "cct-probe-cct10-20261127-01"
+  },
+  "productcatalog_caller_rpc_by_interval": {
+    "healthy": {
+      "median_ms": 0.2085,
+      "n": 1020,
+      "p95_ms": 1.057
+    },
+    "injection_observed": {
+      "median_ms": 108.468,
+      "n": 197,
+      "p95_ms": 207.328
+    },
+    "recovery": {
+      "median_ms": 0.212,
+      "n": 803,
+      "p95_ms": 1.045
+    }
+  },
+  "protocol": {
+    "fault_seconds": 30,
+    "healthy_seconds": 120,
+    "recovery_seconds": 120,
+    "seed": 42,
+    "spawn_rate": 1,
+    "think_seconds": [
+      1,
+      10
+    ],
+    "users": 5,
+    "warmup_seconds": 120
+  },
+  "remaining_fault": false,
+  "remaining_workload": false,
+  "run_id": "cct-probe-cct10-20261127-02",
+  "runner_source_revision": "d3c0e54c253238470e11d572f86f4e21b467e6aa",
+  "selected_log_counts": {
+    "checkoutservice": 33,
+    "frontend": 462
+  },
+  "trace_quality": {
+    "frontend_request_roots": 541,
+    "incomplete_windows": 405,
+    "independent_backend_accounting_available": false,
+    "traces": 447,
+    "traces_with_missing_parents": 0,
+    "traces_with_unlinked_spans": 0
+  },
+  "unsuccessful_jaeger_query_attempts": 48,
+  "window_request_counts": {
+    "adservice": {
+      "max": 7,
+      "min": 1,
+      "windows": 54,
+      "windows_at_least_20": 0
+    },
+    "cartservice": {
+      "max": 13,
+      "min": 1,
+      "windows": 55,
+      "windows_at_least_20": 0
+    },
+    "checkoutservice": {
+      "max": 1,
+      "min": 1,
+      "windows": 11,
+      "windows_at_least_20": 0
+    },
+    "currencyservice": {
+      "max": 44,
+      "min": 2,
+      "windows": 55,
+      "windows_at_least_20": 27
+    },
+    "emailservice": {
+      "max": 1,
+      "min": 1,
+      "windows": 11,
+      "windows_at_least_20": 0
+    },
+    "frontend": {
+      "max": 12,
+      "min": 1,
+      "windows": 55,
+      "windows_at_least_20": 0
+    },
+    "paymentservice": {
+      "max": 1,
+      "min": 1,
+      "windows": 11,
+      "windows_at_least_20": 0
+    },
+    "productcatalogservice": {
+      "max": 73,
+      "min": 7,
+      "windows": 55,
+      "windows_at_least_20": 48
+    },
+    "recommendationservice": {
+      "max": 10,
+      "min": 1,
+      "windows": 55,
+      "windows_at_least_20": 0
+    },
+    "shippingservice": {
+      "max": 6,
+      "min": 1,
+      "windows": 43,
+      "windows_at_least_20": 0
+    }
+  }
+}

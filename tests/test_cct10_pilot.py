@@ -8,6 +8,9 @@ from unittest.mock import patch
 spec = importlib.util.spec_from_file_location("pilot", Path(__file__).resolve().parents[1]/"scripts/cct10_pilot.py")
 pilot = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pilot)
+summary_spec = importlib.util.spec_from_file_location("pilot_summary",Path(__file__).resolve().parents[1]/"scripts/summarize_cct10_pilot.py")
+summary = importlib.util.module_from_spec(summary_spec)
+summary_spec.loader.exec_module(summary)
 
 
 class PilotSafetyTests(unittest.TestCase):
@@ -53,6 +56,27 @@ class PilotSafetyTests(unittest.TestCase):
         self.assertNotIn("app",pod["metadata"]["labels"])
         self.assertFalse(pod["spec"]["automountServiceAccountToken"])
         self.assertEqual(pod["spec"]["activeDeadlineSeconds"],700)
+
+    def test_redirect_roots_are_checked_separately(self):
+        from observability.fixture import fixture
+        first = fixture("cart",1)
+        root = first["spans"][0]
+        root["references"] = [{"refType":"CHILD_OF","traceID":first["traceID"],"spanID":"remote"}]
+        second = copy.deepcopy(first["spans"])
+        mapping = {s["spanID"]:format(int(s["spanID"],16)+100,"016x") for s in second}
+        for s in second:
+            s["spanID"] = mapping[s["spanID"]]
+            for r in s.get("references",[]):
+                r["spanID"] = mapping.get(r["spanID"],r["spanID"])
+        first["spans"] += second
+        components = list(summary.root_components(first,"remote"))
+        self.assertEqual(len(components),2)
+        for _, component in components:
+            result = pilot.lineage.inspect_trace(component,first["traceID"],"remote")
+            self.assertTrue(pilot.lineage.coverage("cart",result)["passes_declared_path"])
+
+    def test_empty_latency_samples_stay_unknown(self):
+        self.assertEqual(summary.stats([]),{"n":0,"median_ms":None,"p95_ms":None})
 
 
 if __name__ == "__main__":
