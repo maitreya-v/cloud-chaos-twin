@@ -230,8 +230,11 @@ def forward(service, port, directory, processes):
     raise RuntimeError("Monitoring forward was not ready: " + service)
 
 
-def manifests(run):
-    code = (ROOT / "workload/fault_pilot_locust.py").read_text()
+def manifests(run, profile="original", mode="fault"):
+    if profile not in ("original","balanced") or mode not in ("healthy","fault") or (profile=="original" and mode!="fault"):
+        raise ValueError("unsupported pilot profile/mode")
+    filename="balanced_capture.py" if profile=="balanced" else "fault_pilot_locust.py"
+    code = (ROOT / "workload" / filename).read_text()
     md = {"name": run, "namespace": NS, "annotations": {"cct.run_id": run}, "labels": {"cct.pilot": "true"}}
     config = {"apiVersion": "v1", "kind": "ConfigMap", "metadata": md, "data": {"locustfile.py": code}}
     image = json.loads((ROOT / "configs/boutique.local.lock.json").read_text())["images"]["loadgenerator"]["image"]
@@ -249,6 +252,11 @@ def manifests(run):
                              {"name": "results", "mountPath": "/results"}, {"name": "tmp", "mountPath": "/tmp"}]}],
         "volumes": [{"name": "workload", "configMap": {"name": run}}, {"name": "results", "emptyDir": {}},
                     {"name": "tmp", "emptyDir": {}}]}}
+    if profile=="balanced":
+        config["data"]={"capture.py":code}
+        container=pod["spec"]["containers"][0]
+        container["command"]=["/bin/sh","-c","python -B -u /cct/capture.py; result=$?; echo $result >/results/exit-code; sleep 120"]
+        container["env"].append({"name":"CCT_CAPTURE_MODE","value":mode})
     return config, pod
 
 
@@ -304,19 +312,70 @@ def derive(directory, run, archive, measured_start, measured_end):
             "coverage": "No independent per-service denominator; all windows remain incomplete."}
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--run-id", required=True)
-    args = parser.parse_args()
-    run = args.run_id
+def wait_reference_idle(reference,timeout=35):
+    from observability.coverage import closed_counters
+    deadline=time.monotonic()+timeout;previous=None
+    while time.monotonic()<deadline:
+        current=reference.counters()
+        try:
+            closed_counters(current,current)
+            signature=[(s,v["counters"]["http.cct_reference.downstream_rq_total"],v["received_log_records"]) for s,v in sorted(current.items())]
+            if signature==previous:return current
+            previous=signature
+        except ValueError:previous=None
+        time.sleep(.25)
+    raise RuntimeError("Independent reference did not become idle/drained")
+
+
+def review_reference(directory,run,archive,requests,reference,measured_start,measured_end):
+    from observability.coverage import reconcile,proofs_for_windows
+    before=json.loads((directory/"reference-before.json").read_text())
+    after=json.loads((directory/"reference-after.json").read_text())
+    ledger=[]
+    with (reference.directory/"reference.jsonl").open() as source,(directory/"reference.jsonl").open("x") as out:
+        for line in source:
+            row=json.loads(line);service=row["service"]
+            if before[service]["received_log_records"]<row["sequence"]<=after[service]["received_log_records"]:
+                ledger.append(row);out.write(line)
+    result={"verified":False,"reviewer":"owner-assisted automated reconciliation","available_ms":ms(),
+            "reference_input_sha256":hashlib.sha256((directory/"reference.jsonl").read_bytes()).hexdigest(),
+            "scope":"fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+            "timing_start_tolerance_us":2000,"teammate_signoff_recorded":False}
+    try:
+        pairs=reconcile(archive.entries,requests,before,after,ledger)
+        with (directory/"reference-pairs.jsonl").open("x") as out:
+            for pair in pairs:out.write(json.dumps(pair)+"\n")
+        rows=json.loads((directory/"service-windows.json").read_text())
+        selected=[r for r in rows if r["start_ms"]>=math.ceil(measured_start*1000) and r["end_ms"]<=math.floor(measured_end*1000)]
+        proofs=proofs_for_windows(run,selected,pairs,"reference-pairs.jsonl")
+        save(directory/"coverage-proofs.json",proofs)
+        samples=[json.loads(s) for s in (directory/"pods.jsonl").read_text().splitlines()]
+        joined=join_helper.join(selected,samples,proofs,run)
+        save(directory/"service-windows.reviewed.json",joined)
+        result.update(verified=True,matched_completions=len(pairs),independent_event_records=len(ledger),
+                      measured_windows=len(joined),complete_windows=sum(r["complete"] for r in joined),
+                      source_pairs_sha256=hashlib.sha256((directory/"reference-pairs.jsonl").read_bytes()).hexdigest(),
+                      available_ms=ms())
+    except ValueError as e:result["reason"]=str(e)
+    save(directory/"coverage-review.json",result)
+    return result
+
+
+def run_protocol(run, directory=None, profile="original", mode="fault", reference=None, observer=None):
     if not re.fullmatch(r"cct-probe-[a-z0-9-]{1,45}", run):
-        parser.error("Use a unique cct-probe-* DNS label")
-    directory = ROOT / "outputs/experiments" / run
+        raise ValueError("Use a unique cct-probe-* DNS label")
+    directory = Path(directory) if directory is not None else ROOT / "outputs/experiments" / run
     directory.mkdir(parents=True, exist_ok=False)
     receipt = {"run_id": run, "started_at": utc(), "source_revision": subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(),
                "actor": "owner-assisted controlled pilot", "passed": False, "fault": {}, "cleanup_errors": [],
                "protocol": {"users":5,"spawn_rate":1,"seed":42,"think_seconds":[1,10],"warmup_seconds":120,
                             "healthy_seconds":120,"fault_seconds":30,"recovery_seconds":120}}
+    receipt.update(profile=profile,mode=mode)
+    if profile=="balanced":
+        receipt["protocol"]={"workers":12,"seed":42,"target_journeys_per_second":5,"warmup_seconds":120,
+            "arrival_schedule":"25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+            "warmup_rates":[[0,30,2],[30,60,3],[60,120,5]],"healthy_seconds":300 if mode=="healthy" else 120,
+            "fault_seconds":30 if mode=="fault" else 0,"recovery_seconds":120 if mode=="fault" else 0}
     save(directory / "protocol.json", receipt)
     event_queue, processes = queue.Queue(), []
     archive, reader, logproc = None, None, None
@@ -324,7 +383,9 @@ def main():
     recovered = threading.Event()
     fault_attempted, workload_attempted = False, False
     phases, requests = [], []
+    live_context={"begins":{},"measurement_start":None}
     measured_start = measured_end = None
+    previous_handlers={sig:signal.getsignal(sig) for sig in (signal.SIGTERM,signal.SIGINT)}
     signal.signal(signal.SIGTERM, lambda *_: abort.set())
     signal.signal(signal.SIGINT, lambda *_: abort.set())
     try:
@@ -351,13 +412,18 @@ def main():
         if not http(jaeger, "/api/services").get("data"):
             raise RuntimeError("Jaeger has no service data")
         manifest = fault_manifest(run)
-        save(directory / "fault.request.json", manifest)
-        kube(["create", "--dry-run=server", "-f", "-"], manifest)
-        config, pod = manifests(run)
+        if mode=="fault":
+            save(directory / "fault.request.json", manifest)
+            kube(["create", "--dry-run=server", "-f", "-"], manifest)
+        config, pod = manifests(run,profile,mode)
         save(directory / "workload.json", pod)
+        workload_source="workload/balanced_capture.py" if profile=="balanced" else "workload/fault_pilot_locust.py"
         save(directory / "source-hashes.json", {name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
-             for name in ["workload/fault_pilot_locust.py","scripts/cct10_pilot.py","configs/boutique.local.lock.json",
+             for name in [workload_source,"scripts/cct10_pilot.py","configs/boutique.local.lock.json",
                           "CCT-10-Merul-Handoff-2026-11-26/capture_pods.py","CCT-10-Merul-Handoff-2026-11-26/join_windows.py"]})
+        if reference:
+            reference.clear_observations()
+            save(directory/"reference-before.json",wait_reference_idle(reference))
         archive = Archive(jaeger, directory)
         workload_attempted = True
         kube(["create", "-f", "-"], config)
@@ -377,13 +443,18 @@ def main():
         logproc = subprocess.Popen(stream_command(["-n",NS,"logs","-f",run,"--pod-running-timeout=10s"]),
                                    stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
         def read_logs():
-            with (directory / "workload-console.log").open("w") as output:
+            with (directory / "workload-console.log").open("w") as output,(directory/"request-begins.jsonl").open("x") as starts:
                 for line in logproc.stdout:
                     output.write(line); output.flush()
                     if line.startswith("CCT_"):
                         kind, value = line.split(" ",1)
                         try:
-                            event_queue.put((kind,json.loads(value)))
+                            decoded=json.loads(value)
+                            if kind=="CCT_BEGIN":
+                                decoded["observed_ms"]=ms();live_context["begins"][decoded["trace_id"]]=decoded
+                                starts.write(json.dumps(decoded)+"\n");starts.flush()
+                            elif kind=="CCT_EVENT":archive.pending.put(decoded)
+                            event_queue.put((kind,decoded))
                         except ValueError:
                             abort.set()
         reader = threading.Thread(target=read_logs,daemon=True)
@@ -393,13 +464,13 @@ def main():
         finish_sent = False
         workload_complete = False
         with (directory/"pods.jsonl").open("x",buffering=1) as podout, (directory/"health.jsonl").open("x",buffering=1) as healthout, (directory/"prometheus.jsonl").open("x",buffering=1) as promout, (directory/"fault-status.jsonl").open("x",buffering=1) as faultout, (directory/"requests.jsonl").open("x",buffering=1) as reqout:
+            if observer:observer.bind(archive,reference,directory,run,live_context,directory/"pods.jsonl",join_helper)
             while not workload_complete:
                 tick, started = time.monotonic(), ms()
                 while not event_queue.empty():
                     kind, value = event_queue.get()
                     if kind == "CCT_EVENT":
                         requests.append(value); reqout.write(json.dumps(value)+"\n")
-                        archive.pending.put(value)
                         if not value["success"] or value["status"] >= 500:
                             raise RuntimeError("Workload request failed: " + value["method"] + " " + value["path"])
                     elif kind == "CCT_PHASE":
@@ -407,6 +478,7 @@ def main():
                         print("Workload phase: " + value["phase"],flush=True)
                         if value["phase"] == "measured":
                             measured_start = value["measured_started_epoch"]
+                            live_context["measurement_start"]=measured_start
                         if value["phase"] == "complete":
                             measured_end = value["ended_epoch"]
                             receipt["workload_report"] = value
@@ -425,6 +497,9 @@ def main():
                     raise RuntimeError("Stop requested or recovery watchdog expired")
                 if time.monotonic() > deadline or logproc.poll() is not None or not archive.thread.is_alive():
                     raise RuntimeError("Workload/capture deadline or process failure")
+                if reference and (reference.errors or any(p.poll() is not None for p,_ in reference.processes)):
+                    raise RuntimeError("Independent reference capture failed")
+                if observer and observer.errors:raise RuntimeError("Prospective observer failed: "+str(observer.errors))
                 if time.monotonic() >= next_prom:
                     target_data = http(prometheus,"/api/v1/targets")["data"]["activeTargets"]
                     # Range vectors preserve scrape timestamps; instant-vector
@@ -447,7 +522,7 @@ def main():
                     if usage["memory"]["workingSetBytes"] > .8*capacity or conditions.get("Ready") != "True" or any(conditions.get(k)!="False" for k in ("MemoryPressure","DiskPressure","PIDPressure")):
                         raise RuntimeError("Node resource headroom/health stop condition")
                     next_resources = time.monotonic()+10
-                if measured_start is not None and time.time() >= measured_start+120 and not fault_attempted:
+                if mode=="fault" and measured_start is not None and time.time() >= measured_start+120 and not fault_attempted:
                     # Check the cluster again immediately before injection.
                     if kjson(["get","networkchaos","-A","-o","json"])["items"]:
                         raise RuntimeError("Another fault appeared before injection")
@@ -488,14 +563,18 @@ def main():
                     next_report = time.monotonic()+30
                     save(directory/"progress.json",{"receipt":receipt,"phases":phases,"requests":len(requests)})
                 time.sleep(max(0,1-(time.monotonic()-tick)))
-        if not recovered.is_set() or not finish_sent or receipt["workload_report"]["reason"] != "completed" or receipt["workload_report"]["locust_errors"]:
+        if (mode=="fault" and (not recovered.is_set() or not finish_sent)) or receipt["workload_report"]["reason"]!="completed" or receipt["workload_report"].get("locust_errors",0) or receipt["workload_report"].get("worker_errors",0):
             raise RuntimeError("Pilot did not finish its full recovery protocol")
+        if mode=="healthy" and measured_end-measured_start<300:
+            raise RuntimeError("Healthy measurement shorter than 300 seconds")
+        if reference:save(directory/"reference-after.json",wait_reference_idle(reference))
         receipt["passed"] = True
     except Exception as exc:
         receipt["error"] = str(exc)
         measured_end = measured_end or time.time()
         print("Pilot stopped: " + str(exc),flush=True)
     finally:
+        if observer:observer.stop_event.set()
         measured_end = measured_end or time.time()
         receipt["measurement_interval_utc"] = [utc(measured_start) if measured_start else None,utc(measured_end)]
         save(directory/"phases.json",phases)
@@ -509,11 +588,16 @@ def main():
                 kube(["-n",NS,"exec",run,"--","touch","/results/stop"])
             except Exception as exc:
                 receipt["cleanup_errors"].append("workload stop: "+str(exc))
+        if observer and observer.thread:
+            try:receipt["live_observations"]=observer.close()
+            except Exception as exc:receipt["cleanup_errors"].append("observer stop: "+str(exc))
         if archive:
             try:
                 print("Saving remaining trace observations",flush=True)
                 archive.finish()
                 receipt["capture"] = derive(directory,run,archive,measured_start,measured_end)
+                if reference and (directory/"reference-after.json").exists():
+                    receipt["coverage_review"]=review_reference(directory,run,archive,requests,reference,measured_start,measured_end)
             except Exception as exc:
                 receipt["capture_error"] = str(exc)
         if measured_start is not None:
@@ -559,7 +643,18 @@ def main():
         receipt["finished_at"] = utc()
         save(directory/"receipt.json",receipt)
         print(json.dumps({"passed":receipt["passed"],"error":receipt.get("error"),"evidence":str(directory)}),flush=True)
-    return 0 if receipt["passed"] else 1
+    for sig,handler in previous_handlers.items():signal.signal(sig,handler)
+    return receipt
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run-id",required=True)
+    parser.add_argument("--profile",choices=("original","balanced"),default="original")
+    parser.add_argument("--mode",choices=("fault","healthy"),default="fault")
+    args=parser.parse_args()
+    result=run_protocol(args.run_id,profile=args.profile,mode=args.mode)
+    return 0 if result["passed"] else 1
 
 
 if __name__ == "__main__":

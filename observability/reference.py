@@ -20,7 +20,7 @@ def configuration(service):
         cluster["typed_extension_protocol_options"]={"envoy.extensions.upstreams.http.v3.HttpProtocolOptions":{
             "@type":"type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions",
             "explicit_http_config":{"http2_protocol_options":{}}}}
-    ledger={"cct_reference":"v1","service":service,"start_epoch_s":"%START_TIME(%s.%6f)%",
+    ledger={"cct_reference":"v1","service":service,"event":"%ACCESS_LOG_TYPE%","start_epoch_s":"%START_TIME(%s.%6f)%",
             "duration_us":"%COMMON_DURATION(DS_RX_BEG:DS_TX_END:us)%",
             "upstream_end_us":"%COMMON_DURATION(DS_RX_BEG:US_RX_END:us)%",
             "method":"%REQ(:METHOD)%","path":"%REQ(:PATH)%","traceparent":"%REQ(TRACEPARENT)%",
@@ -29,6 +29,7 @@ def configuration(service):
     hcm={"@type":"type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager",
          "stat_prefix":"cct_reference","codec_type":"AUTO","stream_idle_timeout":"0s",
          "generate_request_id":False,
+         "access_log_options":{"flush_access_log_on_new_request":True},
          "route_config":{"name":"application","virtual_hosts":[{"name":"application","domains":["*"],
              "routes":[{"match":{"prefix":"/"},"route":{"cluster":"application","timeout":"0s"}}]}]},
          "http_filters":[{"name":"envoy.filters.http.router","typed_config":{
@@ -46,7 +47,8 @@ def sidecar(image, config_name):
     if "@sha256:" not in image:
         raise ValueError("use the verified immutable image")
     return {"name":"cct-reference","image":image,"imagePullPolicy":"Never",
-            "args":["-c","/etc/cct-reference/envoy.json","--concurrency","1","--disable-hot-restart","--log-level","warning"],
+            "args":["-c","/etc/cct-reference/envoy.json","--concurrency","1","--disable-hot-restart","--log-level","warning",
+                    "--file-flush-interval-msec","50"],
             "resources":{"requests":{"cpu":"10m","memory":"24Mi"},"limits":{"cpu":"250m","memory":"96Mi"}},
             "securityContext":{"runAsUser":10001,"runAsGroup":10001,"runAsNonRoot":True,
                                "allowPrivilegeEscalation":False,"readOnlyRootFilesystem":True,

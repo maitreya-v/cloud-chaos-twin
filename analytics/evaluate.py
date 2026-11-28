@@ -31,7 +31,7 @@ def control_alarms(windows, run_id, services, start_ms, end_ms, calibration):
                 false_alarms_per_observed_hour=incidents / hours if hours else None)
 
 
-def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=None):
+def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=None, outcome_calibration=None):
     if not isinstance(outcome_source, str) or not outcome_source.strip():
         raise ValueError('identify the independently collected outcome source')
     if prediction['calibration_sha256'] != digest(calibration):
@@ -41,12 +41,15 @@ def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=
     if root_target is not None and root_target not in prediction['services']:
         raise ValueError('root target is outside declared roster')
     width, cutoff = calibration['width_ms'], prediction['cutoff_ms']
+    outcome_calibration=outcome_calibration or calibration
+    if any(outcome_calibration[k]!=calibration[k] for k in ('split','width_ms','min_requests','min_windows','error_limit')):
+        raise ValueError('independent outcome calibration must use the same frozen protocol and run split')
     validate_windows(outcome_rows, width)
     rows = [r for r in outcome_rows if r['run_id'] == prediction['run_id']]
     # Finalized outcomes may arrive later. Select the final revision, then evaluate event time.
     final = latest(rows, max((r['available_ms'] for r in rows), default=0))
     event_rows = [dict(r, available_ms=r['end_ms']) for r in final]
-    baseline = classify(event_rows, prediction['run_id'], prediction['eligible'], cutoff, calibration)
+    baseline = classify(event_rows, prediction['run_id'], prediction['eligible'], cutoff, outcome_calibration)
     result = []
     for forecast in prediction['forecasts']:
         onset, censored = {}, set()
@@ -56,7 +59,7 @@ def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=
                 continue
             # Any unknown interval before onset prevents an exact new-onset label.
             for at in range((cutoff // width + 1) * width, cutoff + forecast['horizon_ms'] + 1, width):
-                status = classify(event_rows, prediction['run_id'], [s], at, calibration)[s]
+                status = classify(event_rows, prediction['run_id'], [s], at, outcome_calibration)[s]
                 if status == 'unknown':
                     censored.add(s)
                     break
@@ -98,6 +101,7 @@ def evaluate(prediction, outcome_rows, calibration, outcome_source, root_target=
     return dict(schema_version='1.0', run_id=prediction['run_id'], cutoff_ms=cutoff,
                 synthetic=prediction['synthetic'], outcome_source=outcome_source,
                 calibration_sha256=prediction['calibration_sha256'],
+                outcome_calibration_sha256=digest(outcome_calibration),
                 partition='test' if prediction['run_id'] in calibration['split']['test'] else 'validation',
                 outcome_sha256=digest(sorted(final, key=lambda r: (r['service'], r['end_ms']))),
                 historical_live_forecast_valid=False, roots=roots, forecasts=result)
@@ -107,7 +111,7 @@ def aggregate(evaluations):
     """Average cutoffs within a run first, so long runs do not dominate the result."""
     if not evaluations:
         raise ValueError('no evaluations to aggregate')
-    if len({(e['synthetic'], e['partition'], e['calibration_sha256']) for e in evaluations}) != 1:
+    if len({(e['synthetic'], e['partition'], e['calibration_sha256'],e.get('outcome_calibration_sha256',e['calibration_sha256'])) for e in evaluations}) != 1:
         raise ValueError('aggregate only matching provenance, partition and frozen calibration')
     groups, seen = {}, set()
     for e in evaluations:

@@ -66,7 +66,11 @@ def main():
             status=json.loads(run(["get","pod",NAME,"-o","json"]))["status"]
             if any(c["type"]=="Ready" and c["status"]=="True" for c in status.get("conditions",[])):break
             time.sleep(1)
-        else:raise RuntimeError("Disposable proxy did not become Ready")
+        else:
+            (out/"pod.json").write_text(run(["get","pod",NAME,"-o","json"]))
+            for key in ("http","grpc"):
+                (out/(key+".log")).write_text(run(["logs",NAME,"-c","reference-"+key]))
+            raise RuntimeError("Disposable proxy did not become Ready")
         ports=[free_port() for _ in range(4)]
         forward_log=(out/"forward.log").open("w")
         proc=subprocess.Popen(KUBE+["--request-timeout=0","-n","cct-app","port-forward","--address=127.0.0.1","pod/"+NAME,
@@ -100,16 +104,18 @@ def main():
                 try:r=json.loads(line)
                 except ValueError:continue
                 if r.get("cct_reference")=="v1":logs.append(r)
-            if len(logs)!=1 or logs[0]["traceparent"]!=traceparents[key]:
+            starts=[r for r in logs if r.get("event")=="DownstreamStart"]
+            ends=[r for r in logs if r.get("event")=="DownstreamEnd"]
+            if len(starts)!=1 or len(ends)!=1 or any(r["traceparent"]!=traceparents[key] for r in logs):
                 raise RuntimeError("Request log count or trace-context preservation failed: "+key)
-            if not isinstance(logs[0]["duration_us"],(int,float)) or logs[0]["duration_us"]<0:
+            if not isinstance(ends[0]["duration_us"],(int,float)) or ends[0]["duration_us"]<0:
                 raise RuntimeError("Reference duration missing")
             with request.urlopen(f"http://127.0.0.1:{admin}/stats?format=json",timeout=5) as response:stats=json.load(response)
             counters={s["name"]:s["value"] for s in stats["stats"] if "name" in s}
             (out/(key+"-stats.json")).write_text(json.dumps(stats,indent=2)+"\n")
             if counters.get("http.cct_reference.downstream_rq_total")!=1 or counters.get("http.cct_reference.downstream_rq_completed")!=1:
                 raise RuntimeError("Independent completion counters differ from logs")
-            receipt["checks"][key]={"log":logs[0],"completion_counter":1,"trace_context_preserved":True}
+            receipt["checks"][key]={"start_log":starts[0],"log":ends[0],"completion_counter":1,"trace_context_preserved":True}
         receipt["passed"]=True
     except Exception as e:receipt["error"]=str(e)
     finally:

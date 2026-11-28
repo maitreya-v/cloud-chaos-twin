@@ -134,6 +134,25 @@ class AnalyticsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'frozen'):
             evaluate(self.prediction(), self.windows, dict(self.calibration, error_limit=0.1), 'probes')
 
+    def test_independent_latency_boundary_uses_its_own_frozen_thresholds(self):
+        prediction=self.prediction()
+        outcomes=[dict(r,ready=True,errors=0) for r in self.windows]
+        reference=copy.deepcopy(self.calibration)
+        reference['latency_limits_ms']={s:1000.0 for s in SERVICES}
+        result=evaluate(prediction,outcomes,self.calibration,'synthetic proxy latency',outcome_calibration=reference)
+        one=next(f for f in result['forecasts'] if f['method']=='reverse_one_hop' and f['horizon_ms']==10000)
+        self.assertEqual((one['tp'],one['fp'],one['fn']),(0,1,0))
+        self.assertNotEqual(result['calibration_sha256'],result['outcome_calibration_sha256'])
+        altered=copy.deepcopy(reference);altered['split']['test']=['other-test']
+        with self.assertRaisesRegex(ValueError,'same frozen protocol'):
+            evaluate(prediction,outcomes,self.calibration,'synthetic proxy latency',outcome_calibration=altered)
+
+    def test_mixed_independent_outcome_calibrations_are_not_aggregated(self):
+        first=evaluate(self.prediction(),self.windows,self.calibration,'synthetic probes')
+        other=copy.deepcopy(first);other['cutoff_ms']+=5000;other['outcome_calibration_sha256']='different-reference'
+        with self.assertRaisesRegex(ValueError,'matching'):
+            aggregate([first,other])
+
     def test_aggregation_weights_runs_and_rejects_mixed_evidence(self):
         e = evaluate(self.prediction(), self.windows, self.calibration, 'synthetic-probes')
         second_cutoff = copy.deepcopy(e)

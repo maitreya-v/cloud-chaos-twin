@@ -13,7 +13,7 @@ import threading
 import time
 from urllib import request
 
-from observability.paired import KUBE, ROOT, get, kube, ready, save
+from observability.paired import KUBE, ROOT, get, kube, ready, save, quiescent
 from observability.reference import PORTS, DATA_PORT, ADMIN_PORT, configuration, sidecar
 
 
@@ -23,6 +23,8 @@ class ReferenceSession:
         self.original={};self.services={};self.expected={};self.attempted=[];self.changed_services=[]
         self.processes=[];self.threads=[];self.logs=None;self.log_lock=threading.Lock()
         self.log_counts={s:0 for s in PORTS};self.pods={};self.admin={};self.errors=[]
+        self.event_counts={s:{"DownstreamStart":0,"DownstreamEnd":0} for s in PORTS}
+        self.observations=[]
 
     def state(self):
         save(self.directory/"reference-state.json",{"session_id":self.session_id,"image":self.image,
@@ -58,7 +60,11 @@ class ReferenceSession:
         if any(p["metadata"]["name"].startswith("cct-baseline-") for p in pods):
             raise RuntimeError("A paired benchmark is still active")
         for s in get(["-n","cct-app","get","services","-o","json"])["items"]:
-            if s["spec"].get("selector",{}).get("app") in PORTS:self.services[s["metadata"]["name"]]=s
+            app=s["spec"].get("selector",{}).get("app")
+            if app in PORTS:
+                if len(s["spec"]["ports"])!=1 or s["spec"]["ports"][0]["targetPort"]!=PORTS[app]:
+                    raise RuntimeError("Unexpected native service port: "+s["metadata"]["name"])
+                self.services[s["metadata"]["name"]]=s
         self.state()
         for service in PORTS:
             name="cct-ref-"+service
@@ -69,6 +75,13 @@ class ReferenceSession:
             self.attempted.append(service);self.state()
             kube(["create","-f","-"],obj)
             template=copy.deepcopy(self.original[service]["spec"]["template"])
+            # Bound SDK batching during the availability-aware capture. This
+            # differs from the paired benchmark's default deployed cadence.
+            server=template["spec"]["containers"][0]
+            values=server.setdefault("env",[])
+            delay=next((e for e in values if e["name"]=="OTEL_BSP_SCHEDULE_DELAY"),None)
+            if delay is None:values.append({"name":"OTEL_BSP_SCHEDULE_DELAY","value":"200"})
+            else:delay["value"]="200"
             template.setdefault("metadata",{}).setdefault("annotations",{})["cct.reference.session"]=self.session_id
             template["spec"]["containers"].append(sidecar(self.image,name))
             template["spec"].setdefault("volumes",[]).append({"name":"cct-reference","configMap":{"name":name}})
@@ -89,6 +102,7 @@ class ReferenceSession:
             template["metadata"]["annotations"]["cct.reference.connections_reset"]=self.session_id
             print("Resetting established channels: "+service,flush=True)
             self.replace_template(service,template)
+        quiescent()
         for service in PORTS:
             items=get(["-n","cct-app","get","pods","-l","app="+service,"-o","json"])["items"]
             if len(items)!=1:raise RuntimeError("Unexpected stable reference pod roster")
@@ -127,9 +141,13 @@ class ReferenceSession:
                         self.errors.append("Reference service mismatch");continue
                     with self.log_lock:
                         self.log_counts[service]+=1
-                        self.logs.write(json.dumps({"service":service,"pod_uid_sha256":pod["uid_sha256"],
+                        if row.get("event") in self.event_counts[service]:self.event_counts[service][row["event"]]+=1
+                        else:self.errors.append("Unexpected reference log event: "+str(row.get("event")))
+                        observation={"service":service,"pod_uid_sha256":pod["uid_sha256"],
                             "sequence":self.log_counts[service],"kube_log_time":stamp,
-                            "seen_ms":(time.time_ns()+999999)//1000000,"record":row})+"\n")
+                            "seen_ms":(time.time_ns()+999999)//1000000,"record":row}
+                        self.observations.append(observation)
+                        self.logs.write(json.dumps(observation)+"\n")
                 # Normal stop is handled by close(); a caller checks PIDs during capture.
             thread=threading.Thread(target=reader,daemon=True);self.threads.append(thread);thread.start()
 
@@ -137,13 +155,21 @@ class ReferenceSession:
         out={}
         for service,base in self.admin.items():
             started=time.time_ns()//1000000
-            with request.urlopen(base+"/stats?format=json",timeout=3) as response:raw=json.load(response)
+            query="/stats?format=json&filter=%5E%28http%5C.cct_reference%5C.downstream_rq_%28total%7Ccompleted%7Cactive%29%24%7Cfilesystem%5C.%29"
+            with request.urlopen(base+query,timeout=3) as response:raw=json.load(response)
             values={s["name"]:s["value"] for s in raw["stats"] if "name" in s and
                     (s["name"].startswith("http.cct_reference.") or s["name"].startswith("filesystem."))}
             out[service]={"started_ms":started,"seen_ms":(time.time_ns()+999999)//1000000,
                           "pod_uid_sha256":self.pods[service]["uid_sha256"],"counters":values,
-                          "received_log_records":self.log_counts[service]}
+                          "received_log_records":self.log_counts[service],"received_events":dict(self.event_counts[service])}
         return out
+
+    def clear_observations(self):
+        with self.log_lock:self.observations.clear()
+
+    def slice_observations(self,before,after):
+        with self.log_lock:
+            return [r for r in self.observations if before[r["service"]]["received_log_records"]<r["sequence"]<=after[r["service"]]["received_log_records"]]
 
     def close(self):
         for proc,_ in self.processes:
@@ -182,5 +208,7 @@ class ReferenceSession:
                     if obj["metadata"].get("annotations",{}).get("cct.reference.session")!=self.session_id:raise RuntimeError("Reference config ownership changed")
                     kube(["-n","cct-app","delete","configmap",name,"--wait=false"])
             except Exception as e:errors.append(service+": "+str(e))
+        try:quiescent()
+        except Exception as e:errors.append("Final pod stability: "+str(e))
         save(self.directory/"reference-restoration.json",{"errors":errors,"restored":not errors})
         return errors
