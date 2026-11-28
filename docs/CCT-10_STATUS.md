@@ -49,6 +49,13 @@ the three-repeat CCT-07 criterion or the paired telemetry-overhead benchmark.
 
 ## Remaining dependencies
 
+The [recorded fault pipeline replay](CCT-10_PIPELINE_REPLAY.md) now passes:
+3,683 Kafka messages produced 6,492 spans, 1,006 metric points and 495 selected
+logs. Restart and a full rebuild preserved all 11 tables. The 399 fully contained
+measured windows reconcile with the pilot, have fresh readiness/zero restart
+deltas, and retain `complete=false`. This closes the technical fault-data replay
+step; it does not supply independent coverage or calibrated health thresholds.
+
 | Owner | Required evidence |
 | --- | --- |
 | Maitreya, Merul and Param | A coordinated sustained healthy capture with a declared interval, common run ID/roster, scoped traces, fresh readiness/restart observations and independently reviewed per-window coverage. |

@@ -1,5 +1,9 @@
 # CCT-05 · Kafka ingestion
 
+For sustained pilot captures with observed fault records, use the separate
+[fault replay adapter and validation runbook](../docs/CCT-10_PIPELINE_REPLAY.md).
+The original measured-journey adapter below remains unchanged.
+
 Staged offline replay is the MVP: run Kafka on a development machine, not the shared Boutique host. Four topics (`cct.traces`, `cct.metrics`, `cct.logs`, `cct.experiments`) each have three partitions, replication factor 1, seven-day retention and broker LogAppendTime. This is not an HA deployment. Messages are versioned JSON envelopes around a single OTLP resource group (or one experiment manifest), keyed by run ID. Publish waits for acknowledgements, retries transient failures and refuses messages above 900 KB; split larger resource groups before publishing. Keep archived originals. No private raw data should be committed.
 
 ## Local setup (Python 3.11 or 3.12, Java 17, Docker Compose v2)

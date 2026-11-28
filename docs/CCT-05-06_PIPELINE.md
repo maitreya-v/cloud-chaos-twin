@@ -16,6 +16,7 @@ The team-provided [Merul summary](evidence/CCT-03-04-merul-summary.json) is a me
 - [x] Run synthetic broker-to-Spark acceptance: expected normalized counts and restart count checks passed.
 - [x] Replay one recorded healthy measured archive: required journey relationships verified at conversion and all 14 logs preserved in Spark.
 - [x] Record scale measurements and machine configuration.
+- [x] Replay the controlled productcatalog fault capture and verify normalized content, fault isolation, restart and full rebuild; see [the fault replay record](CCT-10_PIPELINE_REPLAY.md).
 - [ ] Hand off feature schema and approved Parquet outputs to Mithil.
 - [ ] Review independent probes and thresholds with Merul/Mithil; evaluate on separate fault runs supplied by Komalika.
 
@@ -35,4 +36,4 @@ The synthetic smoke run independently produced 19 spans, 2 metrics, 1 log and 9 
 
 Healthy recorded replay: 33 Kafka messages (10 trace, 21 metric, 2 log), 36 server spans, 42 metric points, 14 selected logs, 36 lineage rows, 13 edge windows, 10 service windows, 42 metric windows and 4 log windows. Replay took 15.131 seconds (2.181 Kafka messages/s); zero normalized records were removed as duplicates. Five-second windows; minimum request count 20; no cutoff was specified. Zero experiment records is expected for this healthy run. The 13 edge windows are not the same measure as the 15 required journey-specific relationships.
 
-The recorded archive contains a Jaeger server-span projection, not full client/internal traces. Its `historical_live_forecast_valid` flag is false. These results establish healthy-data replay, not fault propagation accuracy, independent impact labels, live collection overhead or prospective predictions. Fault-run replay and final evaluation remain pending. Generated outputs stay in ignored `outputs/`; share approved artifacts privately.
+The recorded archive contains a Jaeger server-span projection, not full client/internal traces. Its `historical_live_forecast_valid` flag is false. These November 25 results establish healthy-data replay, not fault propagation accuracy, independent impact labels, live collection overhead or prospective predictions. The later [controlled fault replay](CCT-10_PIPELINE_REPLAY.md) also passed; final evaluation and joint acceptance remain pending. Generated outputs stay in ignored `outputs/`; share approved artifacts privately.
