@@ -75,6 +75,13 @@ def http(base, path):
         return json.load(response)
 
 
+def stream_command(args):
+    # A short timeout bounds ordinary API reads, but cancels logs -f and
+    # upgraded port-forward connections. These streams have owned PIDs and
+    # the coordinator's bounded lifetime instead.
+    return [a for a in KUBE if not a.startswith("--request-timeout=")] + ["--request-timeout=0"] + args
+
+
 def fault_manifest(run):
     return {"apiVersion": "chaos-mesh.org/v1alpha1", "kind": "NetworkChaos",
             "metadata": {"name": FAULT, "namespace": NS, "annotations": {"cct.run_id": run}},
@@ -208,8 +215,8 @@ def forward(service, port, directory, processes):
         sock.bind(("127.0.0.1", 0))
         local = sock.getsockname()[1]
     log = (directory / (service + "-forward.log")).open("w")
-    proc = subprocess.Popen(KUBE + ["-n", "cct-observability", "port-forward", "--address=127.0.0.1",
-                            "svc/" + service, f"{local}:{port}"], stdout=log, stderr=log)
+    proc = subprocess.Popen(stream_command(["-n", "cct-observability", "port-forward", "--address=127.0.0.1",
+                            "svc/" + service, f"{local}:{port}"]), stdout=log, stderr=log)
     processes.append((proc, log))
     base = f"http://127.0.0.1:{local}"
     for _ in range(60):
@@ -367,7 +374,7 @@ def main():
             if time.monotonic() > deadline-520 or abort.is_set():
                 raise RuntimeError("Workload did not start promptly")
             time.sleep(1)
-        logproc = subprocess.Popen(KUBE + ["-n",NS,"logs","-f",run,"--pod-running-timeout=10s"],
+        logproc = subprocess.Popen(stream_command(["-n",NS,"logs","-f",run,"--pod-running-timeout=10s"]),
                                    stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
         def read_logs():
             with (directory / "workload-console.log").open("w") as output:

@@ -11,6 +11,12 @@ spec.loader.exec_module(pilot)
 
 
 class PilotSafetyTests(unittest.TestCase):
+    def test_streams_survive_beyond_the_short_read_timeout(self):
+        args = pilot.stream_command(["logs","-f","test"])
+        self.assertEqual([a for a in args if a.startswith("--request-timeout=")],
+                         ["--request-timeout=0"])
+        self.assertIn("--request-timeout=4s",pilot.KUBE)
+
     def test_repeated_poll_is_not_a_second_failed_scrape(self):
         previous = {}
         rows = [{"labels":{"job":job},"health":"up","lastScrape":"one"}
