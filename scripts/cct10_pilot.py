@@ -322,7 +322,9 @@ def wait_reference_idle(reference,timeout=35):
             signature=[(s,v["counters"]["http.cct_reference.downstream_rq_total"],v["received_log_records"]) for s,v in sorted(current.items())]
             if signature==previous:return current
             previous=signature
-        except ValueError:previous=None
+        except ValueError as exc:
+            previous=None
+            save(reference.directory/"reference-idle-last.json",{"error":str(exc),"snapshot":current})
         time.sleep(.25)
     raise RuntimeError("Independent reference did not become idle/drained")
 

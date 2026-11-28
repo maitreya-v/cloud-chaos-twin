@@ -33,7 +33,7 @@ def free_port():
 def main():
     stamp=dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     out=ROOT/"outputs/reference-checks"/stamp;out.mkdir(parents=True,exist_ok=False)
-    lock=json.loads((ROOT/".local/validation/envoy.lock.json").read_text())
+    lock=json.loads((ROOT/"configs/reference.local.lock.json").read_text())
     receipt={"passed":False,"scope":"disposable HTTP/gRPC forwarding check","image":lock}
     processes=[];created=False
     try:

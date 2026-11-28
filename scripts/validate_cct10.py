@@ -75,6 +75,7 @@ def main():
     p.add_argument("--after-pair",type=Path,required=True)
     p.add_argument("--campaign",default="20261127")
     a=p.parse_args()
+    a.after_pair=a.after_pair.resolve()
     paired=load(a.after_pair/"receipt.json")
     if not paired["passed"] or paired["restoration_errors"]:raise ValueError("Paired measurement has not passed/restored")
     if not a.session_id.startswith("cct-validation-"):raise ValueError("Use a unique validation session ID")
@@ -85,7 +86,7 @@ def main():
     save(directory/"split.json",plan)
     receipt={"passed":False,"actor":"owner-assisted validation","paired_evidence":str(a.after_pair.relative_to(ROOT)),
              "split":plan,"runs":{},"restoration_errors":[],"teammate_signoff_recorded":False}
-    lock=load(ROOT/".local/validation/envoy.lock.json")
+    lock=load(ROOT/"configs/reference.local.lock.json")
     reference=ReferenceSession(directory,a.session_id,lock["image"])
     spec=importlib.util.spec_from_file_location("cct_capture",ROOT/"scripts/cct10_pilot.py")
     capture=importlib.util.module_from_spec(spec);spec.loader.exec_module(capture)

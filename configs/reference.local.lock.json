@@ -1,0 +1,8 @@
+{
+  "tag": "envoyproxy/envoy:v1.40.2",
+  "image": "docker.io/envoyproxy/envoy@sha256:401cf6645d36f5e599dd26eec125a0a9d21c92267bc37b702d24c327b1ed889a",
+  "architecture": "arm64",
+  "upstream_image": "envoyproxy/envoy@sha256:8de97e654644827d62afdbf7e1d3dc9fee01a8690d410dd1c63a30dc6b6cecbb",
+  "platform_manifest": "sha256:401cf6645d36f5e599dd26eec125a0a9d21c92267bc37b702d24c327b1ed889a",
+  "upstream_index": "sha256:8de97e654644827d62afdbf7e1d3dc9fee01a8690d410dd1c63a30dc6b6cecbb"
+}

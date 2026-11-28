@@ -48,14 +48,20 @@ def closed_counters(before,after):
             c=row["counters"];events=row["received_events"]
             total=c["http.cct_reference.downstream_rq_total"]
             complete=c["http.cct_reference.downstream_rq_completed"]
-            if total!=complete or c["http.cct_reference.downstream_rq_active"]!=0:
+            # HCM's completed counter excludes reset requests. Resets before
+            # the capture boundary remain visible but do not make the proxy
+            # permanently non-idle; any new reset still fails the delta below.
+            if not 0<=complete<=total or c["http.cct_reference.downstream_rq_active"]!=0:
                 raise ValueError("reference requests still in flight")
-            if events!={"DownstreamStart":total,"DownstreamEnd":complete} or row["received_log_records"]!=total+complete:
+            if events!={"DownstreamStart":total,"DownstreamEnd":total} or row["received_log_records"]!=2*total:
                 raise ValueError("reference logs differ from independent request counters")
             if any(c.get(k)!=0 for k in ("filesystem.write_failed","filesystem.reopen_failed","filesystem.write_total_buffered")):
                 raise ValueError("reference output failure or undrained log buffer")
         if b["counters"]["http.cct_reference.downstream_rq_total"]<a["counters"]["http.cct_reference.downstream_rq_total"]:
             raise ValueError("reference counters reset")
+        if (b["counters"]["http.cct_reference.downstream_rq_total"]-a["counters"]["http.cct_reference.downstream_rq_total"] !=
+            b["counters"]["http.cct_reference.downstream_rq_completed"]-a["counters"]["http.cct_reference.downstream_rq_completed"]):
+            raise ValueError("reference request reset during capture")
 
 
 def native_records(trace_id,entry):

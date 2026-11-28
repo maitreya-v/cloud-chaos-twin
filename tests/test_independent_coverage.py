@@ -2,7 +2,7 @@ import copy
 import hashlib
 import unittest
 
-from observability.coverage import reconcile, proofs_for_windows
+from observability.coverage import reconcile, proofs_for_windows, closed_counters
 from observability.fixture import fixture
 from observability.reference import PORTS
 
@@ -99,6 +99,21 @@ class IndependentCoverageTests(unittest.TestCase):
         data[1][-1]['started_epoch']=.95
         with self.assertRaisesRegex(ValueError,'fully archived'):
             reconcile(*data,trace_cutoff_ms=1000,caches=caches)
+
+    def test_a_prior_reset_does_not_hide_a_new_reset_or_poison_idle_boundaries(self):
+        entries,requests,before,after,ledger=self.data()
+        for snapshot in (before,after):
+            row=snapshot['frontend'];row['counters']['http.cct_reference.downstream_rq_total']+=2
+            row['counters']['http.cct_reference.downstream_rq_completed']+=1
+            row['received_log_records']+=4
+            for event in row['received_events']:row['received_events'][event]+=2
+        for row in ledger:
+            if row['service']=='frontend':row['sequence']+=4
+        closed_counters(before,before)
+        self.assertEqual(len(reconcile(entries,requests,before,after,ledger)),3)
+        after['frontend']['counters']['http.cct_reference.downstream_rq_completed']-=1
+        with self.assertRaisesRegex(ValueError,'reset during capture'):
+            reconcile(entries,requests,before,after,ledger)
 
 
 if __name__=="__main__":unittest.main()
