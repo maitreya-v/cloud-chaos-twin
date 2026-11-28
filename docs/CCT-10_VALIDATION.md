@@ -64,3 +64,21 @@ its original timestamped observations, reserves fresh fault IDs and verifies
 that both channels' threshold values, sample counts and training hashes stay
 unchanged. The new split and freeze are recorded before the retry's faults.
 Failed reserved-run data is not added to calibration.
+
+The first reserved validation exposed an outcome-scoring limitation: the health
+rule calls a first breach `unknown` while awaiting persistence, and the original
+evaluator censors every intermediate unknown. Thus a complete first breach can
+make the later confirmed latency onset unscorable. Original evaluations are
+retained unchanged. `scripts/evaluate_confirmed_cct10.py` adds a separately
+versioned analysis that continues through a pending breach only when both the
+current and preceding windows have complete, adequate measurements. Genuine
+data gaps still censor. Onset stays at the second confirming breach; predictions,
+eligibility, thresholds and original timestamps remain unchanged.
+
+The supplementary plan and implementation hashes were fixed before the final
+trial. The plan was first written after the preceding test's injection, so only
+`cct-probe-cct10-test-20261128c-02` is held out for this supplementary analysis;
+the first two trials are exploratory for it. Both originally reserved test runs
+remain test runs under the original conservative evaluator. The script checks
+the plan's times and implementation hashes, reproduces the original scores and
+writes separate results. Do not combine the two outcome policies in one score.

@@ -1,0 +1,42 @@
+{
+  "attempts": [
+    {
+      "session": "cct-validation-20261128-01",
+      "scope": "relative-path input error before cluster access"
+    },
+    {
+      "session": "cct-validation-20261128-02",
+      "scope": "idle accounting stopped before workload/injection; drained prior reset corrected",
+      "restoration_errors": []
+    },
+    {
+      "run_id": "cct-probe-cct10-validation-20261128b-01",
+      "passed": false,
+      "error": "Pilot did not finish its full recovery protocol",
+      "workload_report": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "ended_epoch": 1795844571.3195443,
+        "failures": 0,
+        "journeys": 681,
+        "max_start_lag_ms": 197.33298130813637,
+        "measured_started_epoch": 1795844521.560064,
+        "mode": "fault",
+        "phase": "complete",
+        "reason": "arrival backlog exceeds 500ms",
+        "requests": 2054,
+        "run_id": "cct-probe-cct10-validation-20261128b-01",
+        "target_journeys_per_second": 5,
+        "warmup_started_epoch": 1795844401.5579364,
+        "worker_errors": 0,
+        "workers": 12
+      },
+      "fault": {},
+      "health_unchanged": true,
+      "cleanup_errors": [],
+      "campaign_restoration_errors": [],
+      "excluded_from_healthy_calibration": true,
+      "scope": "pre-injection reserved baseline aborted; zero failed HTTP operations but >500ms arrival backlog and several ~4s calls; source healthy training remains separately valid",
+      "receipt_sha256": "b9316771e11a9baf7e36b3fdb3dc28abc6e65d4f3f418325f268b557cf43f9b9"
+    }
+  ]
+}

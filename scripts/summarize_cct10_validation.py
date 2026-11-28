@@ -40,6 +40,8 @@ def summarize(directory):
                    'Three trials on one target do not establish cross-target or cross-fault generalization.',
                    'Retrospective label agreement and prospective decision scoring are separate.',
                    'Missed or late independent frames remain unknown; no availability times are backdated.']}
+    for name in ('retained-environment-review','session-source','outcome-evaluation-plan.v2','final-shared-health'):
+        if (directory/(name+'.json')).exists():out[name]=load(directory/(name+'.json'))
     for run in receipt['runs']:
         folder=directory/'runs'/run;r=load(folder/'receipt.json')
         result={k:r.get(k) for k in ('passed','error','source_revision','mode','protocol','measurement_interval_utc',
@@ -70,6 +72,8 @@ def summarize(directory):
         if (folder/'live-observation-summary.json').exists():
             live=load(folder/'live-observation-summary.json')
             result['live_deadline_reasons']=dict(Counter(live['missed_or_retried_windows'].values()))
+        supplementary=folder/'confirmed-outcome-evaluations.supplementary.json'
+        if supplementary.exists():result['supplementary_confirmed_outcomes']={k:v for k,v in load(supplementary).items() if k!='evaluations'}
         out['runs'][run]=result
     frozen_path=directory/'calibration.frozen.json'
     if frozen_path.exists():

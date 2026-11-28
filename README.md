@@ -11,16 +11,18 @@ Cloud Chaos Twin studies how failures spread through Online Boutique, a microser
 | Testbed and workload | Maitreya deployed Online Boutique on an ARM64 kind cluster and verified browsing, cart updates, and checkout. The [matched tracing pair](docs/CCT-04_PAIRED_OVERHEAD.md) passed both 15-minute measurements with zero failed requests. | Broader host/workload replication; the single pair is descriptive. |
 | Traces, metrics, and logs | The [live rollout](docs/CCT-03_TRACING_ROLLOUT.md) recovered all 15 required journey relationships. Merul independently verified the journeys and service data. The owner's new [coverage campaign](docs/CCT-10_STATUS.md) reconciled 70,200 healthy calls against an untraced request ledger and independent counters. | Teammate acceptance of new artifacts; coverage outside the measured scope. |
 | Dependency graph and baseline metrics | Mithil reproduced the graph and all 15 required journey relationships. [CCT-09 acceptance](docs/evidence/CCT-09-mithil-real.json). New healthy capture supplies 59 qualifying calibration windows for each of ten services. | Reserved-run evaluation and broader replication. |
-| Health labels and forecasting | Merul's candidate health rule is integrated with Mithil's training-only calibration, graph/root/cascade baselines and separate outcome evaluator. Synthetic checks pass. | Joint review, real calibration and independently labeled fault runs. Forecast accuracy remains unmeasured. |
+| Health labels and forecasting | The [owner-run validation](docs/CCT-10_STATUS.md) fitted 59 healthy windows per service and completed three reserved fault/recovery trials. Native and independent health labels agree on all 1,548 scorable held-out service/windows; 52 remain unknown. | No positive advance-warning result: final supplementary 30-second F1 is 0.0. Broader scenarios, model improvement and personal teammate acceptance remain. |
 | Processing and experiments | Param recorded successful Kafka/Spark/Parquet replay on synthetic and healthy data. The owner subsequently verified a [controlled fault replay](docs/CCT-10_PIPELINE_REPLAY.md), restart and full rebuild. Mithil's analytics produced its retrospective graph. | Teammate artifact acceptance, independent coverage/impact review and calibrated evaluation. |
 
 The [deployment record](docs/CCT-02_LOCAL_DEPLOYMENT.md) documents the baseline and its timing precision. The [task board](docs/TEAM_TASKS.md) defines the acceptance criteria for each deliverable.
 
-The [first controlled fault pilot](docs/CCT-10_STATUS.md#first-controlled-live-pilot)
-recorded a 30-second productcatalog delay and automatic recovery with 447
-successful workload operations, archived traces, metrics, logs and fresh pod
-observations. Health calibration still needs independent coverage review and
-sufficient per-service volume; this pilot does not establish forecast accuracy.
+The [current validation](docs/CCT-10_STATUS.md) reconciled 265,212 service calls
+across healthy training and three bounded productcatalog-delay trials, with
+22,101 successful HTTP operations including warm-up. All 2,190 measured service
+windows have independent coverage and fresh pod observations. Original settings
+and shared access are restored. Retrospective health-label agreement and
+prospective warning performance are reported separately; general forecasting
+accuracy is not established.
 
 ## Repository and frozen version
 
@@ -57,7 +59,7 @@ For reproduction from an existing Git bundle, replace the clone command with `gi
 
 The monitoring stack accepts application spans over OTLP. The Collector sends full traces to Jaeger and derives request counts and duration histograms from server spans for Prometheus. During a shopping test, the probe retrieves the trace for each request by ID and checks its caller–callee relationships. A separate reader captures selected application logs, pod readiness, and restart counts for the workload evidence. The [telemetry runbook](observability/README.md) covers scoped deployment, native image builds, verification, and rollback. The [signal contract](observability/CONTRACT.md) defines identities, timestamps, units, and missing-data rules.
 
-The diagram shows the planned end-to-end experiment. Kafka export is optional in the monitoring configuration. The processing stage has passed local synthetic and recorded healthy-data replay. Fault-run integration and prediction evaluation remain pending.
+The diagram shows the planned end-to-end experiment. Kafka export is optional in the monitoring configuration. Synthetic, healthy and recorded fault-data replay passed. Current prospective measurements use direct trace queries and independently checked windows; they do not establish live forecasting through Kafka/Spark.
 
 ```mermaid
 flowchart TD

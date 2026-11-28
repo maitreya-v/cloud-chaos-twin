@@ -1,0 +1,4088 @@
+{
+  "artifact_hashes": {
+    "adservice-admin-forward.log": "0b685222b6c6d12a240cd77102bb6039854330870991aea1b5d3b11c9a0fb211",
+    "adservice-reference.log": "ce727ad3ef732ae0dac24fd8585e206426156a402c2aab8b2709d9b8a97a4b66",
+    "calibration.frozen.json": "46d446a66cadae955b4bce624af864773f5a4d9e9696b5f295d08970a00d50fb",
+    "cartservice-admin-forward.log": "86101b041a729401cd728f44dc4b659e432799c95b8e70ef8ca4c58dca16b5af",
+    "cartservice-reference.log": "28dc3ad7c421e1716d832a65cd2c948ca551918d4f60fd69b09d071c5251def7",
+    "checkoutservice-admin-forward.log": "06d4fc9dbc81dc51943e7e3a8ef63d568101170092c7ae5ebf58800273e7e1bd",
+    "checkoutservice-reference.log": "a069df2e86f5aaf4f1865a91e5bdfd2e612c500d2392301ed6cd41aed6658ae5",
+    "confirmed-outcome-summary.supplementary.json": "821716d85d271a9290cf1f9af6f052458ee6f2eb952e3c68907a722c76023cf0",
+    "currencyservice-admin-forward.log": "cd436971aaea7c88e97d28f1c3d33bc864e227e57c5eed3fdd972fa53eae9882",
+    "currencyservice-reference.log": "ad8222889f26cdeddc6abdf59b12db89e044417f33f51cbb1b5ac22390cca1fb",
+    "emailservice-admin-forward.log": "e003084dc09bc62a2c56639aa39081c1a2f148c9122f7d876c7789ad66065b29",
+    "emailservice-reference.log": "ac9c7e26793b123e7867273b541eeb93f4dc0d97674846cee69d862cec116ec4",
+    "final-monitor-forward.log": "3c4bb3f693c193bc762674ca7e82c2d205333a0a6f4ffc6d44ee022a4b95b2b2",
+    "final-shared-health.json": "5585e1b554e9eb1e07bdca0abfa847f55ff3b3faf07a5dcbb1eb0119bd659ccd",
+    "frontend-admin-forward.log": "7d1899366c357d7272c1c6e3775fe0788b22e9ae635f6eb0dcb6e3583aa0fa62",
+    "frontend-reference.log": "13ce042d8dbb14dbda781164a93c88e7cd20b65d0bdb8f32c9625b91c7e22a5d",
+    "healthy-intervals.json": "da0dd889e5b40a94b55cfbacbc8fc5a8df3eb402ba14bf7df2061b8079d7d311",
+    "host-resources.jsonl": "a1d0e55420d80e3df6664535dc015b9beb80f68c9d72c922a2c2508ca5bcf4c7",
+    "outcome-evaluation-plan.v2.json": "6f383a348d40948db6b931e2d3d87b760d0d01dbb7a22415dfac364b16f31bc8",
+    "paymentservice-admin-forward.log": "12255b2f2e8a168f1dabbdef862b0b7cb4ab8282f4d3a8d02ce35c0895640339",
+    "paymentservice-reference.log": "d5097521d6e07f0e3161843bd72217a82a108a894763a43ec5817462e2cc10bd",
+    "productcatalogservice-admin-forward.log": "1f6b7edc9d44789da10c344239033c42c409597971331aedb02ed39091fd899b",
+    "productcatalogservice-reference.log": "3b10b33145e9dea67daf044de98c67fe7efa8256967e0e851d410e0ef81142aa",
+    "progress.json": "c05fb67a7c149249f95bb559a82319c671ed7749c9ac89086b4e53dda4e875f0",
+    "receipt.json": "8c7a7dc48a0743e95897b3b1b5d511539e1a649c1957a2b6ff2fb953caca3b8e",
+    "recommendationservice-admin-forward.log": "6d4f143e29dd8e58f9aeccc24dd40dff3593df75b9f18dc7e47d08920ffc33ad",
+    "recommendationservice-reference.log": "d46457f57d429b523b92eef4f0df6a3ad547613519b688cdcd37a511947b1f04",
+    "reference-pods.json": "5b863d1f6d9f09ddbfe3de6f14c58935c27e4a41f012fdb0197be3a0eb7086a0",
+    "reference-restoration.json": "28d234ca4d3bee388b3326bbf537328e1e224568454d45e39d8056b216c1d951",
+    "reference-state.json": "c7e93358c3e771ad513a9268c51ef3bc809a0475bd91dc6c7bc62a95c442c745",
+    "reference.jsonl": "37137cffdc4d9118887aa7c3153482568e6431d122372b48e20caa556c5ab110",
+    "retained-environment-review.json": "86fa205fb5014e3b189c5f6ec43d8710aeaa576cd01cde6507e3c38a7057ffec",
+    "runs/cct-probe-cct10-test-20261128c-01/cct-jaeger-forward.log": "4616763be2d0339cfc6758db4b55ecef9377ec9b20d9aae72fca7ed4da7d3711",
+    "runs/cct-probe-cct10-test-20261128c-01/cct-prometheus-forward.log": "c19527122964dfb42bcfb16193aa2ea6a205e5334600f403fdc2cb1031d6ed2a",
+    "runs/cct-probe-cct10-test-20261128c-01/confirmed-outcome-evaluations.supplementary.json": "b35391daf0f2473107c9aeda94d40b15d13adad50304ceee866209542cbc626a",
+    "runs/cct-probe-cct10-test-20261128c-01/coverage-proofs.json": "c060cfd8891ac544d2ea50e184bdfe5b02011eae96a33dff32a4b85da3c4c6ca",
+    "runs/cct-probe-cct10-test-20261128c-01/coverage-review.json": "5ed78e96a0a55ac81204f6a9da6921d52bf60dcef95613627648abc6631da69c",
+    "runs/cct-probe-cct10-test-20261128c-01/fault-status.jsonl": "760273387f69e760bf826828525f9b1cd6caab964cca4edabf7d0b5978543628",
+    "runs/cct-probe-cct10-test-20261128c-01/fault.created.json": "dee0fda87c3884c21e1088b2300a8af91947b6925f6545025330355625cceab5",
+    "runs/cct-probe-cct10-test-20261128c-01/fault.injected.json": "1b150c6afb5c476d18f2e798bb8b19aec4e23c9ee002dd41acbf96b36aa66a5c",
+    "runs/cct-probe-cct10-test-20261128c-01/fault.recovered.json": "2b688bb45017577f228f1a144a5b13c284115c23521afe9da8fb07077c6e89e1",
+    "runs/cct-probe-cct10-test-20261128c-01/fault.request.json": "f4bba82b5b641e62c8d7636887efd0fc83a5c10ce369830e6b4bb84e51e4e576",
+    "runs/cct-probe-cct10-test-20261128c-01/final-health.json": "7aef51b50d51ffa999757a806ea38c9d9e20a5b93c4ea55fe8b4f28acab9c53c",
+    "runs/cct-probe-cct10-test-20261128c-01/health.jsonl": "0e0324537fb7ee80718bae74b91abfc2707c027f473792921d897792e78806c8",
+    "runs/cct-probe-cct10-test-20261128c-01/heldout-label-validation.json": "8505f58e288796a57300e4f9589eafcf574256d591c0012d4d4f8b1edab6999f",
+    "runs/cct-probe-cct10-test-20261128c-01/initial-health.json": "7aef51b50d51ffa999757a806ea38c9d9e20a5b93c4ea55fe8b4f28acab9c53c",
+    "runs/cct-probe-cct10-test-20261128c-01/jaeger-observations.jsonl.gz": "baf5077685c3604bf151cafe10c1801176ed1d445076d2ad609653b85723a2b2",
+    "runs/cct-probe-cct10-test-20261128c-01/live-frame-proofs.jsonl": "5fe2e438bd12dc1e0a5abb4e092dfb7e2c870354ab0a2ba70acc794a7d14e758",
+    "runs/cct-probe-cct10-test-20261128c-01/live-observation-summary.json": "ae13bb1771702a1589c296cb1fa509effd849e4363d1c87c800ede1cac1d4f84",
+    "runs/cct-probe-cct10-test-20261128c-01/phase-latency.json": "707a27e75c4dfd302749eb283b7044cc1dc7199931be5b384eda162e16250b0b",
+    "runs/cct-probe-cct10-test-20261128c-01/phases.json": "dcf15abc783672b813ede7c5564a570d67f2cc9d95846ac8daa94e07efa4be33",
+    "runs/cct-probe-cct10-test-20261128c-01/pods.jsonl": "ab593958181bf942531026a30d7c38fc0fe6a626d56f5188f7e8ad0ea5004888",
+    "runs/cct-probe-cct10-test-20261128c-01/progress.json": "f0be972dc70fd9a953b5ba647b499c7e0b4ac41a7f387240f6c8c8f680b0f5c7",
+    "runs/cct-probe-cct10-test-20261128c-01/prometheus.jsonl": "b5fae54f0765a2df45128a23044cda785b7f493396a182363965b6af7b2f29f4",
+    "runs/cct-probe-cct10-test-20261128c-01/prospective-decisions.jsonl": "faffcc577009d4e84b2a369f321909fefa28ee781526f8c9e14467d320ea3fc7",
+    "runs/cct-probe-cct10-test-20261128c-01/prospective-evaluations.json": "7f9af4729c59d6e5b9a21f52e75a5214f7a0c1cd6fbcbe1a5d7e8b3023e19bf1",
+    "runs/cct-probe-cct10-test-20261128c-01/prospective-summary.json": "511e34cc253de9e0b98a8c709beeb102c4086cebbcf2cb6746e5a84ab589905b",
+    "runs/cct-probe-cct10-test-20261128c-01/protocol.json": "7e4e75883470e824d881ae601dbce55005322f53896962a8d136c04afc35c48b",
+    "runs/cct-probe-cct10-test-20261128c-01/receipt.json": "193a3ff05462c78ee473d857687dc424a0f38190ac104fbbab7df2016bc4a9af",
+    "runs/cct-probe-cct10-test-20261128c-01/reference-after.json": "a6a722235528d91553240b00fb099b7e65804d126a0d95fbff2502828be9b35e",
+    "runs/cct-probe-cct10-test-20261128c-01/reference-before.json": "be243952cc8c2e937c02d74f017e56421faebe05c002920c95ba42dc5b8cf18a",
+    "runs/cct-probe-cct10-test-20261128c-01/reference-pairs.jsonl": "2094c93ce86c12be52b0a045fe855099aa69aa7ef2d3d6278ca9e228db6e2a63",
+    "runs/cct-probe-cct10-test-20261128c-01/reference-service-windows.reviewed.json": "b7a74465bc303fc0ec10e355564022168daf77c83bbd0c2e242d99981c01b05f",
+    "runs/cct-probe-cct10-test-20261128c-01/reference.jsonl": "8280e6feb2f3151e5cc404b6ec93eafa49492ef2276d7ee875d604dd44333c23",
+    "runs/cct-probe-cct10-test-20261128c-01/request-begins.jsonl": "77995287ffbaa85e78319747de8e3a0d0156608a901f521e5480c31d45c25a60",
+    "runs/cct-probe-cct10-test-20261128c-01/requests.jsonl": "6353c210c77d99abba0e3d4e3a714978d344c740a45a4bdd66f3b41758e82980",
+    "runs/cct-probe-cct10-test-20261128c-01/resources.jsonl": "d4e34156c54e7103e9aa7529615d6c72adfebc8b171046b9048c1bcedd0738bf",
+    "runs/cct-probe-cct10-test-20261128c-01/server-records.jsonl.gz": "f0f9b9e6cb8d158299a72dc2ea3911d3fd1682d9aa7321e634781c9276447fae",
+    "runs/cct-probe-cct10-test-20261128c-01/service-windows.json": "efe0aa4cd0ca235e21cff0ac4a7279c878e73e5e6f263a90ea4b1db476b02382",
+    "runs/cct-probe-cct10-test-20261128c-01/service-windows.partial.json": "08a96e92b2eb527c157a6451dbbc2e79b38a420ccc91e60e8787329b957b641d",
+    "runs/cct-probe-cct10-test-20261128c-01/service-windows.reviewed.json": "71763776782fac4d737fc8ad0cbc66e510ffbb4b5568b12d35de39771547de4e",
+    "runs/cct-probe-cct10-test-20261128c-01/signals/logs.json": "8f3577cb191028175c9337adc0b4b81fcdbfe1ff67c1be401019dd55d10c40a6",
+    "runs/cct-probe-cct10-test-20261128c-01/signals/metrics.json": "4972f890a98428781697b4510d422f7cc4b13ad94ac49056c9b266d44ba7b0bb",
+    "runs/cct-probe-cct10-test-20261128c-01/signals/summary.json": "81422c86962f6a685ed5c10d9a76fa1a52cd42a2bcd7d4bf020a6a173172cc5e",
+    "runs/cct-probe-cct10-test-20261128c-01/source-hashes.json": "1855515b2f9ddbf0d70b8c7a9be25d42c3e18da42d1d8c05bb33f6ff54e69f4c",
+    "runs/cct-probe-cct10-test-20261128c-01/traces.jsonl.gz": "f3e6cf7ac9eec2c261b80ac5ccb96a029799b7dc2378718d2dbfb12c2211e354",
+    "runs/cct-probe-cct10-test-20261128c-01/workload-console.log": "efe8aea6edd0fc992afe134d8fa388d04332a3ffa0641820d971605ebc24957d",
+    "runs/cct-probe-cct10-test-20261128c-01/workload.json": "75ad8c35a19f1d49515cf3fa4fc871bbfc215889c1215cfb21c38bafcefb373c",
+    "runs/cct-probe-cct10-test-20261128c-02/cct-jaeger-forward.log": "7d265ba125b967a63679ca6c8daab8b319e7c21d52b6e5d6056b716a4e2b355e",
+    "runs/cct-probe-cct10-test-20261128c-02/cct-prometheus-forward.log": "7adce91ba2972b5648d9a8de4913559442bf881555ae3abbfcc92bf108ead71c",
+    "runs/cct-probe-cct10-test-20261128c-02/confirmed-outcome-evaluations.supplementary.json": "8decc34c366f625baafc8b54e96719e5d9803c55d019c25dfdbb9d968545bc06",
+    "runs/cct-probe-cct10-test-20261128c-02/coverage-proofs.json": "aa370fd2fe19ef604df0be6c98a180d472dec0ee27dca344cdc8402794e0e6f1",
+    "runs/cct-probe-cct10-test-20261128c-02/coverage-review.json": "6248be585281e8082e7eafc48d3590d3eea8d9961bb9e3a81435268991300c31",
+    "runs/cct-probe-cct10-test-20261128c-02/fault-status.jsonl": "c738c90e4c4cecd91b91b9e23aeec3d797eaf5d70023c4449eae202ef742215d",
+    "runs/cct-probe-cct10-test-20261128c-02/fault.created.json": "19cf13a7665ed31b9685edd3d1c8bd37c4e5291b56086f4abf583aa981398a0f",
+    "runs/cct-probe-cct10-test-20261128c-02/fault.injected.json": "9236921bfc32243570b5126b8b85ba0239d495b54da301e9edef942bfe462fb8",
+    "runs/cct-probe-cct10-test-20261128c-02/fault.recovered.json": "9b578a12de16709c8ad34b3cea3f7a5955ba2bd4ef4545faaa4574df6636c956",
+    "runs/cct-probe-cct10-test-20261128c-02/fault.request.json": "a46baec131dafff63103dc4f3552d4d3ce92a69cbe9e1c43c516057392873d3e",
+    "runs/cct-probe-cct10-test-20261128c-02/final-health.json": "7aef51b50d51ffa999757a806ea38c9d9e20a5b93c4ea55fe8b4f28acab9c53c",
+    "runs/cct-probe-cct10-test-20261128c-02/health.jsonl": "094b505b425afed38dec3ee001a89b1adf3ee9400613ee297a5af5ef8ecc0317",
+    "runs/cct-probe-cct10-test-20261128c-02/heldout-label-validation.json": "996b33aaf1ab3a97be23790572e529550f70e61e11e430d02e65b30276f6f025",
+    "runs/cct-probe-cct10-test-20261128c-02/initial-health.json": "7aef51b50d51ffa999757a806ea38c9d9e20a5b93c4ea55fe8b4f28acab9c53c",
+    "runs/cct-probe-cct10-test-20261128c-02/jaeger-observations.jsonl.gz": "049b186314bbaf347c3e9e2d7ec3e10d393625260e2c1455792bab45bdd4b88b",
+    "runs/cct-probe-cct10-test-20261128c-02/live-frame-proofs.jsonl": "7db9a6533588b3b9a65f79f02d671730858001d97f8c6fc1b4bd0f251e3b98d2",
+    "runs/cct-probe-cct10-test-20261128c-02/live-observation-summary.json": "a9d91060b522ad1f5251011ff3e2facdf868b033745d2ef745a115fa74d6dd91",
+    "runs/cct-probe-cct10-test-20261128c-02/phase-latency.json": "78a61d9144881f7576fc7919022affcddc7382fd4d0a936f5c56a394cf0d65bb",
+    "runs/cct-probe-cct10-test-20261128c-02/phases.json": "5021358770fed82262fb90d219da9607b4da369fc75ac13950727e8f9ee426e3",
+    "runs/cct-probe-cct10-test-20261128c-02/pods.jsonl": "b68df652051104767506aef3376f62740978af316e4b20cf0cb6f12ac6c7a573",
+    "runs/cct-probe-cct10-test-20261128c-02/progress.json": "a6d95abaeec8829a4bd68e127b2c52ce24ed28bf92a568e25c19e169db0379fd",
+    "runs/cct-probe-cct10-test-20261128c-02/prometheus.jsonl": "27dafae23faee8f17a57c0ac7961ccf84e66409f3f63c90b40efa6090ee04516",
+    "runs/cct-probe-cct10-test-20261128c-02/prospective-decisions.jsonl": "6fcdb257312273c2fb1ac022e7046c444df17d910062659ff93e63004e9425db",
+    "runs/cct-probe-cct10-test-20261128c-02/prospective-evaluations.json": "cb6078671eabe72c8df207b8f1725ec19d6b3882459f135d1a11ae707f208a0a",
+    "runs/cct-probe-cct10-test-20261128c-02/prospective-summary.json": "807957fe2bc801ead17677be4a321b543c207ce28736260369c628f7b87341cf",
+    "runs/cct-probe-cct10-test-20261128c-02/protocol.json": "13b6db418a62704b5fcbc3350a38f196b934f25da570bd7eb4e80494281af0ea",
+    "runs/cct-probe-cct10-test-20261128c-02/receipt.json": "4d21945d1b3a1118aa5e02915bf01671617ac9ed036b8af56d4e9e6e33c83f87",
+    "runs/cct-probe-cct10-test-20261128c-02/reference-after.json": "4cc46feb304583544f56c92e13d9b70ac89db03ffb1794a90310f69e05a9a10f",
+    "runs/cct-probe-cct10-test-20261128c-02/reference-before.json": "531da8b90d1e94a3cdafb11f56198c634283f2aee6973332164ee81686015082",
+    "runs/cct-probe-cct10-test-20261128c-02/reference-pairs.jsonl": "f0dccd59e5d828b25d061b4907e9081693b19dc4e06b9e8c56dc1e641b35a81c",
+    "runs/cct-probe-cct10-test-20261128c-02/reference-service-windows.reviewed.json": "bf1c2f695d2728bf544c08ad5f06b69973197d9e5d3da17fb7623807468b1a98",
+    "runs/cct-probe-cct10-test-20261128c-02/reference.jsonl": "36d41036bbb832b46e8fa83b3ccfae798d6e523d93592de94acbb4d8bb117ae9",
+    "runs/cct-probe-cct10-test-20261128c-02/request-begins.jsonl": "4541ffc089bfc633127d487167c831db7ee4a27aa9e3cb53f91334df141a4229",
+    "runs/cct-probe-cct10-test-20261128c-02/requests.jsonl": "ff90a899d37a6b9d5a8cf279fc0604ceb6f9ae60b518c877bcc899e16efc2b9a",
+    "runs/cct-probe-cct10-test-20261128c-02/resources.jsonl": "522b4bda98bd1eeaa74c75014cb215f5e6185fab65b89a06c600565f411e7e1a",
+    "runs/cct-probe-cct10-test-20261128c-02/server-records.jsonl.gz": "c90ed255eeba8c7967a517b07df37830bba7fea5bf299886633f9775cb95e840",
+    "runs/cct-probe-cct10-test-20261128c-02/service-windows.json": "8d2a6c9695fb365448d12e46726d58985969247ec4c8f65dc2ee4efe009df068",
+    "runs/cct-probe-cct10-test-20261128c-02/service-windows.partial.json": "868022ac8b6a22a549efaaa61259c8459ef6b5bded85a3ccffb11014b2a65682",
+    "runs/cct-probe-cct10-test-20261128c-02/service-windows.reviewed.json": "9c551bc19f9d38a62e64b7416e619393d429ebb24ae02567ad91dcbf46a76cc7",
+    "runs/cct-probe-cct10-test-20261128c-02/signals/logs.json": "ac2987fe17ff37f0fee8370de017363ffe1597c3bb731d41319b7bbbc5cb845f",
+    "runs/cct-probe-cct10-test-20261128c-02/signals/metrics.json": "d74b7f9ff700f9d2f388ad0914644405c9d4b4f15268a56591fe55a52a3fa4f2",
+    "runs/cct-probe-cct10-test-20261128c-02/signals/summary.json": "d520dacc0a0d64a242f6d82a9e944cd3ed507c3ac9b32d9ce25fa031cc096705",
+    "runs/cct-probe-cct10-test-20261128c-02/source-hashes.json": "1855515b2f9ddbf0d70b8c7a9be25d42c3e18da42d1d8c05bb33f6ff54e69f4c",
+    "runs/cct-probe-cct10-test-20261128c-02/traces.jsonl.gz": "ed1f72e616acbb3930b62bf5971af0aebdbdd0f480ad8712031cbc0af5bbddc0",
+    "runs/cct-probe-cct10-test-20261128c-02/workload-console.log": "14a6f379b1321bcc3e905e22374ad7d45cf4237e15f3df6f5992da2d7bbbd1c8",
+    "runs/cct-probe-cct10-test-20261128c-02/workload.json": "450b3cf75c60cbb0cf1bcdd535f5b3c7fd58d4d15a4202c7e4748fb225e98952",
+    "runs/cct-probe-cct10-train-20261128b-01/cct-jaeger-forward.log": "b901f988dbc68dd997f933d9fa736e68164bab47a3063f61215b4b361fedabb8",
+    "runs/cct-probe-cct10-train-20261128b-01/cct-prometheus-forward.log": "ec649d62d0a146150540e30a7fe4c5a2f36aba7d77bac1f6b6027136c9888d1b",
+    "runs/cct-probe-cct10-train-20261128b-01/coverage-proofs.json": "1aa9d941bbd9eab19d35568abed6e5d3491cb7ae76e850729d5110d5d671d360",
+    "runs/cct-probe-cct10-train-20261128b-01/coverage-review.json": "c4c4cd64a36e04f72899152057110438ce4a060bbe227b2b735ec951958ba953",
+    "runs/cct-probe-cct10-train-20261128b-01/fault-status.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/cct-probe-cct10-train-20261128b-01/final-health.json": "3e4e02881d2f2328fba84642288a171cf6f060569f3974e15fff0f03d5cec7ca",
+    "runs/cct-probe-cct10-train-20261128b-01/health.jsonl": "d7a9a57bfb423fbb0ca6ba3b3ccffda9f1cb7faa0ec40b5f6067bd2d0c6f71de",
+    "runs/cct-probe-cct10-train-20261128b-01/initial-health.json": "3e4e02881d2f2328fba84642288a171cf6f060569f3974e15fff0f03d5cec7ca",
+    "runs/cct-probe-cct10-train-20261128b-01/jaeger-observations.jsonl.gz": "cd7c0aa2fd509a6d3343d5f591b531bfcc1a072597c3fe5f493638aa994e7604",
+    "runs/cct-probe-cct10-train-20261128b-01/live-frame-proofs.jsonl": "a9c42ea3dd147e1d9e4002715d24c283ed6b2b3fe8fe2b79f6ba55ad8578bd36",
+    "runs/cct-probe-cct10-train-20261128b-01/live-observation-summary.json": "302969143e6df6d311c4853060d8aaebb88bc134f55622b41e9ce65fbd9d812b",
+    "runs/cct-probe-cct10-train-20261128b-01/phases.json": "741943ee1f0c2a5715ada94e7133d7cbfb4e93c57466c3edb7e5ef59238b2d32",
+    "runs/cct-probe-cct10-train-20261128b-01/pods.jsonl": "480f64c30e17f4dc46e0d1ded2a18da12191d05ee93ae69d3ebadf699945c946",
+    "runs/cct-probe-cct10-train-20261128b-01/progress.json": "7c09b77f0bf0dadf1ed783fb372ec7b7194f1cd32ae864b94c051f4720bc6331",
+    "runs/cct-probe-cct10-train-20261128b-01/prometheus.jsonl": "e2fedba1b245518b65a173c1caa112d30fef01e9faea719898a0a191dab9e51b",
+    "runs/cct-probe-cct10-train-20261128b-01/protocol.json": "8a7d696d8eedf71649e5fd9e4f5d8533e4b6b4f35af939975d561be6818195c0",
+    "runs/cct-probe-cct10-train-20261128b-01/receipt.json": "2bd1cc848e17fd1495745ca476c5cfcdc4e7c7cfdf387ecb68c89a5948dd54cf",
+    "runs/cct-probe-cct10-train-20261128b-01/reference-after.json": "87d60e3cf2ed06a1f5eed95b93f4a15ae293a16107a0ec854bdd64009f35dab9",
+    "runs/cct-probe-cct10-train-20261128b-01/reference-before.json": "abe68c75839aa955f4a79e8b9fe6ae3ff23c782c756f670b8057201471dc15cb",
+    "runs/cct-probe-cct10-train-20261128b-01/reference-pairs.jsonl": "9c596ee5fb004ce389d92a3e7e0eea804d26f66ead823dd52e6e0bc868e4f289",
+    "runs/cct-probe-cct10-train-20261128b-01/reference-service-windows.reviewed.json": "50c7042edb40a4afd69594ef9a0ff748645c4f85a3560b92e2b61d207dcbc6fd",
+    "runs/cct-probe-cct10-train-20261128b-01/reference.jsonl": "0141cd8e2bc27b7f46ecf80fb42a8894b3eaad32a592ce238b8aa22605559a42",
+    "runs/cct-probe-cct10-train-20261128b-01/request-begins.jsonl": "6e7af13b9c3e4f440b1cb4eaf6ffcbbf68f366a9804219dcc1ae9edfdbaad607",
+    "runs/cct-probe-cct10-train-20261128b-01/requests.jsonl": "9c070da62b1f2f5599abe25f3094ea9a749eaad8fa190bb4be0c063c6ed8a826",
+    "runs/cct-probe-cct10-train-20261128b-01/resources.jsonl": "8ef44fbae1151fcb30c49b1ae7a84097dcf42274a0ad135fc0062e41286805c9",
+    "runs/cct-probe-cct10-train-20261128b-01/server-records.jsonl.gz": "d51ae1af36029bdaa1685c8a3f7265b87f6437d7e947bde165595acc930a9dac",
+    "runs/cct-probe-cct10-train-20261128b-01/service-windows.json": "51b5a46d394d0db1c535557e7ccee898d04f1cbf71489696234db277ef36f217",
+    "runs/cct-probe-cct10-train-20261128b-01/service-windows.partial.json": "0caec741e19d49e9cd627d065ea0c1dbc8ef30860538e698d1f594e053fe01c2",
+    "runs/cct-probe-cct10-train-20261128b-01/service-windows.reviewed.json": "00835ac0217dafecd2e3f5673eb1b3184bf9c7913576d1117128c4e75afd0187",
+    "runs/cct-probe-cct10-train-20261128b-01/signals/logs.json": "4e2825da367aac457d5b42135dd167972dda85f0b03941cf576da4f9adc9b269",
+    "runs/cct-probe-cct10-train-20261128b-01/signals/metrics.json": "e47c1c496f40b5993a4c1fc7e0bd3224fec6ba40b55599fea5f1582aa971931b",
+    "runs/cct-probe-cct10-train-20261128b-01/signals/summary.json": "06223aa6394102f10be5b39c0e0a386f96c8a409b8b2ed623a0cd502ca4c07a8",
+    "runs/cct-probe-cct10-train-20261128b-01/source-hashes.json": "1855515b2f9ddbf0d70b8c7a9be25d42c3e18da42d1d8c05bb33f6ff54e69f4c",
+    "runs/cct-probe-cct10-train-20261128b-01/traces.jsonl.gz": "5c4311a65b44ac903a93fd34e148ce30eda8a690870483094c144f2cdce439d4",
+    "runs/cct-probe-cct10-train-20261128b-01/workload-console.log": "0f8d995cc0c5cc5c48e346885ca46995e5763f86b95bd3ddc67687e5d6e18590",
+    "runs/cct-probe-cct10-train-20261128b-01/workload.json": "4c556614f2d6f172f8faff8c912f084022c20455694c2990dd4482dcd68af0a3",
+    "runs/cct-probe-cct10-validation-20261128c-01/cct-jaeger-forward.log": "cf586e5cd3947e5168a34b6b52d0417740ae06248f503ef2a0d15cdd16dccf03",
+    "runs/cct-probe-cct10-validation-20261128c-01/cct-prometheus-forward.log": "f2d66f0d7b367c4edd79d10fc298123e785bb816d7f365b0b669f59540a12d31",
+    "runs/cct-probe-cct10-validation-20261128c-01/confirmed-outcome-evaluations.supplementary.json": "e03cec37df229244c22df21c09b3950bebf9da1603aeca5fdb8b7a5bdcd9074e",
+    "runs/cct-probe-cct10-validation-20261128c-01/coverage-proofs.json": "8e13231a30064b9a46d38aca52de65fbb6bac76a886cc13fdc415b71f5b3b8b9",
+    "runs/cct-probe-cct10-validation-20261128c-01/coverage-review.json": "32148976b33f722ac997708f53b2e1f926aabe527bdead8f13fee5429c16f7fb",
+    "runs/cct-probe-cct10-validation-20261128c-01/fault-status.jsonl": "7e5adc71718d604dd2f4b25b9554a87bd2759be864e687dcbf71f47395e876b9",
+    "runs/cct-probe-cct10-validation-20261128c-01/fault.created.json": "76925cbc397c9321459cd09b3985038e72d87639f0941bdad77e6451f63166c0",
+    "runs/cct-probe-cct10-validation-20261128c-01/fault.injected.json": "1a312c66458cb08a2c9a75bf9e9b6ba71e128c4e076dffad147f3110c0475aee",
+    "runs/cct-probe-cct10-validation-20261128c-01/fault.recovered.json": "9d4ebdeb0dd2cc4113bc15fe3e411064b9623338e67a79b9b88441de7a986cdf",
+    "runs/cct-probe-cct10-validation-20261128c-01/fault.request.json": "36b00ffb67b4182c8276a1d881a415135f17ea12471fd50b5b18fc22d6755816",
+    "runs/cct-probe-cct10-validation-20261128c-01/final-health.json": "7aef51b50d51ffa999757a806ea38c9d9e20a5b93c4ea55fe8b4f28acab9c53c",
+    "runs/cct-probe-cct10-validation-20261128c-01/health.jsonl": "12c6a8de7111fd46c7d4660b58f6337746fe0b9b72852beb0f2bcaf49553883d",
+    "runs/cct-probe-cct10-validation-20261128c-01/heldout-label-validation.json": "249a2e5335d26926c67e4434358e1946f593d7dff0fbc7b3622675f7a2abdaca",
+    "runs/cct-probe-cct10-validation-20261128c-01/initial-health.json": "7aef51b50d51ffa999757a806ea38c9d9e20a5b93c4ea55fe8b4f28acab9c53c",
+    "runs/cct-probe-cct10-validation-20261128c-01/jaeger-observations.jsonl.gz": "5ed5a3d8816de86637e210d81769e251636f4a2bf1323e9c5ad74301c596eb48",
+    "runs/cct-probe-cct10-validation-20261128c-01/live-frame-proofs.jsonl": "15c1f9130ac7ecfa3570216f24c419ab4eef5191b612af02aa74ebd64fe48c04",
+    "runs/cct-probe-cct10-validation-20261128c-01/live-observation-summary.json": "b45e21cb97db4afdc756cf391974ef80177d28a7cfe64dc83997424b26365a8a",
+    "runs/cct-probe-cct10-validation-20261128c-01/phase-latency.json": "446b884808eb9f8316c6a9f10ac380d8f6469cbc8b675c182b3def2e26494519",
+    "runs/cct-probe-cct10-validation-20261128c-01/phases.json": "2d62f07cd719afca050e193c240743516cacf62a3572884de3bbbbd46f3afd27",
+    "runs/cct-probe-cct10-validation-20261128c-01/pods.jsonl": "89861ecdbcf7818a0200111e06da7e69e5c047886d9f04b96abedce2c2723ef2",
+    "runs/cct-probe-cct10-validation-20261128c-01/progress.json": "fdb75305b845024a8eeb22d0e39265e8432f9d4d633d582b1ebd78ab264cebb1",
+    "runs/cct-probe-cct10-validation-20261128c-01/prometheus.jsonl": "8164ecabbf97d1f5cb022a0b0a4ad24812a759ab213946127b79f1f2435b3e77",
+    "runs/cct-probe-cct10-validation-20261128c-01/prospective-decisions.jsonl": "0e266d81c2da0339de211053c360fb0943057f402a5ade5c4409d99fe5546eec",
+    "runs/cct-probe-cct10-validation-20261128c-01/prospective-evaluations.json": "ae5903fb18d6ccc7d38d87792157f4084c07143fbbb6949feb273926e6bba3d1",
+    "runs/cct-probe-cct10-validation-20261128c-01/prospective-summary.json": "324d7d70feb5a793c8542fd7e4c77ede3f13a43badce21b90eb21581e293792e",
+    "runs/cct-probe-cct10-validation-20261128c-01/protocol.json": "07f3b7da51baa6d223255dd376a951298ff62cd21b3d9ddcea7792522c8c7f17",
+    "runs/cct-probe-cct10-validation-20261128c-01/receipt.json": "aa5099301f12fc3d90f853ec7797868f54be1727ebe4b8905e69748e2ec05792",
+    "runs/cct-probe-cct10-validation-20261128c-01/reference-after.json": "cf58a3545a4726c85686a7c6b7a797158199f847c39cbfd0e32e3e196d667760",
+    "runs/cct-probe-cct10-validation-20261128c-01/reference-before.json": "3af13d0466a1462c3f1cbd1deba4d176e544cd7ae8b20957acd6fec2719469fc",
+    "runs/cct-probe-cct10-validation-20261128c-01/reference-pairs.jsonl": "8d4a6b65e0376c8874d3e95bd0af8a207c0c2d62409ab3126cf7e60e4a1ff53c",
+    "runs/cct-probe-cct10-validation-20261128c-01/reference-service-windows.reviewed.json": "903350ca2e2b534f82ad06cf2305a45c5ae98716546012c379a04fdb8adba378",
+    "runs/cct-probe-cct10-validation-20261128c-01/reference.jsonl": "61add8773b9b10df37f1bdf895e965f48a5cd5886e884462483f4e88ba170a47",
+    "runs/cct-probe-cct10-validation-20261128c-01/request-begins.jsonl": "198e8679e2958dddc50c16e646a8277e20020d8f1b5fb7a55a73b4adfb13e152",
+    "runs/cct-probe-cct10-validation-20261128c-01/requests.jsonl": "1c32eeaec3b2e496932efcbf9c54e61cf03dac177425fdf78d4fd71cbe8ae385",
+    "runs/cct-probe-cct10-validation-20261128c-01/resources.jsonl": "b0703f3b22b4afe14cdbfdc11caf8f5173a39aa1121f3a43b611325da71dd720",
+    "runs/cct-probe-cct10-validation-20261128c-01/server-records.jsonl.gz": "485e489bc98210d8be31fb3de40f0c02d86203cf9d1bdcab2d484d2dfe8b83d4",
+    "runs/cct-probe-cct10-validation-20261128c-01/service-windows.json": "fd60762bb1fc821efed64e97eeab69b20825c42dec0cdb6cac2d141195f2056b",
+    "runs/cct-probe-cct10-validation-20261128c-01/service-windows.partial.json": "6f21de4eba2eaa758111350ed874ad4cf6a65ff05b946180d2304c082e7550fb",
+    "runs/cct-probe-cct10-validation-20261128c-01/service-windows.reviewed.json": "0716ae6d3a60c2d759c9f576665308f03dcaedc9684fead7399df4daea59795a",
+    "runs/cct-probe-cct10-validation-20261128c-01/signals/logs.json": "7423d8b701a3e0057fe2eb59432e9f2b9dd68058dee311b68abc6e1724dd3609",
+    "runs/cct-probe-cct10-validation-20261128c-01/signals/metrics.json": "57e00f049aaedf26918c8664b08f80a5299cfad9c10f3df98cae589012c8c254",
+    "runs/cct-probe-cct10-validation-20261128c-01/signals/summary.json": "202e44d772c7a3dff5031fa4a8d3b81d7b8537690a1e88f4235520afd7e3481a",
+    "runs/cct-probe-cct10-validation-20261128c-01/source-hashes.json": "1855515b2f9ddbf0d70b8c7a9be25d42c3e18da42d1d8c05bb33f6ff54e69f4c",
+    "runs/cct-probe-cct10-validation-20261128c-01/traces.jsonl.gz": "88864f856731e19b6e3ed2cf747e4f5776ef8f3f4803ae6ef3c57e9abd7a5a0e",
+    "runs/cct-probe-cct10-validation-20261128c-01/workload-console.log": "57de2f665fea29645293e9747ce39f6d2dd83b9d795eb3f03d67829b3f74b206",
+    "runs/cct-probe-cct10-validation-20261128c-01/workload.json": "a006893590719e24b21ce61cd182d0e7db2f7a92ba5236cda4d6d691f37cc3f2",
+    "session-source.json": "d0122057c8323517e1044023ecb04c1670642fc00650e8deb15947fd56b34971",
+    "shippingservice-admin-forward.log": "16aa520e0d5cc4d817d2841859cb2686a9bc5ad7b7a88384fd2c2425c11aaf49",
+    "shippingservice-reference.log": "8196bcf9bfab751d3b2ac5370117c69c1db67ac83a72a7b2a3caef3a4b249255",
+    "split.json": "afbe553a120c80613f6593cf8be0d4a8a54635f4a5407797ebdb867f869538cc"
+  },
+  "calibration": {
+    "frozen_at_ms": 1795845095404,
+    "independent_reference": {
+      "calibration_sha256": "e78d51cb05428db60282ed3871c7cc1b1a3e4ab3f29be58e1715991f9f439cb5",
+      "error_limit": 0.05,
+      "healthy_intervals": {
+        "cct-probe-cct10-train-20261128b-01": [
+          1795844045785,
+          1795844345786
+        ]
+      },
+      "latency_limits_ms": {
+        "adservice": 5.598,
+        "cartservice": 2.14,
+        "checkoutservice": 22.418,
+        "currencyservice": 1.634,
+        "emailservice": 3.18,
+        "frontend": 45.678,
+        "paymentservice": 3.566,
+        "productcatalogservice": 0.806,
+        "recommendationservice": 5.604,
+        "shippingservice": 1.11
+      },
+      "method": "twice-median-healthy-p95",
+      "min_requests": 20,
+      "min_windows": 3,
+      "sample_counts": {
+        "adservice": 59,
+        "cartservice": 59,
+        "checkoutservice": 59,
+        "currencyservice": 59,
+        "emailservice": 59,
+        "frontend": 59,
+        "paymentservice": 59,
+        "productcatalogservice": 59,
+        "recommendationservice": 59,
+        "shippingservice": 59
+      },
+      "schema_version": "1.0",
+      "split": {
+        "test": [
+          "cct-probe-cct10-test-20261128c-01",
+          "cct-probe-cct10-test-20261128c-02"
+        ],
+        "train": [
+          "cct-probe-cct10-train-20261128b-01"
+        ],
+        "validation": [
+          "cct-probe-cct10-validation-20261128c-01"
+        ]
+      },
+      "width_ms": 5000
+    },
+    "native": {
+      "calibration_sha256": "ad537b04f84e5a94b898e97a44d94aa1fab9cab3e37f511f55a773505ff06ac2",
+      "error_limit": 0.05,
+      "healthy_intervals": {
+        "cct-probe-cct10-train-20261128b-01": [
+          1795844045785,
+          1795844345786
+        ]
+      },
+      "latency_limits_ms": {
+        "adservice": 3.916,
+        "cartservice": 1.226,
+        "checkoutservice": 21.452,
+        "currencyservice": 0.136,
+        "emailservice": 0.408,
+        "frontend": 44.886,
+        "paymentservice": 0.476,
+        "productcatalogservice": 0.1,
+        "recommendationservice": 2.948,
+        "shippingservice": 0.246
+      },
+      "method": "twice-median-healthy-p95",
+      "min_requests": 20,
+      "min_windows": 3,
+      "sample_counts": {
+        "adservice": 59,
+        "cartservice": 59,
+        "checkoutservice": 59,
+        "currencyservice": 59,
+        "emailservice": 59,
+        "frontend": 59,
+        "paymentservice": 59,
+        "productcatalogservice": 59,
+        "recommendationservice": 59,
+        "shippingservice": 59
+      },
+      "schema_version": "1.0",
+      "split": {
+        "test": [
+          "cct-probe-cct10-test-20261128c-01",
+          "cct-probe-cct10-test-20261128c-02"
+        ],
+        "train": [
+          "cct-probe-cct10-train-20261128b-01"
+        ],
+        "validation": [
+          "cct-probe-cct10-validation-20261128c-01"
+        ]
+      },
+      "width_ms": 5000
+    },
+    "native_calibration_sha256": "8ae7ba3693fd4fd7e02488e4a72d18df8834b48748f04fa1d2789ca99f5b184e",
+    "reference_calibration_sha256": "8ab9d987145dd7a13d2d2dc3889484667bb2bc3f6accddffc013a2d2b1c72e32",
+    "retry_scope": "unchanged healthy thresholds and observations; new reserved run IDs after a pre-injection aborted baseline",
+    "review": {
+      "error_fraction": 0.05,
+      "hard_readiness_or_restart": "affected",
+      "latency_rule": "twice median healthy training-window p95",
+      "limits": [
+        "Reference proxy and native SERVER durations measure different boundaries; each channel is fitted separately.",
+        "Thresholds are frozen before validation/test runs; no fault metadata is a feature.",
+        "This review does not establish long-term false-alarm rates or live warning lead time."
+      ],
+      "minimum_requests": 20,
+      "missing_or_low_volume": "unknown",
+      "persistence_windows": 2,
+      "window_ms": 5000
+    },
+    "reviewer": "owner-assisted rule review",
+    "teammate_signoff_recorded": false
+  },
+  "calibration_reproduces": true,
+  "execution_receipt": {
+    "actor": "owner-assisted validation",
+    "finished_at": "2026-11-28T06:16:12.565094+00:00",
+    "frontend_recovered": true,
+    "paired_evidence": "outputs/overhead/20261128T043415Z",
+    "passed": true,
+    "restoration_errors": [],
+    "reused_healthy_source": "outputs/validation/cct-validation-20261128-03/runs/cct-probe-cct10-train-20261128b-01",
+    "runs": {
+      "cct-probe-cct10-test-20261128c-01": {
+        "coverage_review": {
+          "available_ms": 1795845981499,
+          "complete_windows": 540,
+          "independent_event_records": 130320,
+          "matched_completions": 65160,
+          "measured_windows": 540,
+          "reference_input_sha256": "8280e6feb2f3151e5cc404b6ec93eafa49492ef2276d7ee875d604dd44333c23",
+          "reviewer": "owner-assisted automated reconciliation",
+          "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+          "source_pairs_sha256": "2094c93ce86c12be52b0a045fe855099aa69aa7ef2d3d6278ca9e228db6e2a63",
+          "teammate_signoff_recorded": false,
+          "timing_start_tolerance_us": 2000,
+          "verified": true
+        },
+        "effect_and_recovery_passed": true,
+        "error": null,
+        "passed": true
+      },
+      "cct-probe-cct10-test-20261128c-02": {
+        "coverage_review": {
+          "available_ms": 1795846428218,
+          "complete_windows": 530,
+          "independent_event_records": 129672,
+          "matched_completions": 64836,
+          "measured_windows": 530,
+          "reference_input_sha256": "36d41036bbb832b46e8fa83b3ccfae798d6e523d93592de94acbb4d8bb117ae9",
+          "reviewer": "owner-assisted automated reconciliation",
+          "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+          "source_pairs_sha256": "f0dccd59e5d828b25d061b4907e9081693b19dc4e06b9e8c56dc1e641b35a81c",
+          "teammate_signoff_recorded": false,
+          "timing_start_tolerance_us": 2000,
+          "verified": true
+        },
+        "effect_and_recovery_passed": true,
+        "error": null,
+        "passed": true
+      },
+      "cct-probe-cct10-train-20261128b-01": {
+        "coverage_review": {
+          "available_ms": 1795844391170,
+          "complete_windows": 590,
+          "independent_event_records": 140400,
+          "matched_completions": 70200,
+          "measured_windows": 590,
+          "reference_input_sha256": "0141cd8e2bc27b7f46ecf80fb42a8894b3eaad32a592ce238b8aa22605559a42",
+          "reviewer": "owner-assisted automated reconciliation",
+          "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+          "source_pairs_sha256": "9c596ee5fb004ce389d92a3e7e0eea804d26f66ead823dd52e6e0bc868e4f289",
+          "teammate_signoff_recorded": false,
+          "timing_start_tolerance_us": 2000,
+          "verified": true
+        },
+        "passed": true,
+        "retained_training": true
+      },
+      "cct-probe-cct10-validation-20261128c-01": {
+        "coverage_review": {
+          "available_ms": 1795845533106,
+          "complete_windows": 530,
+          "independent_event_records": 130032,
+          "matched_completions": 65016,
+          "measured_windows": 530,
+          "reference_input_sha256": "61add8773b9b10df37f1bdf895e965f48a5cd5886e884462483f4e88ba170a47",
+          "reviewer": "owner-assisted automated reconciliation",
+          "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+          "source_pairs_sha256": "8d4a6b65e0376c8874d3e95bd0af8a207c0c2d62409ab3126cf7e60e4a1ff53c",
+          "teammate_signoff_recorded": false,
+          "timing_start_tolerance_us": 2000,
+          "verified": true
+        },
+        "effect_and_recovery_passed": true,
+        "error": null,
+        "passed": true
+      }
+    },
+    "split": {
+      "test": [
+        "cct-probe-cct10-test-20261128c-01",
+        "cct-probe-cct10-test-20261128c-02"
+      ],
+      "train": [
+        "cct-probe-cct10-train-20261128b-01"
+      ],
+      "validation": [
+        "cct-probe-cct10-validation-20261128c-01"
+      ]
+    },
+    "teammate_signoff_recorded": false
+  },
+  "final-shared-health": {
+    "app_pods": 11,
+    "app_pods_ready_without_reference": true,
+    "monitoring_pods_ready": true,
+    "observed_ms": 1795846651016,
+    "original_service_ports_restored": {
+      "adservice": true,
+      "cartservice": true,
+      "checkoutservice": true,
+      "currencyservice": true,
+      "emailservice": true,
+      "frontend": true,
+      "frontend-external": true,
+      "paymentservice": true,
+      "productcatalogservice": true,
+      "recommendationservice": true,
+      "shippingservice": true
+    },
+    "original_templates_restored": {
+      "adservice": true,
+      "cartservice": true,
+      "checkoutservice": true,
+      "currencyservice": true,
+      "emailservice": true,
+      "frontend": true,
+      "paymentservice": true,
+      "productcatalogservice": true,
+      "recommendationservice": true,
+      "shippingservice": true
+    },
+    "passed": true,
+    "private_https_status": 200,
+    "prometheus_target_health": {
+      "cct-collector": "up",
+      "cct-service": "up"
+    },
+    "remaining_faults": 0,
+    "remaining_reference_configmaps": [],
+    "tailscale_running": true,
+    "tailscale_self_online": true
+  },
+  "historical_live_forecast_valid": false,
+  "limits": [
+    "Owner-assisted technical validation does not record teammate personal acceptance.",
+    "Three trials on one target do not establish cross-target or cross-fault generalization.",
+    "Retrospective label agreement and prospective decision scoring are separate.",
+    "Missed or late independent frames remain unknown; no availability times are backdated."
+  ],
+  "outcome-evaluation-plan.v2": {
+    "exploratory_only_runs": [
+      "cct-probe-cct10-validation-20261128c-01",
+      "cct-probe-cct10-test-20261128c-01"
+    ],
+    "frozen_at_ms": 1795845799646,
+    "identified_on_validation_run": "cct-probe-cct10-validation-20261128c-01",
+    "implementation_bound_at_ms": 1795845947583,
+    "implementation_git_revision": "635796532e1796f17122e36f446ce11b001de95a",
+    "implementation_note": "Pending confirmation requires both current and preceding windows to be fully observed; any missing/low-volume evidence still censors.",
+    "implementation_revision_recorded_at_ms": 1795846056566,
+    "implementation_sha256": {
+      "analytics/evaluate.py": "40786e5af45936a6ada4724aba30a5a5aacf1d3157573ef51e02e272458246b8",
+      "scripts/evaluate_confirmed_cct10.py": "8b0a7c0b4e748f98de7b35e33e8c91d82c7220dabafb3940c808784b667f2f40"
+    },
+    "original_intended_test_runs": [
+      "cct-probe-cct10-test-20261128c-01",
+      "cct-probe-cct10-test-20261128c-02"
+    ],
+    "problem": "A fully observed first latency breach is classified unknown while waiting for persistence; treating it as missing telemetry censors every subsequent latency onset.",
+    "reserved_test_runs": [
+      "cct-probe-cct10-test-20261128c-02"
+    ],
+    "rules": [
+      "Do not change predictions, thresholds, eligible-at-cutoff services, source windows, or original availability times.",
+      "Baseline outcome must still be healthy at cutoff under the frozen independent calibration.",
+      "Rule-confirmed onset is the first subsequent affected window; never backdate it to the first breach.",
+      "An intermediate unknown with complete ready=true restart_delta=0 requests>=20 finite p95 and valid errors is pending confirmation, not absent measurement; continue scanning.",
+      "Unknown due absent/incomplete/low-volume/readiness/restart evidence still censors the service.",
+      "Report TP/FP/FN and signed emission-relative timing; no claimed physical onset or generalized forecasting accuracy.",
+      "Retain and compare the original conservative results and disclose this validation-informed outcome distinction."
+    ],
+    "scope_amended_at_ms": 1795845821653,
+    "scope_reason": "Initial written plan followed test-01 injection, so that run is exploratory for this supplementary analysis. Only test-02 remains held out.",
+    "status": "supplementary protocol; original conservative evaluations retained"
+  },
+  "raw_bundle": {
+    "bytes": 189673606,
+    "path": "outputs/validation/cct-validation-20261128-04-handoff.zip",
+    "sha256": "5a8f7f335c3cc36e587147f6cac9fc59b7cf96c0ece94078ee2b90066643b755"
+  },
+  "retained-environment-review": {
+    "all_equal": true,
+    "original_application_templates_equal": {
+      "adservice": true,
+      "cartservice": true,
+      "checkoutservice": true,
+      "currencyservice": true,
+      "emailservice": true,
+      "frontend": true,
+      "paymentservice": true,
+      "productcatalogservice": true,
+      "recommendationservice": true,
+      "shippingservice": true
+    },
+    "reviewed_at_ms": 1795845637621,
+    "scope": "actual pre-install snapshots: images, resources, environment and complete templates"
+  },
+  "runs": {
+    "cct-probe-cct10-test-20261128c-01": {
+      "capture": {
+        "calibration_eligible_windows": 0,
+        "complete_windows": 0,
+        "coverage": "No independent per-service denominator; all windows remain incomplete.",
+        "fresh_readiness_windows": 540,
+        "invalid_traces": [],
+        "journey_counts": {
+          "browse_declared_path_passes": 1810,
+          "browse_traces": 1810,
+          "cart_declared_path_passes": 1810,
+          "cart_traces": 1810,
+          "checkout_declared_path_passes": 1810,
+          "checkout_traces": 1810
+        },
+        "journey_examples": {
+          "browse": {
+            "expected_edges": 4,
+            "matched_edges": 4,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "adservice",
+              "cartservice",
+              "currencyservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "8961364cc877c2076fca864a167a86af"
+          },
+          "cart": {
+            "expected_edges": 2,
+            "matched_edges": 2,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "fa60b3cc8c782f396abac6d29d1f1585"
+          },
+          "checkout": {
+            "expected_edges": 9,
+            "matched_edges": 9,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "checkoutservice",
+              "currencyservice",
+              "emailservice",
+              "frontend",
+              "paymentservice",
+              "productcatalogservice",
+              "recommendationservice",
+              "shippingservice"
+            ],
+            "trace_id": "fddb9cf1f750086405841c5f88591b6e"
+          }
+        },
+        "query_errors": 10669,
+        "saved_traces": 5430,
+        "server_records": 65160,
+        "windows": 550,
+        "workload_traces": 5430
+      },
+      "cleanup_errors": [],
+      "controller_events": [
+        [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-11-28T06:03:05Z",
+            "type": "Succeeded"
+          },
+          {
+            "operation": "Recover",
+            "timestamp": "2026-11-28T06:03:35Z",
+            "type": "Succeeded"
+          }
+        ]
+      ],
+      "controller_timestamp_precision_ms": 1000,
+      "coverage_review": {
+        "available_ms": 1795845981499,
+        "complete_windows": 540,
+        "independent_event_records": 130320,
+        "matched_completions": 65160,
+        "measured_windows": 540,
+        "reference_input_sha256": "8280e6feb2f3151e5cc404b6ec93eafa49492ef2276d7ee875d604dd44333c23",
+        "reviewer": "owner-assisted automated reconciliation",
+        "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+        "source_pairs_sha256": "2094c93ce86c12be52b0a045fe855099aa69aa7ef2d3d6278ca9e228db6e2a63",
+        "teammate_signoff_recorded": false,
+        "timing_start_tolerance_us": 2000,
+        "verified": true
+      },
+      "error": null,
+      "fault": {
+        "injected_observed_ms": 1795845786866,
+        "recovered_observed_ms": 1795845815883,
+        "request_completed_ms": 1795845785846,
+        "request_started_ms": 1795845785770,
+        "requested_at": "2026-11-28T06:03:05.769894Z",
+        "uid": "65bea961-8bd0-4a91-9a76-36eb189bf755"
+      },
+      "health_unchanged": true,
+      "heldout-label-validation": {
+        "counts": {
+          "true_negative": 516,
+          "true_positive": 15,
+          "unknown_or_censored": 9
+        },
+        "historical_live_forecast_valid": false,
+        "label_f1": 1.0,
+        "label_precision": 1.0,
+        "label_recall": 1.0,
+        "mode": "retrospective health-label agreement; not forecasting",
+        "native_calibration_sha256": "8ae7ba3693fd4fd7e02488e4a72d18df8834b48748f04fa1d2789ca99f5b184e",
+        "native_input_sha256": "d15cf5bd0dc3173e245d866b38c0794f3277d7cf3464384b5e4238798ff7cac0",
+        "partition": "test",
+        "reference_input_sha256": "f67f06c4c8ba5230a06b82c8675c5d912880af9be09cdf429393c49fd340d34b",
+        "run_id": "cct-probe-cct10-test-20261128c-01",
+        "warning_lead_time_claimed": false
+      },
+      "independent_reference": {
+        "complete": 540,
+        "qualifying_by_service": {
+          "adservice": 54,
+          "cartservice": 54,
+          "checkoutservice": 54,
+          "currencyservice": 54,
+          "emailservice": 54,
+          "frontend": 54,
+          "paymentservice": 54,
+          "productcatalogservice": 54,
+          "recommendationservice": 54,
+          "shippingservice": 54
+        },
+        "retrospective_no_fault_control_alarms": {
+          "after_recovery_plus_30s": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845935000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.02361111111111111,
+            "run_id": "cct-probe-cct10-test-20261128c-01",
+            "start_ms": 1795845850000,
+            "unknown_windows": 0
+          },
+          "before_injection": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845785000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.029166666666666667,
+            "run_id": "cct-probe-cct10-test-20261128c-01",
+            "start_ms": 1795845665000,
+            "unknown_windows": 3
+          }
+        },
+        "rows": 540,
+        "sha256": "f67f06c4c8ba5230a06b82c8675c5d912880af9be09cdf429393c49fd340d34b"
+      },
+      "live_deadline_reasons": {
+        "reference logs differ from independent request counters": 1,
+        "reference requests still in flight": 5
+      },
+      "live_observations": {
+        "errors": [],
+        "historical_live_forecast_valid": false,
+        "missed_or_retried_windows": {
+          "1795845785000": "reference requests still in flight",
+          "1795845790000": "reference requests still in flight",
+          "1795845795000": "reference requests still in flight",
+          "1795845800000": "reference requests still in flight",
+          "1795845805000": "reference requests still in flight",
+          "1795845810000": "reference logs differ from independent request counters"
+        },
+        "prospective_decisions": 54,
+        "verified_frames": 54
+      },
+      "measurement_interval_utc": [
+        "2026-11-28T06:01:04.980375Z",
+        "2026-11-28T06:05:36.202301Z"
+      ],
+      "mode": "fault",
+      "native": {
+        "complete": 540,
+        "qualifying_by_service": {
+          "adservice": 54,
+          "cartservice": 54,
+          "checkoutservice": 54,
+          "currencyservice": 54,
+          "emailservice": 54,
+          "frontend": 54,
+          "paymentservice": 54,
+          "productcatalogservice": 54,
+          "recommendationservice": 54,
+          "shippingservice": 54
+        },
+        "retrospective_no_fault_control_alarms": {
+          "after_recovery_plus_30s": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845935000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.02361111111111111,
+            "run_id": "cct-probe-cct10-test-20261128c-01",
+            "start_ms": 1795845850000,
+            "unknown_windows": 0
+          },
+          "before_injection": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845785000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.03194444444444444,
+            "run_id": "cct-probe-cct10-test-20261128c-01",
+            "start_ms": 1795845665000,
+            "unknown_windows": 1
+          }
+        },
+        "rows": 540,
+        "sha256": "d15cf5bd0dc3173e245d866b38c0794f3277d7cf3464384b5e4238798ff7cac0"
+      },
+      "passed": true,
+      "phase-latency": {
+        "effect_and_recovery_passed": true,
+        "healthy": {
+          "median_ms": 0.268,
+          "n": 5454
+        },
+        "injection_observed": {
+          "median_ms": 106.002,
+          "n": 1307
+        },
+        "recovery": {
+          "median_ms": 0.261,
+          "n": 5427
+        },
+        "scope": "caller RPC to productcatalog; observed phase bounds, boundary-crossing calls excluded"
+      },
+      "prospective-summary": [
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 42,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.9222222222222223
+          },
+          "coverage_run_mean": 0.9222222222222223,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 117,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.7833333333333333
+          },
+          "coverage_run_mean": 0.7833333333333333,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 217,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.5981481481481481
+          },
+          "coverage_run_mean": 0.5981481481481481,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 42,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.9222222222222223
+          },
+          "coverage_run_mean": 0.9222222222222223,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 117,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.7833333333333333
+          },
+          "coverage_run_mean": 0.7833333333333333,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 217,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.5981481481481481
+          },
+          "coverage_run_mean": 0.5981481481481481,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 42,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.9222222222222223
+          },
+          "coverage_run_mean": 0.9222222222222223,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 117,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.7833333333333333
+          },
+          "coverage_run_mean": 0.7833333333333333,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 217,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.5981481481481481
+          },
+          "coverage_run_mean": 0.5981481481481481,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 42,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.9222222222222223
+          },
+          "coverage_run_mean": 0.9222222222222223,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 117,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.7833333333333333
+          },
+          "coverage_run_mean": 0.7833333333333333,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 217,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.5981481481481481
+          },
+          "coverage_run_mean": 0.5981481481481481,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 42,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.9222222222222223
+          },
+          "coverage_run_mean": 0.9222222222222223,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 117,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.7833333333333333
+          },
+          "coverage_run_mean": 0.7833333333333333,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 217,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-01": 0.5981481481481481
+          },
+          "coverage_run_mean": 0.5981481481481481,
+          "empty_empty": 54,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        }
+      ],
+      "protocol": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "fault_seconds": 30,
+        "healthy_seconds": 120,
+        "recovery_seconds": 120,
+        "seed": 42,
+        "target_journeys_per_second": 5,
+        "warmup_rates": [
+          [
+            0,
+            30,
+            2
+          ],
+          [
+            30,
+            60,
+            3
+          ],
+          [
+            60,
+            120,
+            5
+          ]
+        ],
+        "warmup_seconds": 120,
+        "workers": 12
+      },
+      "remaining_fault": false,
+      "remaining_workload": false,
+      "source_revision": "982f17a3a11ab77459e085b2a79c0d416383df90",
+      "supplementary_confirmed_outcomes": {
+        "historical_live_forecast_valid": false,
+        "original_conservative_scores_reproduce": true,
+        "outcome_unknown_policy": "observed-pending-v2",
+        "plan_sha256": "6f383a348d40948db6b931e2d3d87b760d0d01dbb7a22415dfac364b16f31bc8",
+        "prediction_source_sha256": "faffcc577009d4e84b2a369f321909fefa28ee781526f8c9e14467d320ea3fc7",
+        "run_id": "cct-probe-cct10-test-20261128c-01",
+        "scope": "exploratory supplementary analysis",
+        "summary": [
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.05555555555555555
+            },
+            "affected_count_absolute_error_run_mean": 0.05555555555555555,
+            "censored_services": 24,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.9555555555555556
+            },
+            "coverage_run_mean": 0.9555555555555556,
+            "empty_empty": 53,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.2777777777777778
+            },
+            "affected_count_absolute_error_run_mean": 0.2777777777777778,
+            "censored_services": 64,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.8814814814814815
+            },
+            "coverage_run_mean": 0.8814814814814815,
+            "empty_empty": 49,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.6111111111111112
+            },
+            "affected_count_absolute_error_run_mean": 0.6111111111111112,
+            "censored_services": 124,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.7703703703703704
+            },
+            "coverage_run_mean": 0.7703703703703704,
+            "empty_empty": 43,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.05555555555555555
+            },
+            "affected_count_absolute_error_run_mean": 0.05555555555555555,
+            "censored_services": 24,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.9555555555555556
+            },
+            "coverage_run_mean": 0.9555555555555556,
+            "empty_empty": 53,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.2777777777777778
+            },
+            "affected_count_absolute_error_run_mean": 0.2777777777777778,
+            "censored_services": 64,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.8814814814814815
+            },
+            "coverage_run_mean": 0.8814814814814815,
+            "empty_empty": 49,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.6111111111111112
+            },
+            "affected_count_absolute_error_run_mean": 0.6111111111111112,
+            "censored_services": 124,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.7703703703703704
+            },
+            "coverage_run_mean": 0.7703703703703704,
+            "empty_empty": 43,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.05555555555555555
+            },
+            "affected_count_absolute_error_run_mean": 0.05555555555555555,
+            "censored_services": 24,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.9555555555555556
+            },
+            "coverage_run_mean": 0.9555555555555556,
+            "empty_empty": 53,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.2777777777777778
+            },
+            "affected_count_absolute_error_run_mean": 0.2777777777777778,
+            "censored_services": 64,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.8814814814814815
+            },
+            "coverage_run_mean": 0.8814814814814815,
+            "empty_empty": 49,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.6111111111111112
+            },
+            "affected_count_absolute_error_run_mean": 0.6111111111111112,
+            "censored_services": 124,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.7703703703703704
+            },
+            "coverage_run_mean": 0.7703703703703704,
+            "empty_empty": 43,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.05555555555555555
+            },
+            "affected_count_absolute_error_run_mean": 0.05555555555555555,
+            "censored_services": 24,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.9555555555555556
+            },
+            "coverage_run_mean": 0.9555555555555556,
+            "empty_empty": 53,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.2777777777777778
+            },
+            "affected_count_absolute_error_run_mean": 0.2777777777777778,
+            "censored_services": 64,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.8814814814814815
+            },
+            "coverage_run_mean": 0.8814814814814815,
+            "empty_empty": 49,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.6111111111111112
+            },
+            "affected_count_absolute_error_run_mean": 0.6111111111111112,
+            "censored_services": 124,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.7703703703703704
+            },
+            "coverage_run_mean": 0.7703703703703704,
+            "empty_empty": 43,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.05555555555555555
+            },
+            "affected_count_absolute_error_run_mean": 0.05555555555555555,
+            "censored_services": 24,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.9555555555555556
+            },
+            "coverage_run_mean": 0.9555555555555556,
+            "empty_empty": 53,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.2777777777777778
+            },
+            "affected_count_absolute_error_run_mean": 0.2777777777777778,
+            "censored_services": 64,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.8814814814814815
+            },
+            "coverage_run_mean": 0.8814814814814815,
+            "empty_empty": 49,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.6111111111111112
+            },
+            "affected_count_absolute_error_run_mean": 0.6111111111111112,
+            "censored_services": 124,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.7703703703703704
+            },
+            "coverage_run_mean": 0.7703703703703704,
+            "empty_empty": 43,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          }
+        ]
+      },
+      "workload_report": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "ended_epoch": 1795845936.202301,
+        "failures": 0,
+        "journeys": 1810,
+        "max_start_lag_ms": 46.592429771408206,
+        "measured_started_epoch": 1795845664.9803753,
+        "mode": "fault",
+        "phase": "complete",
+        "reason": "completed",
+        "requests": 5430,
+        "run_id": "cct-probe-cct10-test-20261128c-01",
+        "target_journeys_per_second": 5,
+        "warmup_started_epoch": 1795845544.976286,
+        "worker_errors": 0,
+        "workers": 12
+      }
+    },
+    "cct-probe-cct10-test-20261128c-02": {
+      "capture": {
+        "calibration_eligible_windows": 0,
+        "complete_windows": 0,
+        "coverage": "No independent per-service denominator; all windows remain incomplete.",
+        "fresh_readiness_windows": 540,
+        "invalid_traces": [],
+        "journey_counts": {
+          "browse_declared_path_passes": 1801,
+          "browse_traces": 1801,
+          "cart_declared_path_passes": 1801,
+          "cart_traces": 1801,
+          "checkout_declared_path_passes": 1801,
+          "checkout_traces": 1801
+        },
+        "journey_examples": {
+          "browse": {
+            "expected_edges": 4,
+            "matched_edges": 4,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "adservice",
+              "cartservice",
+              "currencyservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "50b1ed47fff0d8d5fa3ade71fb0cab26"
+          },
+          "cart": {
+            "expected_edges": 2,
+            "matched_edges": 2,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "4c2ea347047db61024328e95486ce32a"
+          },
+          "checkout": {
+            "expected_edges": 9,
+            "matched_edges": 9,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "checkoutservice",
+              "currencyservice",
+              "emailservice",
+              "frontend",
+              "paymentservice",
+              "productcatalogservice",
+              "recommendationservice",
+              "shippingservice"
+            ],
+            "trace_id": "cfffb35e00ade572a4efc20ed1095698"
+          }
+        },
+        "query_errors": 10613,
+        "saved_traces": 5403,
+        "server_records": 64836,
+        "windows": 550,
+        "workload_traces": 5403
+      },
+      "cleanup_errors": [],
+      "controller_events": [
+        [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-11-28T06:10:34Z",
+            "type": "Succeeded"
+          },
+          {
+            "operation": "Recover",
+            "timestamp": "2026-11-28T06:11:03Z",
+            "type": "Succeeded"
+          }
+        ]
+      ],
+      "controller_timestamp_precision_ms": 1000,
+      "coverage_review": {
+        "available_ms": 1795846428218,
+        "complete_windows": 530,
+        "independent_event_records": 129672,
+        "matched_completions": 64836,
+        "measured_windows": 530,
+        "reference_input_sha256": "36d41036bbb832b46e8fa83b3ccfae798d6e523d93592de94acbb4d8bb117ae9",
+        "reviewer": "owner-assisted automated reconciliation",
+        "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+        "source_pairs_sha256": "f0dccd59e5d828b25d061b4907e9081693b19dc4e06b9e8c56dc1e641b35a81c",
+        "teammate_signoff_recorded": false,
+        "timing_start_tolerance_us": 2000,
+        "verified": true
+      },
+      "error": null,
+      "fault": {
+        "injected_observed_ms": 1795846234943,
+        "recovered_observed_ms": 1795846263900,
+        "request_completed_ms": 1795846233974,
+        "request_started_ms": 1795846233891,
+        "requested_at": "2026-11-28T06:10:33.890625Z",
+        "uid": "2ca488ac-f95f-48e4-af75-5d37bd230f73"
+      },
+      "health_unchanged": true,
+      "heldout-label-validation": {
+        "counts": {
+          "true_negative": 478,
+          "true_positive": 16,
+          "unknown_or_censored": 36
+        },
+        "historical_live_forecast_valid": false,
+        "label_f1": 1.0,
+        "label_precision": 1.0,
+        "label_recall": 1.0,
+        "mode": "retrospective health-label agreement; not forecasting",
+        "native_calibration_sha256": "8ae7ba3693fd4fd7e02488e4a72d18df8834b48748f04fa1d2789ca99f5b184e",
+        "native_input_sha256": "460d48051409f8d0bccddef44c4838cc96d4469676ff33380540b908ced2b1af",
+        "partition": "test",
+        "reference_input_sha256": "b421b211822c41181e9dc8b18fc537452047473a70ac15c5d691ed9d14cf8101",
+        "run_id": "cct-probe-cct10-test-20261128c-02",
+        "warning_lead_time_claimed": false
+      },
+      "independent_reference": {
+        "complete": 530,
+        "qualifying_by_service": {
+          "adservice": 53,
+          "cartservice": 53,
+          "checkoutservice": 53,
+          "currencyservice": 53,
+          "emailservice": 53,
+          "frontend": 53,
+          "paymentservice": 53,
+          "productcatalogservice": 53,
+          "recommendationservice": 53,
+          "shippingservice": 53
+        },
+        "retrospective_no_fault_control_alarms": {
+          "after_recovery_plus_30s": {
+            "alarm_incidents": 0,
+            "end_ms": 1795846380000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.016666666666666666,
+            "run_id": "cct-probe-cct10-test-20261128c-02",
+            "start_ms": 1795846295000,
+            "unknown_windows": 5
+          },
+          "before_injection": {
+            "alarm_incidents": 1,
+            "end_ms": 1795846230000,
+            "false_alarms_per_observed_hour": 37.89473684210526,
+            "has_false_alarm": true,
+            "observed_hours": 0.02638888888888889,
+            "run_id": "cct-probe-cct10-test-20261128c-02",
+            "start_ms": 1795846115000,
+            "unknown_windows": 4
+          }
+        },
+        "rows": 530,
+        "sha256": "b421b211822c41181e9dc8b18fc537452047473a70ac15c5d691ed9d14cf8101"
+      },
+      "live_deadline_reasons": {
+        "reference requests still in flight": 7
+      },
+      "live_observations": {
+        "errors": [],
+        "historical_live_forecast_valid": false,
+        "missed_or_retried_windows": {
+          "1795846235000": "reference requests still in flight",
+          "1795846240000": "reference requests still in flight",
+          "1795846245000": "reference requests still in flight",
+          "1795846250000": "reference requests still in flight",
+          "1795846255000": "reference requests still in flight",
+          "1795846260000": "reference requests still in flight",
+          "1795846335000": "reference requests still in flight"
+        },
+        "prospective_decisions": 53,
+        "verified_frames": 53
+      },
+      "measurement_interval_utc": [
+        "2026-11-28T06:08:32.845609Z",
+        "2026-11-28T06:13:04.246888Z"
+      ],
+      "mode": "fault",
+      "native": {
+        "complete": 530,
+        "qualifying_by_service": {
+          "adservice": 53,
+          "cartservice": 53,
+          "checkoutservice": 53,
+          "currencyservice": 53,
+          "emailservice": 53,
+          "frontend": 53,
+          "paymentservice": 53,
+          "productcatalogservice": 53,
+          "recommendationservice": 53,
+          "shippingservice": 53
+        },
+        "retrospective_no_fault_control_alarms": {
+          "after_recovery_plus_30s": {
+            "alarm_incidents": 0,
+            "end_ms": 1795846380000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.016666666666666666,
+            "run_id": "cct-probe-cct10-test-20261128c-02",
+            "start_ms": 1795846295000,
+            "unknown_windows": 5
+          },
+          "before_injection": {
+            "alarm_incidents": 0,
+            "end_ms": 1795846230000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.027777777777777776,
+            "run_id": "cct-probe-cct10-test-20261128c-02",
+            "start_ms": 1795846115000,
+            "unknown_windows": 3
+          }
+        },
+        "rows": 530,
+        "sha256": "460d48051409f8d0bccddef44c4838cc96d4469676ff33380540b908ced2b1af"
+      },
+      "passed": true,
+      "phase-latency": {
+        "effect_and_recovery_passed": true,
+        "healthy": {
+          "median_ms": 0.274,
+          "n": 5415
+        },
+        "injection_observed": {
+          "median_ms": 106.93,
+          "n": 1350
+        },
+        "recovery": {
+          "median_ms": 0.282,
+          "n": 5400
+        },
+        "scope": "caller RPC to productcatalog; observed phase bounds, boundary-crossing calls excluded"
+      },
+      "prospective-summary": [
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 84,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.8174977538185085
+          },
+          "coverage_run_mean": 0.8174977538185085,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 192,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.6043201557352501
+          },
+          "coverage_run_mean": 0.6043201557352501,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 291,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.40919436957172806
+          },
+          "coverage_run_mean": 0.40919436957172806,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 84,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.8174977538185085
+          },
+          "coverage_run_mean": 0.8174977538185085,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 192,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.6043201557352501
+          },
+          "coverage_run_mean": 0.6043201557352501,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 291,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.40919436957172806
+          },
+          "coverage_run_mean": 0.40919436957172806,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 84,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.8174977538185085
+          },
+          "coverage_run_mean": 0.8174977538185085,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 192,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.6043201557352501
+          },
+          "coverage_run_mean": 0.6043201557352501,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 291,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.40919436957172806
+          },
+          "coverage_run_mean": 0.40919436957172806,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 84,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.8174977538185085
+          },
+          "coverage_run_mean": 0.8174977538185085,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 192,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.6043201557352501
+          },
+          "coverage_run_mean": 0.6043201557352501,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 291,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.40919436957172806
+          },
+          "coverage_run_mean": 0.40919436957172806,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 84,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.8174977538185085
+          },
+          "coverage_run_mean": 0.8174977538185085,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 192,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.6043201557352501
+          },
+          "coverage_run_mean": 0.6043201557352501,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 291,
+          "coverage_by_run": {
+            "cct-probe-cct10-test-20261128c-02": 0.40919436957172806
+          },
+          "coverage_run_mean": 0.40919436957172806,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        }
+      ],
+      "protocol": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "fault_seconds": 30,
+        "healthy_seconds": 120,
+        "recovery_seconds": 120,
+        "seed": 42,
+        "target_journeys_per_second": 5,
+        "warmup_rates": [
+          [
+            0,
+            30,
+            2
+          ],
+          [
+            30,
+            60,
+            3
+          ],
+          [
+            60,
+            120,
+            5
+          ]
+        ],
+        "warmup_seconds": 120,
+        "workers": 12
+      },
+      "remaining_fault": false,
+      "remaining_workload": false,
+      "source_revision": "982f17a3a11ab77459e085b2a79c0d416383df90",
+      "supplementary_confirmed_outcomes": {
+        "historical_live_forecast_valid": false,
+        "original_conservative_scores_reproduce": true,
+        "outcome_unknown_policy": "observed-pending-v2",
+        "plan_sha256": "6f383a348d40948db6b931e2d3d87b760d0d01dbb7a22415dfac364b16f31bc8",
+        "prediction_source_sha256": "6fcdb257312273c2fb1ac022e7046c444df17d910062659ff93e63004e9425db",
+        "run_id": "cct-probe-cct10-test-20261128c-02",
+        "scope": "held-out supplementary test",
+        "summary": [
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.07547169811320754
+            },
+            "affected_count_absolute_error_run_mean": 0.07547169811320754,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.942722371967655
+            },
+            "coverage_run_mean": 0.942722371967655,
+            "empty_empty": 50,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.3584905660377358
+            },
+            "affected_count_absolute_error_run_mean": 0.3584905660377358,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.8672506738544474
+            },
+            "coverage_run_mean": 0.8672506738544474,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7735849056603774
+            },
+            "affected_count_absolute_error_run_mean": 0.7735849056603774,
+            "censored_services": 110,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7601752021563343
+            },
+            "coverage_run_mean": 0.7601752021563343,
+            "empty_empty": 32,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.07547169811320754
+            },
+            "affected_count_absolute_error_run_mean": 0.07547169811320754,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.942722371967655
+            },
+            "coverage_run_mean": 0.942722371967655,
+            "empty_empty": 50,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.3584905660377358
+            },
+            "affected_count_absolute_error_run_mean": 0.3584905660377358,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.8672506738544474
+            },
+            "coverage_run_mean": 0.8672506738544474,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7735849056603774
+            },
+            "affected_count_absolute_error_run_mean": 0.7735849056603774,
+            "censored_services": 110,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7601752021563343
+            },
+            "coverage_run_mean": 0.7601752021563343,
+            "empty_empty": 32,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.07547169811320754
+            },
+            "affected_count_absolute_error_run_mean": 0.07547169811320754,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.942722371967655
+            },
+            "coverage_run_mean": 0.942722371967655,
+            "empty_empty": 50,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.3584905660377358
+            },
+            "affected_count_absolute_error_run_mean": 0.3584905660377358,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.8672506738544474
+            },
+            "coverage_run_mean": 0.8672506738544474,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7735849056603774
+            },
+            "affected_count_absolute_error_run_mean": 0.7735849056603774,
+            "censored_services": 110,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7601752021563343
+            },
+            "coverage_run_mean": 0.7601752021563343,
+            "empty_empty": 32,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.07547169811320754
+            },
+            "affected_count_absolute_error_run_mean": 0.07547169811320754,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.942722371967655
+            },
+            "coverage_run_mean": 0.942722371967655,
+            "empty_empty": 50,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.3584905660377358
+            },
+            "affected_count_absolute_error_run_mean": 0.3584905660377358,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.8672506738544474
+            },
+            "coverage_run_mean": 0.8672506738544474,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7735849056603774
+            },
+            "affected_count_absolute_error_run_mean": 0.7735849056603774,
+            "censored_services": 110,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7601752021563343
+            },
+            "coverage_run_mean": 0.7601752021563343,
+            "empty_empty": 32,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.07547169811320754
+            },
+            "affected_count_absolute_error_run_mean": 0.07547169811320754,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.942722371967655
+            },
+            "coverage_run_mean": 0.942722371967655,
+            "empty_empty": 50,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.3584905660377358
+            },
+            "affected_count_absolute_error_run_mean": 0.3584905660377358,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.8672506738544474
+            },
+            "coverage_run_mean": 0.8672506738544474,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7735849056603774
+            },
+            "affected_count_absolute_error_run_mean": 0.7735849056603774,
+            "censored_services": 110,
+            "coverage_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.7601752021563343
+            },
+            "coverage_run_mean": 0.7601752021563343,
+            "empty_empty": 32,
+            "f1_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-test-20261128c-02": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          }
+        ]
+      },
+      "workload_report": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "ended_epoch": 1795846384.246888,
+        "failures": 0,
+        "journeys": 1801,
+        "max_start_lag_ms": 135.1583703799406,
+        "measured_started_epoch": 1795846112.845609,
+        "mode": "fault",
+        "phase": "complete",
+        "reason": "completed",
+        "requests": 5403,
+        "run_id": "cct-probe-cct10-test-20261128c-02",
+        "target_journeys_per_second": 5,
+        "warmup_started_epoch": 1795845992.8151982,
+        "worker_errors": 0,
+        "workers": 12
+      }
+    },
+    "cct-probe-cct10-train-20261128b-01": {
+      "capture": {
+        "calibration_eligible_windows": 0,
+        "complete_windows": 0,
+        "coverage": "No independent per-service denominator; all windows remain incomplete.",
+        "fresh_readiness_windows": 600,
+        "invalid_traces": [],
+        "journey_counts": {
+          "browse_declared_path_passes": 1950,
+          "browse_traces": 1950,
+          "cart_declared_path_passes": 1950,
+          "cart_traces": 1950,
+          "checkout_declared_path_passes": 1950,
+          "checkout_traces": 1950
+        },
+        "journey_examples": {
+          "browse": {
+            "expected_edges": 4,
+            "matched_edges": 4,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "adservice",
+              "cartservice",
+              "currencyservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "703cb4f84c35457c4b3e5bbdef5a3ea3"
+          },
+          "cart": {
+            "expected_edges": 2,
+            "matched_edges": 2,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "549b2de763fabcae7c5ded9ec40ae4ba"
+          },
+          "checkout": {
+            "expected_edges": 9,
+            "matched_edges": 9,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "checkoutservice",
+              "currencyservice",
+              "emailservice",
+              "frontend",
+              "paymentservice",
+              "productcatalogservice",
+              "recommendationservice",
+              "shippingservice"
+            ],
+            "trace_id": "5c1408088455bded4f0c3e45c987d3c7"
+          }
+        },
+        "query_errors": 11498,
+        "saved_traces": 5850,
+        "server_records": 70200,
+        "windows": 610,
+        "workload_traces": 5850
+      },
+      "cleanup_errors": [],
+      "coverage_review": {
+        "available_ms": 1795844391170,
+        "complete_windows": 590,
+        "independent_event_records": 140400,
+        "matched_completions": 70200,
+        "measured_windows": 590,
+        "reference_input_sha256": "0141cd8e2bc27b7f46ecf80fb42a8894b3eaad32a592ce238b8aa22605559a42",
+        "reviewer": "owner-assisted automated reconciliation",
+        "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+        "source_pairs_sha256": "9c596ee5fb004ce389d92a3e7e0eea804d26f66ead823dd52e6e0bc868e4f289",
+        "teammate_signoff_recorded": false,
+        "timing_start_tolerance_us": 2000,
+        "verified": true
+      },
+      "error": null,
+      "fault": {},
+      "health_unchanged": true,
+      "independent_reference": {
+        "complete": 590,
+        "qualifying_by_service": {
+          "adservice": 59,
+          "cartservice": 59,
+          "checkoutservice": 59,
+          "currencyservice": 59,
+          "emailservice": 59,
+          "frontend": 59,
+          "paymentservice": 59,
+          "productcatalogservice": 59,
+          "recommendationservice": 59,
+          "shippingservice": 59
+        },
+        "rows": 590,
+        "sha256": "21c283b48e2342b0fbb574d1a843a6d43eb0cf8ed1fb40b0344d454d7ca22fc9"
+      },
+      "live_deadline_reasons": {
+        "reference requests still in flight": 1
+      },
+      "live_observations": {
+        "errors": [],
+        "historical_live_forecast_valid": false,
+        "missed_or_retried_windows": {
+          "1795844260000": "reference requests still in flight"
+        },
+        "prospective_decisions": 0,
+        "verified_frames": 58
+      },
+      "measurement_interval_utc": [
+        "2026-11-28T05:34:05.785429Z",
+        "2026-11-28T05:39:05.786686Z"
+      ],
+      "mode": "healthy",
+      "native": {
+        "complete": 590,
+        "qualifying_by_service": {
+          "adservice": 59,
+          "cartservice": 59,
+          "checkoutservice": 59,
+          "currencyservice": 59,
+          "emailservice": 59,
+          "frontend": 59,
+          "paymentservice": 59,
+          "productcatalogservice": 59,
+          "recommendationservice": 59,
+          "shippingservice": 59
+        },
+        "rows": 590,
+        "sha256": "46ed57c449018d174d7a8a0658bdccb3bc299ea0b1156ba29311018a442ed3e7"
+      },
+      "passed": true,
+      "protocol": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "fault_seconds": 0,
+        "healthy_seconds": 300,
+        "recovery_seconds": 0,
+        "seed": 42,
+        "target_journeys_per_second": 5,
+        "warmup_rates": [
+          [
+            0,
+            30,
+            2
+          ],
+          [
+            30,
+            60,
+            3
+          ],
+          [
+            60,
+            120,
+            5
+          ]
+        ],
+        "warmup_seconds": 120,
+        "workers": 12
+      },
+      "remaining_fault": false,
+      "remaining_workload": false,
+      "source_revision": "0a7995f7cd0f82f03e8e545f687f853f3a5104d7",
+      "workload_report": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "ended_epoch": 1795844345.7866857,
+        "failures": 0,
+        "journeys": 1950,
+        "max_start_lag_ms": 29.441444039548514,
+        "measured_started_epoch": 1795844045.7854295,
+        "mode": "healthy",
+        "phase": "complete",
+        "reason": "completed",
+        "requests": 5850,
+        "run_id": "cct-probe-cct10-train-20261128b-01",
+        "target_journeys_per_second": 5,
+        "warmup_started_epoch": 1795843925.7812169,
+        "worker_errors": 0,
+        "workers": 12
+      }
+    },
+    "cct-probe-cct10-validation-20261128c-01": {
+      "capture": {
+        "calibration_eligible_windows": 0,
+        "complete_windows": 0,
+        "coverage": "No independent per-service denominator; all windows remain incomplete.",
+        "fresh_readiness_windows": 540,
+        "invalid_traces": [],
+        "journey_counts": {
+          "browse_declared_path_passes": 1806,
+          "browse_traces": 1806,
+          "cart_declared_path_passes": 1806,
+          "cart_traces": 1806,
+          "checkout_declared_path_passes": 1806,
+          "checkout_traces": 1806
+        },
+        "journey_examples": {
+          "browse": {
+            "expected_edges": 4,
+            "matched_edges": 4,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "adservice",
+              "cartservice",
+              "currencyservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "4da416121c24a26678f9f2b343a75e03"
+          },
+          "cart": {
+            "expected_edges": 2,
+            "matched_edges": 2,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "frontend",
+              "productcatalogservice"
+            ],
+            "trace_id": "0cd04abd8a3f718675e0b76c55f70c4e"
+          },
+          "checkout": {
+            "expected_edges": 9,
+            "matched_edges": 9,
+            "missing_edges": [],
+            "passes_declared_path": true,
+            "services": [
+              "cartservice",
+              "checkoutservice",
+              "currencyservice",
+              "emailservice",
+              "frontend",
+              "paymentservice",
+              "productcatalogservice",
+              "recommendationservice",
+              "shippingservice"
+            ],
+            "trace_id": "4643353462069bd2ed4575ff7cf2c075"
+          }
+        },
+        "query_errors": 10645,
+        "saved_traces": 5418,
+        "server_records": 65016,
+        "windows": 550,
+        "workload_traces": 5418
+      },
+      "cleanup_errors": [],
+      "controller_events": [
+        [
+          {
+            "operation": "Apply",
+            "timestamp": "2026-11-28T05:55:38Z",
+            "type": "Succeeded"
+          },
+          {
+            "operation": "Recover",
+            "timestamp": "2026-11-28T05:56:08Z",
+            "type": "Succeeded"
+          }
+        ]
+      ],
+      "controller_timestamp_precision_ms": 1000,
+      "coverage_review": {
+        "available_ms": 1795845533106,
+        "complete_windows": 530,
+        "independent_event_records": 130032,
+        "matched_completions": 65016,
+        "measured_windows": 530,
+        "reference_input_sha256": "61add8773b9b10df37f1bdf895e965f48a5cd5886e884462483f4e88ba170a47",
+        "reviewer": "owner-assisted automated reconciliation",
+        "scope": "fully contained measured windows; independent untraced Envoy start/end logs and HCM counters",
+        "source_pairs_sha256": "8d4a6b65e0376c8874d3e95bd0af8a207c0c2d62409ab3126cf7e60e4a1ff53c",
+        "teammate_signoff_recorded": false,
+        "timing_start_tolerance_us": 2000,
+        "verified": true
+      },
+      "error": null,
+      "fault": {
+        "injected_observed_ms": 1795845339154,
+        "recovered_observed_ms": 1795845368298,
+        "request_completed_ms": 1795845338134,
+        "request_started_ms": 1795845338061,
+        "requested_at": "2026-11-28T05:55:38.060005Z",
+        "uid": "34d16186-2c4a-4bfe-bc4c-841cc78e4e9d"
+      },
+      "health_unchanged": true,
+      "heldout-label-validation": {
+        "counts": {
+          "true_negative": 508,
+          "true_positive": 15,
+          "unknown_or_censored": 7
+        },
+        "historical_live_forecast_valid": false,
+        "label_f1": 1.0,
+        "label_precision": 1.0,
+        "label_recall": 1.0,
+        "mode": "retrospective health-label agreement; not forecasting",
+        "native_calibration_sha256": "8ae7ba3693fd4fd7e02488e4a72d18df8834b48748f04fa1d2789ca99f5b184e",
+        "native_input_sha256": "3786751448ad55052d2f0472c437923fb3da85db4b34a1aeb986dab3fea1c5b5",
+        "partition": "validation",
+        "reference_input_sha256": "5dcda9ef9ae37ad04cb17cba308e0b4e8b616fff873837777b653b9d22164260",
+        "run_id": "cct-probe-cct10-validation-20261128c-01",
+        "warning_lead_time_claimed": false
+      },
+      "independent_reference": {
+        "complete": 530,
+        "qualifying_by_service": {
+          "adservice": 53,
+          "cartservice": 53,
+          "checkoutservice": 53,
+          "currencyservice": 53,
+          "emailservice": 53,
+          "frontend": 53,
+          "paymentservice": 53,
+          "productcatalogservice": 53,
+          "recommendationservice": 53,
+          "shippingservice": 53
+        },
+        "retrospective_no_fault_control_alarms": {
+          "after_recovery_plus_30s": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845485000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.020833333333333332,
+            "run_id": "cct-probe-cct10-validation-20261128c-01",
+            "start_ms": 1795845400000,
+            "unknown_windows": 2
+          },
+          "before_injection": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845335000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.03194444444444444,
+            "run_id": "cct-probe-cct10-validation-20261128c-01",
+            "start_ms": 1795845220000,
+            "unknown_windows": 0
+          }
+        },
+        "rows": 530,
+        "sha256": "5dcda9ef9ae37ad04cb17cba308e0b4e8b616fff873837777b653b9d22164260"
+      },
+      "live_deadline_reasons": {
+        "reference requests still in flight": 6
+      },
+      "live_observations": {
+        "errors": [],
+        "historical_live_forecast_valid": false,
+        "missed_or_retried_windows": {
+          "1795845340000": "reference requests still in flight",
+          "1795845345000": "reference requests still in flight",
+          "1795845350000": "reference requests still in flight",
+          "1795845355000": "reference requests still in flight",
+          "1795845360000": "reference requests still in flight",
+          "1795845365000": "reference requests still in flight"
+        },
+        "prospective_decisions": 53,
+        "verified_frames": 53
+      },
+      "measurement_interval_utc": [
+        "2026-11-28T05:53:37.291922Z",
+        "2026-11-28T05:58:09.125961Z"
+      ],
+      "mode": "fault",
+      "native": {
+        "complete": 530,
+        "qualifying_by_service": {
+          "adservice": 53,
+          "cartservice": 53,
+          "checkoutservice": 53,
+          "currencyservice": 53,
+          "emailservice": 53,
+          "frontend": 53,
+          "paymentservice": 53,
+          "productcatalogservice": 53,
+          "recommendationservice": 53,
+          "shippingservice": 53
+        },
+        "retrospective_no_fault_control_alarms": {
+          "after_recovery_plus_30s": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845485000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.020833333333333332,
+            "run_id": "cct-probe-cct10-validation-20261128c-01",
+            "start_ms": 1795845400000,
+            "unknown_windows": 2
+          },
+          "before_injection": {
+            "alarm_incidents": 0,
+            "end_ms": 1795845335000,
+            "false_alarms_per_observed_hour": 0.0,
+            "has_false_alarm": false,
+            "observed_hours": 0.03194444444444444,
+            "run_id": "cct-probe-cct10-validation-20261128c-01",
+            "start_ms": 1795845220000,
+            "unknown_windows": 0
+          }
+        },
+        "rows": 530,
+        "sha256": "3786751448ad55052d2f0472c437923fb3da85db4b34a1aeb986dab3fea1c5b5"
+      },
+      "passed": true,
+      "phase-latency": {
+        "effect_and_recovery_passed": true,
+        "healthy": {
+          "median_ms": 0.263,
+          "n": 5454
+        },
+        "injection_observed": {
+          "median_ms": 104.2425,
+          "n": 1350
+        },
+        "recovery": {
+          "median_ms": 0.263,
+          "n": 5400
+        },
+        "scope": "caller RPC to productcatalog; observed phase bounds, boundary-crossing calls excluded"
+      },
+      "prospective-summary": [
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 35,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.9331536388140161
+          },
+          "coverage_run_mean": 0.9331536388140161,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 95,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.8157532195268045
+          },
+          "coverage_run_mean": 0.8157532195268045,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 179,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.6557951482479785
+          },
+          "coverage_run_mean": 0.6557951482479785,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "distance_weighted",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 35,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.9331536388140161
+          },
+          "coverage_run_mean": 0.9331536388140161,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 95,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.8157532195268045
+          },
+          "coverage_run_mean": 0.8157532195268045,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 179,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.6557951482479785
+          },
+          "coverage_run_mean": 0.6557951482479785,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "no_additional",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 35,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.9331536388140161
+          },
+          "coverage_run_mean": 0.9331536388140161,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 95,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.8157532195268045
+          },
+          "coverage_run_mean": 0.8157532195268045,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 179,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.6557951482479785
+          },
+          "coverage_run_mean": 0.6557951482479785,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_one_hop",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 35,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.9331536388140161
+          },
+          "coverage_run_mean": 0.9331536388140161,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 95,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.8157532195268045
+          },
+          "coverage_run_mean": 0.8157532195268045,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 179,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.6557951482479785
+          },
+          "coverage_run_mean": 0.6557951482479785,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "reverse_reachable",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 35,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.9331536388140161
+          },
+          "coverage_run_mean": 0.9331536388140161,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 10000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 95,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.8157532195268045
+          },
+          "coverage_run_mean": 0.8157532195268045,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 30000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        },
+        {
+          "affected_count_absolute_error_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0
+          },
+          "affected_count_absolute_error_run_mean": 0,
+          "censored_services": 179,
+          "coverage_by_run": {
+            "cct-probe-cct10-validation-20261128c-01": 0.6557951482479785
+          },
+          "coverage_run_mean": 0.6557951482479785,
+          "empty_empty": 53,
+          "f1_by_run": {},
+          "f1_run_mean": null,
+          "horizon_ms": 60000,
+          "jaccard_by_run": {},
+          "jaccard_run_mean": null,
+          "method": "temporal_risk",
+          "precision_by_run": {},
+          "precision_run_mean": null,
+          "recall_by_run": {},
+          "recall_run_mean": null,
+          "runs": 1
+        }
+      ],
+      "protocol": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "fault_seconds": 30,
+        "healthy_seconds": 120,
+        "recovery_seconds": 120,
+        "seed": 42,
+        "target_journeys_per_second": 5,
+        "warmup_rates": [
+          [
+            0,
+            30,
+            2
+          ],
+          [
+            30,
+            60,
+            3
+          ],
+          [
+            60,
+            120,
+            5
+          ]
+        ],
+        "warmup_seconds": 120,
+        "workers": 12
+      },
+      "remaining_fault": false,
+      "remaining_workload": false,
+      "source_revision": "01518f2d62d626b189055fefbff9d318c98b6148",
+      "supplementary_confirmed_outcomes": {
+        "historical_live_forecast_valid": false,
+        "original_conservative_scores_reproduce": true,
+        "outcome_unknown_policy": "observed-pending-v2",
+        "plan_sha256": "6f383a348d40948db6b931e2d3d87b760d0d01dbb7a22415dfac364b16f31bc8",
+        "prediction_source_sha256": "0e266d81c2da0339de211053c360fb0943057f402a5ade5c4409d99fe5546eec",
+        "run_id": "cct-probe-cct10-validation-20261128c-01",
+        "scope": "exploratory supplementary analysis",
+        "summary": [
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.05660377358490566
+            },
+            "affected_count_absolute_error_run_mean": 0.05660377358490566,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.9595687331536388
+            },
+            "coverage_run_mean": 0.9595687331536388,
+            "empty_empty": 52,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.2830188679245283
+            },
+            "affected_count_absolute_error_run_mean": 0.2830188679245283,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.8840970350404312
+            },
+            "coverage_run_mean": 0.8840970350404312,
+            "empty_empty": 48,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.6226415094339622
+            },
+            "affected_count_absolute_error_run_mean": 0.6226415094339622,
+            "censored_services": 118,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.77088948787062
+            },
+            "coverage_run_mean": 0.77088948787062,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "distance_weighted",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.05660377358490566
+            },
+            "affected_count_absolute_error_run_mean": 0.05660377358490566,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.9595687331536388
+            },
+            "coverage_run_mean": 0.9595687331536388,
+            "empty_empty": 52,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.2830188679245283
+            },
+            "affected_count_absolute_error_run_mean": 0.2830188679245283,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.8840970350404312
+            },
+            "coverage_run_mean": 0.8840970350404312,
+            "empty_empty": 48,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.6226415094339622
+            },
+            "affected_count_absolute_error_run_mean": 0.6226415094339622,
+            "censored_services": 118,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.77088948787062
+            },
+            "coverage_run_mean": 0.77088948787062,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "no_additional",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.05660377358490566
+            },
+            "affected_count_absolute_error_run_mean": 0.05660377358490566,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.9595687331536388
+            },
+            "coverage_run_mean": 0.9595687331536388,
+            "empty_empty": 52,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.2830188679245283
+            },
+            "affected_count_absolute_error_run_mean": 0.2830188679245283,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.8840970350404312
+            },
+            "coverage_run_mean": 0.8840970350404312,
+            "empty_empty": 48,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.6226415094339622
+            },
+            "affected_count_absolute_error_run_mean": 0.6226415094339622,
+            "censored_services": 118,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.77088948787062
+            },
+            "coverage_run_mean": 0.77088948787062,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_one_hop",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.05660377358490566
+            },
+            "affected_count_absolute_error_run_mean": 0.05660377358490566,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.9595687331536388
+            },
+            "coverage_run_mean": 0.9595687331536388,
+            "empty_empty": 52,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.2830188679245283
+            },
+            "affected_count_absolute_error_run_mean": 0.2830188679245283,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.8840970350404312
+            },
+            "coverage_run_mean": 0.8840970350404312,
+            "empty_empty": 48,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.6226415094339622
+            },
+            "affected_count_absolute_error_run_mean": 0.6226415094339622,
+            "censored_services": 118,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.77088948787062
+            },
+            "coverage_run_mean": 0.77088948787062,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "reverse_reachable",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.05660377358490566
+            },
+            "affected_count_absolute_error_run_mean": 0.05660377358490566,
+            "censored_services": 21,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.9595687331536388
+            },
+            "coverage_run_mean": 0.9595687331536388,
+            "empty_empty": 52,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 10000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.2830188679245283
+            },
+            "affected_count_absolute_error_run_mean": 0.2830188679245283,
+            "censored_services": 59,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.8840970350404312
+            },
+            "coverage_run_mean": 0.8840970350404312,
+            "empty_empty": 48,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 30000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          },
+          {
+            "affected_count_absolute_error_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.6226415094339622
+            },
+            "affected_count_absolute_error_run_mean": 0.6226415094339622,
+            "censored_services": 118,
+            "coverage_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.77088948787062
+            },
+            "coverage_run_mean": 0.77088948787062,
+            "empty_empty": 42,
+            "f1_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "f1_run_mean": 0.0,
+            "horizon_ms": 60000,
+            "jaccard_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "jaccard_run_mean": 0.0,
+            "method": "temporal_risk",
+            "precision_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "precision_run_mean": 0.0,
+            "recall_by_run": {
+              "cct-probe-cct10-validation-20261128c-01": 0.0
+            },
+            "recall_run_mean": 0.0,
+            "runs": 1
+          }
+        ]
+      },
+      "workload_report": {
+        "arrival_schedule": "25 journeys over 2.8s per epoch-aligned 5s interval, then drain",
+        "ended_epoch": 1795845489.1259606,
+        "failures": 0,
+        "journeys": 1806,
+        "max_start_lag_ms": 453.2625353822368,
+        "measured_started_epoch": 1795845217.2919223,
+        "mode": "fault",
+        "phase": "complete",
+        "reason": "completed",
+        "requests": 5418,
+        "run_id": "cct-probe-cct10-validation-20261128c-01",
+        "target_journeys_per_second": 5,
+        "warmup_started_epoch": 1795845097.2892022,
+        "worker_errors": 0,
+        "workers": 12
+      }
+    }
+  },
+  "scope": "one healthy training run and three reserved repetitions of one bounded delay scenario",
+  "session-source": {
+    "head_at_launch": "01518f2",
+    "sha256": {
+      "analytics/heldout_validation.py": "5d3268543ced78525c3134714aa5e7c455e3e7e9139958bfff6059ffef49bf1f",
+      "configs/reference.local.lock.json": "e6694e57e7fdb9fa417ca5ba9d4b1a04dc612a525a78ced4224e2f123db0f4de",
+      "observability/coverage.py": "89011af572e6acaf3ea8ef2e0d92ddc03a2e6df4752f631bb3e82fe8eec561d8",
+      "observability/live_windows.py": "c36dd24b8c012c2fc1a794545270498e8520ef0afae74e513889bb3a9cf04515",
+      "observability/reference.py": "46f76f815a227d3d47c8b2dacf61c3dce1b9cf5b01569a0b9adc62662f424c80",
+      "observability/reference_control.py": "5ff4a3abeb03ec33272bb40e6a5c7a35273c3ba6e92766932c165b8edfe914d4",
+      "scripts/cct10_pilot.py": "cd1f703d1e9818791d35d2d4fba0e88c77d04e5adf9d03e8c67936abe6016192",
+      "scripts/validate_cct10.py": "6c355f724cd6594ff5c7a3a4abe1493ebcab26fe10272972270700d5a3fe58d2",
+      "workload/balanced_capture.py": "2fa8fc21b49efd864cb712d1fe1cbc3abfe31af30434537c5631de463c3e7f4d"
+    }
+  },
+  "teammate_signoff_recorded": false
+}
