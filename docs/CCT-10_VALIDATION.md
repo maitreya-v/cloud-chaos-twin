@@ -55,3 +55,12 @@ The owner performs automated technical checks; the campaign does not record or
 substitute for Merul, Mithil, Param or Komalika's personal acceptance. Temporary
 proxies, ports, batching and templates are restored after the campaign, including
 failed attempts. Raw captures stay under ignored `outputs/validation/`.
+
+A reserved-run attempt that aborts is retained with its actual failed receipt
+and never relabeled as a successful repeat. A retry can use `--reuse-healthy`
+only with an already passed healthy archive and clean restoration. The runner
+reconciles that archive again from raw traces and independent records, copies
+its original timestamped observations, reserves fresh fault IDs and verifies
+that both channels' threshold values, sample counts and training hashes stay
+unchanged. The new split and freeze are recorded before the retry's faults.
+Failed reserved-run data is not added to calibration.
