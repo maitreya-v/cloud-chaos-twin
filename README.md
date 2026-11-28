@@ -16,6 +16,12 @@ Cloud Chaos Twin studies how failures spread through Online Boutique, a microser
 
 The [deployment record](docs/CCT-02_LOCAL_DEPLOYMENT.md) documents the baseline and its timing precision. The [task board](docs/TEAM_TASKS.md) defines the acceptance criteria for each deliverable.
 
+The [first controlled fault pilot](docs/CCT-10_STATUS.md#first-controlled-live-pilot)
+recorded a 30-second productcatalog delay and automatic recovery with 447
+successful workload operations, archived traces, metrics, logs and fresh pod
+observations. Health calibration still needs independent coverage review and
+sufficient per-service volume; this pilot does not establish forecast accuracy.
+
 ## Repository and frozen version
 
 The public repository is [maitreya-v/cloud-chaos-twin](https://github.com/maitreya-v/cloud-chaos-twin). The tag `merul-telemetry-2026-11-24` identifies the tested telemetry implementation at commit `cfab3d0ce1af576aaa3bbba72276322c8c361c66`. The tag reproduces the November 24 offline milestone. The [November 25 integrated revision](https://github.com/maitreya-v/cloud-chaos-twin/tree/e764ca675bb8a5ce3e75bb3e7fe9e00345028adf) adds the live tracing fixes, rollout tool and independent verifier. The slides and report linked here describe the November 24 milestone. [Merged telemetry PR](https://github.com/maitreya-v/cloud-chaos-twin/pull/4) · [Presentation slides](docs/submission/Cloud-Chaos-Twin-Slides.pdf) · [Project report](docs/submission/Cloud-Chaos-Twin-Report.pdf)
