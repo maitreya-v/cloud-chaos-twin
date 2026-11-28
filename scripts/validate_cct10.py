@@ -11,6 +11,7 @@ import importlib.util
 import json
 from pathlib import Path
 import statistics
+import shutil
 import subprocess
 import sys
 
@@ -22,6 +23,8 @@ from observability.live_windows import LiveWindows
 from observability.paired import save,website_ready,quiescent
 from observability.reference_control import ReferenceSession
 from observability.signals import nanos
+from observability.coverage import reconcile
+from ingestion.contract import digest
 
 
 def load(path):return json.loads(Path(path).read_text())
@@ -68,12 +71,34 @@ def read_windows(directory,run):
     return native,independent
 
 
+def retained_training(source,image):
+    """Recheck a healthy archive; never use a failed reserved run for fitting."""
+    r=load(source/'receipt.json')
+    parent=source.parent.parent
+    session=load(parent/'receipt.json')
+    if (not r['passed'] or r.get('mode')!='healthy' or r.get('fault') or
+        not r.get('coverage_review',{}).get('verified') or session['restoration_errors']):
+        raise ValueError('Retained training must be a passed healthy capture with clean restoration')
+    if load(parent/'reference-state.json')['image']!=image:
+        raise ValueError('Retained training used a different reference image')
+    entries={}
+    for line in gzip.open(source/'traces.jsonl.gz','rt'):
+        row=json.loads(line);entries[row['trace_id']]=row
+    requests=[json.loads(s) for s in (source/'requests.jsonl').read_text().splitlines()]
+    ledger=[json.loads(s) for s in (source/'reference.jsonl').read_text().splitlines()]
+    pairs=reconcile(entries,requests,load(source/'reference-before.json'),load(source/'reference-after.json'),ledger)
+    saved=[json.loads(s) for s in (source/'reference-pairs.jsonl').read_text().splitlines()]
+    if digest(pairs)!=digest(saved):raise ValueError('Retained healthy independent reconciliation changed')
+    return r,load(parent/'calibration.frozen.json')
+
+
 def main():
     import argparse
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--session-id",required=True)
     p.add_argument("--after-pair",type=Path,required=True)
     p.add_argument("--campaign",default="20261127")
+    p.add_argument("--reuse-healthy",type=Path,help="Reconcile an existing passed healthy run; retain thresholds unchanged and reserve fresh fault IDs")
     a=p.parse_args()
     a.after_pair=a.after_pair.resolve()
     paired=load(a.after_pair/"receipt.json")
@@ -83,10 +108,15 @@ def main():
     plan={"train":[f"cct-probe-cct10-train-{a.campaign}-01"],
           "validation":[f"cct-probe-cct10-validation-{a.campaign}-01"],
           "test":[f"cct-probe-cct10-test-{a.campaign}-01",f"cct-probe-cct10-test-{a.campaign}-02"]}
+    lock=load(ROOT/"configs/reference.local.lock.json")
+    retained=None
+    if a.reuse_healthy:
+        a.reuse_healthy=a.reuse_healthy.resolve()
+        retained=retained_training(a.reuse_healthy,lock['image'])
+        plan['train']=[retained[0]['run_id']]
     save(directory/"split.json",plan)
     receipt={"passed":False,"actor":"owner-assisted validation","paired_evidence":str(a.after_pair.relative_to(ROOT)),
              "split":plan,"runs":{},"restoration_errors":[],"teammate_signoff_recorded":False}
-    lock=load(ROOT/"configs/reference.local.lock.json")
     reference=ReferenceSession(directory,a.session_id,lock["image"])
     spec=importlib.util.spec_from_file_location("cct_capture",ROOT/"scripts/cct10_pilot.py")
     capture=importlib.util.module_from_spec(spec);spec.loader.exec_module(capture)
@@ -103,13 +133,29 @@ def main():
             if observer.errors:raise ValueError("Prospective observer error: "+str(observer.errors))
             return out,result,observer
         train=plan["train"][0]
-        out,result,observer=collect(train,"healthy")
-        native,independent=read_windows(out,train)
+        if retained:
+            out=directory/'runs'/train;shutil.copytree(a.reuse_healthy,out)
+            result=retained[0]
+            receipt['reused_healthy_source']=str(a.reuse_healthy.relative_to(ROOT))
+            receipt['runs'][train]={'passed':True,'coverage_review':result['coverage_review'],'retained_training':True}
+            live=load(out/'live-observation-summary.json')
+            if live['verified_frames']<3:raise ValueError('Retained training has too few timely live frames')
+        else:out,result,observer=collect(train,"healthy")
+        if retained:
+            native=load(out/'service-windows.reviewed.json')
+            independent=load(out/'reference-service-windows.reviewed.json')
+        else:native,independent=read_windows(out,train)
         bounds={train:[nanos(v)//1000000 for v in result["measurement_interval_utc"]]}
         save(directory/"healthy-intervals.json",bounds)
         frozen=freeze(native,independent,plan,bounds)
+        if retained:
+            for channel in ('native','independent_reference'):
+                for key in ('latency_limits_ms','sample_counts','calibration_sha256'):
+                    if frozen[channel][key]!=retained[1][channel][key]:
+                        raise ValueError('Retry changed healthy threshold values or training observations')
+            frozen['retry_scope']='unchanged healthy thresholds and observations; new reserved run IDs after a pre-injection aborted baseline'
         save(directory/"calibration.frozen.json",frozen)
-        if len(observer.frames)<3:raise ValueError("Healthy live coverage produced fewer than three timely verified frames")
+        if not retained and len(observer.frames)<3:raise ValueError("Healthy live coverage produced fewer than three timely verified frames")
         print("Training-only thresholds frozen for all ten services in both channels",flush=True)
         for run in plan["validation"]+plan["test"]:
             out,result,observer=collect(run,"fault",frozen["native"])
